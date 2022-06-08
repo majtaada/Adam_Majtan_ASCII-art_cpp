@@ -1,6 +1,5 @@
 #include "CImage.hpp"
-#include <iostream>
-#include <vector>
+
 
 
 
@@ -46,6 +45,7 @@ void CImage::updateImage(std::vector<std::vector<double>>  &grayscaleMatrix)
 
 void CImage::printImage () const
 {
+    system("clear");
     for (int i = 0; i < getHeight(); i++)
     {
         for (int j = 0; j < getWidth(); j++)

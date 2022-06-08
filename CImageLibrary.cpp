@@ -1,6 +1,7 @@
 #include "CImageLibrary.hpp"
 
 
+
  void CImageLibrary::addImage ( CImage & image)
  {
      library.push_back(image);

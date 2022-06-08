@@ -3,15 +3,13 @@
 #include "CImage.hpp"
 #include <string>
 #include <png.h>
+#include <CManager.hpp>
 
 int main(void)
 {   
-    CFileReader a;
-    a.initializeAsciiTransition();
-    while(1){
-    std::string fileName=a.readInput();
-    CImage image =a.readPNG(fileName);
-    image.printImage();
-    }    
+    CManager manager;
+    manager.initializeProgram();
+    
+        
     return 0;
 }

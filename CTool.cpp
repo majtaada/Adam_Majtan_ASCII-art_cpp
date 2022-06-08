@@ -1,6 +1,5 @@
 #include "CTool.hpp"
-#include <string>
-#include <iostream>
+
 
 CTool::CTool ( std::string &asciiTransition ) 
 {

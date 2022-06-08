@@ -1,5 +1,9 @@
 #include "CImage.hpp"
-#include "ncurses.h"
+#include <curses.h>
+#include <ncurses.h>
+#include <vector>
+#include <stdexcept>
+
 class CImageDisplayer
 {
 private:

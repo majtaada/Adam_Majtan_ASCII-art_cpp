@@ -1,6 +1,5 @@
 #include "CEffectRotation.hpp"
-#include <vector>
-#include <algorithm>
+
 
 
 CImage CEffectRotation::applyEffect ( CImage & image , int value)

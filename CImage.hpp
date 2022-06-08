@@ -1,5 +1,8 @@
 #include <vector>
 #include "CTool.hpp"
+#include <iostream>
+#include <vector>
+#include <stdlib.h>
 #pragma once
 
 

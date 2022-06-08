@@ -1,5 +1,8 @@
 #include "CEffect.hpp"
 #include "CImage.hpp"
+#include <vector>
+#include <algorithm>
+
 
 class CEffectRotation : public CEffect
 {

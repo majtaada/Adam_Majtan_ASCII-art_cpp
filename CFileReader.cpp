@@ -1,12 +1,5 @@
 #include "CFileReader.hpp" 
-#include <string>
-#include <iostream>
-#include <png.h>
-#include <fstream>
-#include <stdexcept>
-#include <filesystem>
-#include "CImage.hpp"
-#include "CTool.hpp"
+
 
 #define FORMAT_LEN 4
 
@@ -19,21 +12,23 @@ void CFileReader::readDirectory( std::string fileType) const
       if ( fileDir.substr(fileDir.size()-FORMAT_LEN,4) == fileType)
       std::cout << fileDir << std::endl;
     }
+
 }
 
-std::string CFileReader::readInput (  ) const
+CImage CFileReader::readInput (  ) 
 {
-    std::string fileName;
-    std::string fileRead;
     std::cout << "Zadaj image name .png, ktory chces nacitat" << std::endl;
     readDirectory(".png");
-    getline( std::cin , fileRead);
-    fileName = path + fileRead;
+    std::cout << space << space << space << std::endl;
+    std::cout << "!! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT KONVOLUCE !!" << std::endl;
+    std::cout << space << space << space << std::endl;
+    getline( std::cin , fileFromInput);
+    fileName = path + fileFromInput;
     std::fstream file( fileName );
-    std::cout << fileName << std::endl;
     if(!checkIfFileValid(fileName))
       throw std::invalid_argument("Nefunkcny image, skus iny");
-    return fileName;
+    
+    return readPNG();
 }
 
 bool CFileReader::checkIfFileValid(const std::string &name) const
@@ -46,11 +41,12 @@ bool CFileReader::checkIfFileValid(const std::string &name) const
     }   
 }
 
-void CFileReader::initializeAsciiTransition ( ) 
+void CFileReader::initializeAsciiTransition (  ) 
 { 
   std::cout << "Zadaj ascii prechod (.txt)" << std::endl;
   std::string fileName;
   readDirectory(".txt");  
+  std::cout << space << std::endl;
   getline( std::cin , fileName);
   if ( fileName.substr(fileName.size()-FORMAT_LEN,4) != ".txt")
     throw std::invalid_argument("Toto neni .txt");
@@ -61,22 +57,21 @@ void CFileReader::initializeAsciiTransition ( )
   txtFile.open(path+fileName);
   while ( std::getline (txtFile, line)){
       asciiLevel+=line;
-      std::cout << line << std::endl; 
   }
+  std::cout << space << std::endl;
   
 }
 
-CImage CFileReader::readPNG(const std::string &imageName)  
+CImage CFileReader::readPNG()  
 {
-    FILE * imageFile = fopen(imageName.c_str() , "r");
+    FILE * imageFile = fopen(fileName.c_str() , "r");
     png_structp pngStr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
     png_infop pngInfo = png_create_info_struct(pngStr);
     png_init_io(pngStr, imageFile);
     png_read_png(pngStr, pngInfo, PNG_TRANSFORM_IDENTITY , NULL);
     imageMatrix = converter->toGrayScale(pngStr,pngInfo);
-    std::cout << "asciiLevel" << asciiLevel << std::endl;
     converter = new CTool (asciiLevel);
-    CImage image = CImage( imageMatrix, converter , imageName);
+    CImage image = CImage( imageMatrix, converter , fileFromInput);
     return image;
 }
 

@@ -1,8 +1,5 @@
 #include "CImageDisplayer.hpp"
-#include "CImage.hpp"
-#include <ncurses.h>
-#include <vector>
-#include <stdexcept>
+
 
 void CImageDisplayer::showImage( CImage & image)
 {

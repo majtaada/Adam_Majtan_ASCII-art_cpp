@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/adam/PA2/semestralka/majtaada'
+make: Leaving directory '/home/adam/PA2/semestralka/majtaada'
+ 
+makefile:9: *** missing separator.  Stop.
+

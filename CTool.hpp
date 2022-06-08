@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <png.h>
+#include <iostream>
 #pragma once
 
 #define R 0.2126
