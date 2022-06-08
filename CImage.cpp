@@ -21,6 +21,11 @@ int CImage::getWidth() const
     return this->asciiImage[0].size();
 }
 
+std::string CImage::getGraylevel() const
+{
+    return this->imageConverter->getGraylevel();
+}
+
 std::string CImage::getName() const
 {
     return this->imageName;
@@ -54,4 +59,5 @@ void CImage::printImage () const
         }
         std::cout << "\n";
     }
+    std::cout << getWidth() << "x" << getHeight() << std::endl;
 }

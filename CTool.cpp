@@ -6,6 +6,11 @@ CTool::CTool ( std::string &asciiTransition )
     grayLevel = asciiTransition;
 }
 
+std::string CTool::getGraylevel ()
+{
+  return this->grayLevel;
+}
+
 std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<double>> &imageMatrix)
 {
     
@@ -23,10 +28,11 @@ std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<d
     return asciiMatrix;
 }
 
-std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_infop &pngInfo ) 
+std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_infop &pngInfo )
 { 
   int width = png_get_image_width(pngStr, pngInfo);
   int height = png_get_image_height(pngStr, pngInfo);
+  int shifter,grayscale;
   std::vector<std::vector<double>> pngMatrix;
   std::cout << width <<  "x" << height << std::endl;
   if (png_get_color_type(pngStr, pngInfo) == PNG_COLOR_TYPE_RGB)
@@ -37,6 +43,7 @@ std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_
     throw std::invalid_argument("Neplatny color type");
   }
   png_bytepp rows = png_get_rows(pngStr, pngInfo);
+  std::cout << "macka" << std::endl;
   for (int row = 0; row < height; row++){
     std::vector<double> v1;
         // Pixels in RGBA -> x4 , RGB -> x3
@@ -50,6 +57,7 @@ std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_
   }
   free(pngStr);
   free(pngInfo);
+  free(rows);
 
   return pngMatrix;
 }

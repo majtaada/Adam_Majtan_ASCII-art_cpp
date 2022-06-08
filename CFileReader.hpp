@@ -16,12 +16,13 @@ class CFileReader
 {
 
 public:
-    CImage readInput();
-    CImage readPNG () ;
+    std::string readInput() const;
+    CImage readPNG (const std::string &imageName) ;
     void readAsciiTransition ( const std::string &txtName );
     void initializeAsciiTransition ( );
 
 private:
+    void print() const;
     std::string fileFromInput , asciiLevel ,  fileName,
                 path= "../majtaada/examples/";
     CTool * converter; 

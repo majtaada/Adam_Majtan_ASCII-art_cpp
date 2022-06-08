@@ -14,8 +14,8 @@ public:
     CTool ( std::string &asciiTransition );
     std::vector<std::vector<char>> convertToAscii ( std::vector<std::vector<double>> &imageMatrix) ;
     std::vector<std::vector<char>> asciiMatrix;
-    std::vector<std::vector<double>> toGrayScale ( png_structp &pngStr , png_infop &pngInfo );
+    std::vector<std::vector<double>> toGrayScale ( png_structp &pngStr , png_infop &pngInfo ) ;
+    std::string getGraylevel ();
 private:    
     std::string grayLevel;
-    int shifter,grayscale;
 };

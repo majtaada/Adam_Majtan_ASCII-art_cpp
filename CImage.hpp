@@ -13,6 +13,7 @@ public:
     void printImage () const;
     int getWidth() const;
     int getHeight() const;
+    std::string getGraylevel() const;
     std::vector<std::vector<double>> getGrayscaleImage() const;
     std::vector<std::vector<char>> getAsciiImage() const;
     std::string getName() const;
