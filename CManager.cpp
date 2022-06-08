@@ -1,20 +1,26 @@
 #include "CManager.hpp"
 
 
-void CManager::addImage()
+void CManager::addImage(CFileReader & fr)
 {   
     system("clear");
-    CFileReader * fr = new CFileReader;
-    CImage image = fr->readPNG(fr->readInput());
+    CImage image = fr.readPNG(fr.readInput());
     library.addImage(image);
+}
+
+void CManager::print(CImageLibrary & library) const
+{
+    std::cout << "Zadaj image name .png, ktory chces zobrazit" << std::endl;
+    library.printLibrary();
+    std::cout << space << space << space << std::endl;
+    std::cout << "!! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT KONVOLUCE !!" << std::endl;
+    std::cout << space << space << space << std::endl;
 }
 
 void CManager::showImage()
 {
     system("clear");
-    std::cout << "zadaj image name" << std::endl;
-    library.printLibrary();
-    std::cout << "===================" << std::endl;
+    print(library);
     std::cin >> imageName;
     CImage image = library.findImage(imageName);
     image.printImage();
@@ -33,7 +39,7 @@ void CManager::initializeProgram()
         {
         case 'o':
             {
-            addImage();
+            addImage(filereader);
             break;
             }
         case 'i':

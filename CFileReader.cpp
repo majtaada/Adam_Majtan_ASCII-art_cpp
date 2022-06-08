@@ -15,20 +15,14 @@ void CFileReader::readDirectory( std::string fileType) const
 
 }
 
-void CFileReader::print(void) const
-{
-    std::cout << "Zadaj image name .png, ktory chces nacitat" << std::endl;
-    readDirectory(".png");
-    std::cout << space << space << space << std::endl;
-    std::cout << "!! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT KONVOLUCE !!" << std::endl;
-    std::cout << space << space << space << std::endl;
-}
 
 std::string CFileReader::readInput (  ) const
 {
     std::string fileName;
     std::string fileRead;
-    print();
+    std::cout << "Zadaj image name .png, ktory chces nacitat" << std::endl;
+    readDirectory(".png");
+    std::cout << space << std::endl;
     std::cin  >> fileRead;
     fileName = path + fileRead;
     std::fstream file( fileName );
