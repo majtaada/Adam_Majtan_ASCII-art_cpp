@@ -1,8 +1,9 @@
 #include "CEffectLighten.hpp"
 
 
-CImage CEffectLighten::applyEffect ( CImage & image , int value)
-{
+CImage CEffectLighten::applyEffect ( CImage & image )
+{   
+    int value = CEffect::getValue();
     imageMatrix = image.getGrayscaleImage();
     for (size_t i = 0; i < imageMatrix.size(); i++)
     {

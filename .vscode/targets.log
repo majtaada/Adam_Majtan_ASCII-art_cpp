@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-makefile:9: *** missing separator.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ makefile:9: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jun  8 17:13:51 2022
+# Make data base, printed on Thu Jun  9 12:33:51 2022
 
 # Variables
 
@@ -51,7 +49,7 @@ SNAP_DATA = /var/snap/code/97
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:47950
+JOURNAL_STREAM = 8:56534
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -79,7 +77,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
-MANAGERPID = 1590
+MANAGERPID = 1638
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -97,7 +95,7 @@ LD = g++
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/adam-IdeaPad-5-14ALC05:@/tmp/.ICE-unix/1847,unix/adam-IdeaPad-5-14ALC05:/tmp/.ICE-unix/1847
+SESSION_MANAGER = local/adam-IdeaPad-5-14ALC05:@/tmp/.ICE-unix/1895,unix/adam-IdeaPad-5-14ALC05:/tmp/.ICE-unix/1895
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -115,7 +113,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 8e1d6784f4e44b38982a58f77ffb0519
+INVOCATION_ID = 11f540fb9295424580388f1ee9cfc007
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -127,7 +125,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2606
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5748
 # automatic
 %F = $(notdir $%)
 # environment
@@ -141,7 +139,7 @@ PWD = /home/adam/PA2/semestralka/majtaada
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1781
+SSH_AGENT_PID = 1829
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -193,7 +191,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-7d227657-59c2-42de-b567-e1aee4fcd07b.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-fe2cb80b-72dc-41d9-a0b2-10b39a5c7b16.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -277,10 +275,12 @@ LC_ADDRESS = sk_SK.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2740
+VSCODE_PID = 5795
 # variable set hash-table stats:
 # Load=133/1024=13%, Rehash=0, Collisions=21/147=14%
  
+makefile:9: *** missing separator.  Stop.
+
 
 # Pattern-specific Variable Values
 
@@ -288,9 +288,9 @@ VSCODE_PID = 2740
 
 # Directories
 
-# . (device 66309, inode 5004133): 42 files, no impossibilities.
+# . (device 66309, inode 5004133): 44 files, no impossibilities.
 
-# 42 files, no impossibilities in 1 directories.
+# 44 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -342,7 +342,6 @@ CEffectLighten.o:
 
 # Not a target:
 .DEFAULT:
- 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -366,12 +365,12 @@ CAnimation.o:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 54 / storage = 692 B / avg = 12 B
-# current buf: size = 8162 B / used = 692 B / count = 54 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 56 / storage = 704 B / avg = 12 B
+# current buf: size = 8162 B / used = 704 B / count = 56 / avg = 12 B
 
-# strcache performance: lookups = 62 / hit rate = 12%
+# strcache performance: lookups = 64 / hit rate = 12%
 # hash-table stats:
-# Load=54/8192=1%, Rehash=0, Collisions=1/62=2%
-# Finished Make data base on Wed Jun  8 17:13:51 2022
+# Load=56/8192=1%, Rehash=0, Collisions=1/64=2%
+# Finished Make data base on Thu Jun  9 12:33:51 2022
 
  

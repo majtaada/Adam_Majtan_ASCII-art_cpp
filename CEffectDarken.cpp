@@ -1,8 +1,9 @@
 #include "CEffectDarken.hpp"
 #include <vector>
 
-CImage CEffectDarken::applyEffect ( CImage & image , int value)
+CImage CEffectDarken::applyEffect ( CImage & image )
 {
+    int value = CEffect::getValue();
     imageMatrix = image.getGrayscaleImage();
     for (size_t i = 0; i < imageMatrix.size(); i++)
     {

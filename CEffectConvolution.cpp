@@ -1,7 +1,7 @@
 #include "CEffectConvolution.hpp"
 #include <vector>
 
-CImage CEffectConvolution::applyEffect (CImage &image , int value )
+CImage CEffectConvolution::applyEffect (CImage &image  )
 {   
     imageMatrix = image.getGrayscaleImage();
     int average = 0;

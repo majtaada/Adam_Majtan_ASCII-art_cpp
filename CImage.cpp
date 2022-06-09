@@ -21,10 +21,6 @@ int CImage::getWidth() const
     return this->asciiImage[0].size();
 }
 
-std::string CImage::getGraylevel() const
-{
-    return this->imageConverter->getGraylevel();
-}
 
 std::string CImage::getName() const
 {
@@ -44,13 +40,14 @@ std::vector<std::vector<char>> CImage::getAsciiImage() const
 
 void CImage::updateImage(std::vector<std::vector<double>>  &grayscaleMatrix) 
 {
-    grayscaleImage= grayscaleMatrix;
-    asciiImage = imageConverter->convertToAscii(grayscaleMatrix);
+    this->grayscaleImage= grayscaleMatrix;
+    this->asciiImage = imageConverter->convertToAscii(grayscaleMatrix);
+    std::cout << "halot" << std::endl;
 }
 
 void CImage::printImage () const
 {
-    system("clear");
+    //system("clear");
     for (int i = 0; i < getHeight(); i++)
     {
         for (int j = 0; j < getWidth(); j++)

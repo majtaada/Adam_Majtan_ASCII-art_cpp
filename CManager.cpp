@@ -1,5 +1,11 @@
 #include "CManager.hpp"
 
+const std::map < std::string , CEffect * > CManager::mapEffect =
+                            {{ "darken" , new CEffectDarken()},
+                             { "lighten" , new CEffectLighten()},
+                             { "negative" , new CEffectNegative()},
+                             { "convolution" , new CEffectConvolution()},
+                             { "rotation" , new CEffectRotation()}};
 
 void CManager::addImage(CFileReader & fr)
 {   
@@ -8,7 +14,7 @@ void CManager::addImage(CFileReader & fr)
     library.addImage(image);
 }
 
-void CManager::print(CImageLibrary & library) const
+void CManager::print() 
 {
     std::cout << "Zadaj image name .png, ktory chces zobrazit" << std::endl;
     library.printLibrary();
@@ -17,15 +23,34 @@ void CManager::print(CImageLibrary & library) const
     std::cout << space << space << space << std::endl;
 }
 
-void CManager::showImage()
+std::string CManager::getNameInput() 
 {
-    system("clear");
-    print(library);
+    print();
     std::cin >> imageName;
+    return imageName;
+}
+
+void CManager::showImage(std::string &imageName)
+{
+    // system("clear");
     CImage image = library.findImage(imageName);
     image.printImage();
-    std::cout << image.getGraylevel() << std::endl;
 }
+
+void CManager::useEffect(std::string &imageName)
+{
+    // system("clear");
+    CImage image = library.findImage(imageName);
+    std::cout << "Zadaj meno efektu, (darken,lighten,convolution,negative,rotation)" << std::endl;
+    std::string effectName;
+    std::cin >> effectName;
+    mapEffect.at(effectName)->applyEffect(image);
+    
+    showImage(imageName);
+
+}
+
+  
 
 void CManager::initializeProgram()
 {
@@ -44,7 +69,14 @@ void CManager::initializeProgram()
             }
         case 'i':
             {
-            showImage();
+            nameInput = getNameInput();
+            showImage(nameInput);
+            break;
+            }
+        case 'e':
+            {
+            nameInput = getNameInput();
+            useEffect(nameInput);
             break;
             }
         default:

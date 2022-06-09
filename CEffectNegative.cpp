@@ -1,6 +1,6 @@
 #include "CEffectNegative.hpp"
 
-CImage CEffectNegative::applyEffect ( CImage & image , int value)
+CImage CEffectNegative::applyEffect ( CImage & image )
 {
     imageMatrix = image.getGrayscaleImage();
     for (size_t i = 0; i < imageMatrix.size(); i++)

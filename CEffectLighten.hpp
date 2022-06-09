@@ -1,8 +1,7 @@
-#include "CEffect.hpp"
-#include "CImage.hpp"
+#include "CEffectNegative.hpp"
 
 class CEffectLighten : public CEffect
 {
 public:
-    CImage applyEffect(CImage & image, int value);
+    CImage applyEffect(CImage & image);
 };

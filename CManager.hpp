@@ -1,19 +1,25 @@
-#include "CImage.hpp"
-#include "CTool.hpp"
 #include "CImageLibrary.hpp"
 #include "CFileReader.hpp"
-#include "CEffect.hpp"
+#include "CEffectConvolution.hpp"
+#include <map>
+#pragma once
 
 class CManager
 {
     public:
         void initializeProgram();
     private:
-        void print(CImageLibrary & library) const;
+        void print() ;
         CFileReader filereader;
         char key;
         std::string imageName;
         CImageLibrary library;
         void addImage( CFileReader &fr);
-        void showImage();
+        void showImage(std::string &imageName);
+        void useEffect(std::string &imageName);
+        void initMap();
+        std::string getNameInput() ;
+        std::string nameInput;
+        static const std::map < std::string , CEffect * > mapEffect;
+        
 };  

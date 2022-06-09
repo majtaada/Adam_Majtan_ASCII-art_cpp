@@ -2,7 +2,7 @@
 
 
 
-CImage CEffectRotation::applyEffect ( CImage & image , int value)
+CImage CEffectRotation::applyEffect ( CImage & image)
 {
     imageMatrix = image.getGrayscaleImage();
     transposeMatrix(imageMatrix);

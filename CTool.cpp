@@ -6,10 +6,6 @@ CTool::CTool ( std::string &asciiTransition )
     grayLevel = asciiTransition;
 }
 
-std::string CTool::getGraylevel ()
-{
-  return this->grayLevel;
-}
 
 std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<double>> &imageMatrix)
 {
