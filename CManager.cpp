@@ -4,13 +4,12 @@ const std::map < std::string , CEffect * > CManager::mapEffect =
                             {{ "darken" , new CEffectDarken()},
                              { "lighten" , new CEffectLighten()},
                              { "negative" , new CEffectNegative()},
-                             { "convolution" , new CEffectConvolution()},
-                             { "rotation" , new CEffectRotation()}};
+                             { "convolution" , new CEffectConvolution()}};
 
 void CManager::addImage(CFileReader & fr)
 {   
     system("clear");
-    CImage image = fr.readPNG(fr.readInput());
+    CImage * image = fr.readPNG(fr.readInput());
     library.addImage(image);
 }
 
@@ -33,15 +32,15 @@ std::string CManager::getNameInput()
 void CManager::showImage(std::string &imageName)
 {
     // system("clear");
-    CImage image = library.findImage(imageName);
-    image.printImage();
+    CImage * image = library.findImage(imageName);
+    image->printImage();
 }
 
 void CManager::useEffect(std::string &imageName)
 {
     // system("clear");
-    CImage image = library.findImage(imageName);
-    std::cout << "Zadaj meno efektu, (darken,lighten,convolution,negative,rotation)" << std::endl;
+    CImage * image = library.findImage(imageName);
+    std::cout << "Zadaj meno efektu, (darken,lighten,convolution,negative)" << std::endl;
     std::string effectName;
     std::cin >> effectName;
     mapEffect.at(effectName)->applyEffect(image);
@@ -50,7 +49,10 @@ void CManager::useEffect(std::string &imageName)
 
 }
 
-  
+void CManager::deleteImage(std::string &imageName)
+{
+    library.deleteImagefromLibrary(imageName);
+}
 
 void CManager::initializeProgram()
 {
@@ -79,8 +81,16 @@ void CManager::initializeProgram()
             useEffect(nameInput);
             break;
             }
-        default:
+        case 'z':
+            {
+            nameInput = getNameInput();
+            deleteImage(nameInput);
             break;
+            }
+        default:
+            {
+
+            }
         }
     }
 }

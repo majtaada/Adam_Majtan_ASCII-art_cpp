@@ -1,26 +1,30 @@
 #include "CImageLibrary.hpp"
 
-void CImageLibrary::addImage ( CImage & image)
+void CImageLibrary::addImage ( CImage * image)
 {
     library.push_back(image);
 }
 
-void CImageLibrary::deleteImage ( const char index)
+void CImageLibrary::deleteImagefromLibrary ( std::string &imageName ) 
 {
-   libraryIT = library.begin() + index;
-   library.erase(libraryIT);
+    for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
+        if((**libraryIT).getName() == imageName){
+            library.erase(libraryIT);
+            break;}
+    throw std::invalid_argument("Takyto image nemame :)");
 }
 
-CImage CImageLibrary::findImage ( std::string imageName )
+CImage* CImageLibrary::findImage ( std::string &imageName ) const
 {
-    for( libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
-        if( (*libraryIT).getName() == imageName)
+    for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
+        if( (**libraryIT).getName() == imageName)
             return (*libraryIT);
     throw std::invalid_argument("Takyto image nemame :)");
 }
 
-void CImageLibrary::printLibrary() 
+void CImageLibrary::printLibrary() const
 {
-    for( libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
-        std::cout << (*libraryIT).getName() << std::endl;
+    for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
+        std::cout << (**libraryIT).getName() << std::endl;
 }
+

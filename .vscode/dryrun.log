@@ -1,6 +1,15 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/adam/PA2/semestralka/majtaada'
+g++ -Wall -pedantic -std=c++17 -o CAnimation.o -c CAnimation.cpp
+g++ -Wall -pedantic -std=c++17 -o CEffect.o -c CEffect.cpp
+g++ -Wall -pedantic -std=c++17 -o CEffectDarken.o -c CEffectDarken.cpp
+g++ -Wall -pedantic -std=c++17 -o CEffectLighten.o -c CEffectLighten.cpp
+g++ -Wall -pedantic -std=c++17 -o CEffectNegative.o -c CEffectNegative.cpp
+g++ -Wall -pedantic -std=c++17 -o CImage.o -c CImage.cpp
+g++ -Wall -pedantic -std=c++17 -o CImageLibrary.o -c CImageLibrary.cpp
+g++ -Wall -pedantic -std=c++17 -o CFileReader.o -c CFileReader.cpp
 make: Leaving directory '/home/adam/PA2/semestralka/majtaada'
  
-makefile:9: *** missing separator.  Stop.
+make: *** No rule to make target 'CConverter.o', needed by 'psfit'.
+make: *** No rule to make target 'CIMageDisplayer.o', needed by 'psfit'.
 

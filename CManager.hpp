@@ -18,6 +18,7 @@ class CManager
         void showImage(std::string &imageName);
         void useEffect(std::string &imageName);
         void initMap();
+        void deleteImage(std::string &imageName);
         std::string getNameInput() ;
         std::string nameInput;
         static const std::map < std::string , CEffect * > mapEffect;

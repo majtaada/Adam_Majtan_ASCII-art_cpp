@@ -3,5 +3,5 @@
 class CEffectConvolution : public CEffect
 {
 public:
-    CImage applyEffect(CImage & image);
+    CImage* applyEffect(CImage * image);
 };

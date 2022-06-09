@@ -5,8 +5,7 @@ LIBS=-ljpeg -lz -lncurses
 
 all: psfit
 
-psfit: CAnimation.o CConverter.o CEffect.o CEffectDarken.o	CEffectLighten.o CEffectNegative.o
-       CImage.o CIMageDisplayer.o CImageLibrary.o CFileReader.o
+psfit: CAnimation.o CConverter.o CEffect.o CEffectDarken.o	CEffectLighten.o CEffectNegative.o CImage.o CIMageDisplayer.o CImageLibrary.o CFileReader.o
 	   $(LD) -o $@ $^ $(LIBS) 
 
 %.o: %.cpp

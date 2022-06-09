@@ -1,9 +1,10 @@
 #include "CEffectConvolution.hpp"
 #include <vector>
 
-CImage CEffectConvolution::applyEffect (CImage &image  )
+CImage* CEffectConvolution::applyEffect (CImage  * image  )
 {   
-    imageMatrix = image.getGrayscaleImage();
+    std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
+    std::vector<std::vector<double>> effectMatrix;
     int average = 0;
     for (size_t i = 1; imageMatrix.size() -1 - i  > 3; i+=3)
     {
@@ -20,6 +21,6 @@ CImage CEffectConvolution::applyEffect (CImage &image  )
         }
         effectMatrix.push_back(v1);
     }
-    image.updateImage(effectMatrix);
+    image->updateImage(effectMatrix);
     return image;
 }

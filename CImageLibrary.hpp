@@ -4,13 +4,12 @@
 class CImageLibrary
 {
 private:
-    std::vector<CImage> library;
-    std::vector<CImage>::iterator libraryIT = library.begin();
+    std::vector<CImage*> library;
 public:
-    void addImage( CImage & image );
-    void deleteImage ( const char index);
-    void printLibrary();
-    CImage findImage ( std::string imageName);
+    void addImage( CImage * image );
+    void deleteImagefromLibrary ( std::string &imageName);
+    void printLibrary()const;
+    CImage* findImage ( std::string &imageName)const;
     
 };
 

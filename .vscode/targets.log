@@ -6,11 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jun  9 12:33:51 2022
+# Make data base, printed on Thu Jun  9 16:15:47 2022
 
 # Variables
 
-# environment
+# 'override' directive
 GNUMAKEFLAGS := 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
@@ -30,8 +30,6 @@ XDG_SESSION_TYPE = x11
 VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# environment
-IM_CONFIG_PHASE = 1
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -47,6 +45,8 @@ SHELL = /bin/sh
 # environment
 SNAP_DATA = /var/snap/code/97
 # environment
+VTE_VERSION = 6003
+# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 JOURNAL_STREAM = 8:56534
@@ -61,7 +61,7 @@ MAKEFILE_LIST :=  makefile
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+IM_CONFIG_PHASE = 1
 # environment
 USERNAME = adam
 # makefile (from 'makefile', line 3)
@@ -75,15 +75,13 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-_ = /snap/code/97/usr/share/code/code
-# environment
 MANAGERPID = 1638
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = sk_SK.UTF-8
 # environment
-VSCODE_CWD = /home/adam
+VSCODE_CWD = /home/adam/PA2/semestralka/majtaada
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/97/usr/share/glib-2.0/schemas
 # default
@@ -119,13 +117,11 @@ GDK_PIXBUF_MODULEDIR = /snap/code/97/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5748
 # automatic
 %F = $(notdir $%)
 # environment
@@ -178,6 +174,8 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 LC_TIME = sk_SK.UTF-8
 # environment
 SNAP_REAL_HOME = /home/adam
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -187,11 +185,11 @@ QT_IM_MODULE = ibus
 # environment
 SNAP_USER_DATA = /home/adam/snap/code/97
 # environment
-SHLVL = 0
+SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-fe2cb80b-72dc-41d9-a0b2-10b39a5c7b16.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-c6c8b24c-c1f8-464a-b2b6-1f25197e71e6.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -210,14 +208,14 @@ XDG_CURRENT_DESKTOP = Unity
 LC_TELEPHONE = sk_SK.UTF-8
 # default
 MAKE_COMMAND := make
+# environment
+OLDPWD = /home/adam
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-6339429b-1.67.2-main.sock
-# environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -254,8 +252,12 @@ LC_ALL = C
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # makefile (from 'makefile', line 4)
 LIBS = -ljpeg -lz -lncurses
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/8e97bf0a_d54e_4fa2_8bf2_f010557907f6
 # automatic
 ^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.1901
 # default
 SUFFIXES := 
 # environment
@@ -275,12 +277,12 @@ LC_ADDRESS = sk_SK.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 5795
-# variable set hash-table stats:
-# Load=133/1024=13%, Rehash=0, Collisions=21/147=14%
  
-makefile:9: *** missing separator.  Stop.
-
+TERM = xterm-256color
+# environment
+VSCODE_PID = 25864
+# variable set hash-table stats:
+# Load=135/1024=13%, Rehash=0, Collisions=20/165=12%
 
 # Pattern-specific Variable Values
 
@@ -288,13 +290,17 @@ makefile:9: *** missing separator.  Stop.
 
 # Directories
 
-# . (device 66309, inode 5004133): 44 files, no impossibilities.
+# . (device 66309, inode 5004133): 41 files, no impossibilities.
 
-# 44 files, no impossibilities in 1 directories.
+# 41 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-# No implicit rules.
+%.o: %.cpp
+#  recipe to execute (from 'makefile', line 12):
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+# 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
 
@@ -306,15 +312,32 @@ CEffectDarken.o:
 
 all: psfit
 #  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+
+# Not a target:
+CImage.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-makefile:
+deps:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'makefile', line 15):
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-09 16:09:47.856922658
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 CConverter.o:
@@ -335,7 +358,26 @@ CEffectNegative.o:
 #  File has not been updated.
 
 # Not a target:
+CIMageDisplayer.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+CAnimation.cpp:
+#  Implicit rule search has been done.
+#  Last modified 2022-06-06 15:55:08.970098
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
 CEffectLighten.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+CImageLibrary.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -346,31 +388,70 @@ CEffectLighten.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-psfit: CAnimation.o CConverter.o CEffect.o CEffectDarken.o CEffectLighten.o CEffectNegative.o
+psfit: CAnimation.o CConverter.o CEffect.o CEffectDarken.o CEffectLighten.o CEffectNegative.o CImage.o CIMageDisplayer.o CImageLibrary.o CFileReader.o
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/5=0%
+#  recipe to execute (from 'makefile', line 9):
+	   $(LD) -o $@ $^ $(LIBS) 
 
 # Not a target:
-CAnimation.o:
+CFileReader.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+CAnimation.o: CAnimation.cpp
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: 'CAnimation'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := CAnimation.o
+# automatic
+# % := 
+# automatic
+# * := CAnimation
+# automatic
+# + := CAnimation.cpp
+# automatic
+# | := 
+# automatic
+# < := CAnimation.cpp
+# automatic
+# ^ := CAnimation.cpp
+# automatic
+# ? := CAnimation.cpp
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
+#  recipe to execute (from 'makefile', line 12):
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
+
+# Not a target:
+Makefile.d:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/21=0%
+# Load=18/1024=2%, Rehash=0, Collisions=0/45=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 56 / storage = 704 B / avg = 12 B
-# current buf: size = 8162 B / used = 704 B / count = 56 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 62 / storage = 752 B / avg = 12 B
+# current buf: size = 8162 B / used = 752 B / count = 62 / avg = 12 B
 
-# strcache performance: lookups = 64 / hit rate = 12%
+# strcache performance: lookups = 74 / hit rate = 16%
 # hash-table stats:
-# Load=56/8192=1%, Rehash=0, Collisions=1/64=2%
-# Finished Make data base on Thu Jun  9 12:33:51 2022
+# Load=62/8192=1%, Rehash=0, Collisions=1/74=1%
+# Finished Make data base on Thu Jun  9 16:15:47 2022
 
  

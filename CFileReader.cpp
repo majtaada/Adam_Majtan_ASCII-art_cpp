@@ -64,7 +64,7 @@ void CFileReader::initializeAsciiTransition ( )
   
 }
 
-CImage CFileReader::readPNG(const std::string &imageName)  
+CImage* CFileReader::readPNG(const std::string &imageName)  
 {
     FILE * imageFile = fopen(imageName.c_str() , "r");
     png_structp pngStr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
@@ -73,7 +73,7 @@ CImage CFileReader::readPNG(const std::string &imageName)
     png_read_png(pngStr, pngInfo, PNG_TRANSFORM_IDENTITY , NULL);
     imageMatrix = converter->toGrayScale(pngStr,pngInfo);
     converter = new CTool (asciiLevel);
-    CImage image = CImage( imageMatrix, converter , imageName.substr(path.size(),imageName.size()));
+    CImage * image = new CImage( imageMatrix, converter , imageName.substr(path.size(),imageName.size()));
     fclose(imageFile);
   
     return image;

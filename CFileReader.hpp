@@ -17,7 +17,7 @@ class CFileReader
 
 public:
     std::string readInput() const;
-    CImage readPNG (const std::string &imageName) ;
+    CImage* readPNG (const std::string &imageName) ;
     void readAsciiTransition ( const std::string &txtName );
     void initializeAsciiTransition ( );
 

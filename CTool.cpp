@@ -7,11 +7,13 @@ CTool::CTool ( std::string &asciiTransition )
 }
 
 
-std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<double>> &imageMatrix)
+std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<double>> &grayMatrix) const
 {
     
     int grayscale;
     int lenght = grayLevel.length() - 1;
+    std::vector<std::vector<double>> imageMatrix=grayMatrix;
+    std::vector<std::vector<char>> asciiMatrix;
     for ( auto it= imageMatrix.begin(); it != imageMatrix.end(); it++ ) {
         std::vector<char> v1;
         for ( auto it1 = it->begin(); it1 != it->end(); it1++ )
@@ -24,7 +26,7 @@ std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<d
     return asciiMatrix;
 }
 
-std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_infop &pngInfo )
+std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_infop &pngInfo ) const
 { 
   int width = png_get_image_width(pngStr, pngInfo);
   int height = png_get_image_height(pngStr, pngInfo);

@@ -1,8 +1,9 @@
 #include "CEffectNegative.hpp"
 
-CImage CEffectNegative::applyEffect ( CImage & image )
+CImage* CEffectNegative::applyEffect ( CImage * image )
 {
-    imageMatrix = image.getGrayscaleImage();
+    std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
+    std::vector<std::vector<double>> effectMatrix;
     for (size_t i = 0; i < imageMatrix.size(); i++)
     {
         std::vector<double> v1;
@@ -12,6 +13,6 @@ CImage CEffectNegative::applyEffect ( CImage & image )
         }
         effectMatrix.push_back(v1);
     }
-    image.updateImage(effectMatrix);
+    image->updateImage(effectMatrix);
     return image;
 }

@@ -1,10 +1,11 @@
 #include "CEffectDarken.hpp"
 #include <vector>
 
-CImage CEffectDarken::applyEffect ( CImage & image )
+CImage* CEffectDarken::applyEffect ( CImage * image )
 {
     int value = CEffect::getValue();
-    imageMatrix = image.getGrayscaleImage();
+    std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
+    std::vector<std::vector<double>> effectMatrix;
     for (size_t i = 0; i < imageMatrix.size(); i++)
     {
         std::vector<double> v1;
@@ -17,6 +18,6 @@ CImage CEffectDarken::applyEffect ( CImage & image )
         }
         effectMatrix.push_back(v1);
     }
-    image.updateImage(effectMatrix);
+    image->updateImage(effectMatrix);
     return image;
 }
