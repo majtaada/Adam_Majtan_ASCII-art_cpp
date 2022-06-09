@@ -1,6 +1,7 @@
 #include "CImageLibrary.hpp"
 #include "CFileReader.hpp"
 #include "CEffectConvolution.hpp"
+#include "CAnimation.hpp"
 #include <map>
 #pragma once
 
@@ -17,7 +18,8 @@ class CManager
         void addImage( CFileReader &fr);
         void showImage(std::string &imageName);
         void useEffect(std::string &imageName);
-        void initMap();
+        void initializeAnimation() const;
+        void animationPrints(CAnimation & animation) const;
         void deleteImage(std::string &imageName);
         std::string getNameInput() ;
         std::string nameInput;

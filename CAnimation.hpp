@@ -1,9 +1,16 @@
-#include <CImageLibrary.hpp>
+#include "CImage.hpp"
+#include <vector>
+#include <future>
+#include <chrono>
 
 class CAnimation
 {
 public:
-    void addImage( std::vector<std::vector<char>> &imageMatrix);
-    
+    void addImage( CImage* image );
+    void startAnimation();
+
+    private:
+        bool pauseAnimation() const;
+        std::vector <CImage*> animationLibrary;   
 };
 

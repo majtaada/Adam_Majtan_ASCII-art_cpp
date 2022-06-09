@@ -45,8 +45,8 @@ void CImage::updateImage(std::vector<std::vector<double>>  &grayscaleMatrix)
 }
 
 void CImage::printImage () const
-{
-    system("clear");
+{   
+    clearScreen();
     for (int i = 0; i < getHeight(); i++)
     {
         for (int j = 0; j < getWidth(); j++)
@@ -55,4 +55,9 @@ void CImage::printImage () const
         }
         std::cout << "\n";
     }
+}
+
+void CImage::clearScreen() const
+{
+    std::cout << "\x1B[2J\x1B[H";
 }

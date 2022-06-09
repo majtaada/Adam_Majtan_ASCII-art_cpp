@@ -5,13 +5,25 @@ void CImageLibrary::addImage ( CImage * image)
     library.push_back(image);
 }
 
-void CImageLibrary::deleteImagefromLibrary ( std::string &imageName ) 
+CImageLibrary::~CImageLibrary()
 {
-    for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
+    for(  auto libraryIT = library.begin();   libraryIT != library.end() ; libraryIT++)
+        delete ( *libraryIT);
+}
+
+void CImageLibrary::deleteImageFromLibrary ( std::string &imageName ) 
+{
+    auto libraryIT = library.begin();
+    int deleted = 0;
+    for(  ;  libraryIT != library.end() ; libraryIT++)
         if((**libraryIT).getName() == imageName){
+            delete ( *libraryIT);
             library.erase(libraryIT);
-            break;}
-    throw std::invalid_argument("Takyto image nemame :)");
+            deleted++;
+            break;
+        }
+    if (!deleted)
+        throw std::invalid_argument("Takyto image nemame :)");
 }
 
 CImage* CImageLibrary::findImage ( std::string &imageName ) const

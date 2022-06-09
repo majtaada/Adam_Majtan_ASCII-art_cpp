@@ -1,10 +1,27 @@
 #include <iostream>
+#include <chrono>
+#include <future>
 #include <string>
 
-using namespace std;
+std::string GetLineFromCin() {
+    std::string line;
+    std::getline(std::cin, line);
+    return line;
+}
 
-int main(int argc, char const *argv[])
-{
-  
-  return 0;
+int main() {
+
+    auto future = std::async(std::launch::async, GetLineFromCin);
+
+    while (true) {
+        if (future.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
+            auto line = future.get();
+            future = std::async(std::launch::async, GetLineFromCin);
+
+            std::cout << "you wrote " << line << std::endl;
+        }
+
+        std::cout << "waiting..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+    }
 }

@@ -16,4 +16,6 @@ public:
     std::vector<std::vector<double>> toGrayScale ( png_structp &pngStr , png_infop &pngInfo ) const ;
 private:    
     std::string grayLevel;
+    std::vector<std::vector<double>> readGrayScale(png_structp &pngStr , png_infop &pngInfo , int shifter) const;
+    std::vector<std::vector<double>> RGBToGrayScale(png_structp &pngStr , png_infop &pngInfo , int shifter) const;
 };

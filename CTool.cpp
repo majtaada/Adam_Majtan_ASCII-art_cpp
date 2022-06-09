@@ -28,20 +28,42 @@ std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<d
 
 std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_infop &pngInfo ) const
 { 
+  
+  int shifter;
+  std::vector<std::vector<double>> pngMatrix;
+  switch (png_get_color_type(pngStr, pngInfo))
+  {
+  case PNG_COLOR_TYPE_RGB:
+    shifter = 3;
+    break;
+  case PNG_COLOR_TYPE_RGBA:
+    shifter = 4;
+    break;
+  case PNG_COLOR_TYPE_GRAY:
+    shifter = 1;
+    break;
+  case PNG_COLOR_TYPE_GA:
+    shifter = 2;
+    break;
+  default:
+    throw std::invalid_argument("Neplatny color type");
+    break;
+  }
+  if(shifter == 1 || shifter == 2) 
+    return readGrayScale(pngStr,pngInfo,shifter);
+  else
+    return RGBToGrayScale(pngStr,pngInfo,shifter);
+
+}
+
+
+std::vector<std::vector<double>> CTool::RGBToGrayScale(png_structp &pngStr , png_infop &pngInfo , int shifter) const
+{
+  png_bytepp rows = png_get_rows(pngStr, pngInfo);
   int width = png_get_image_width(pngStr, pngInfo);
   int height = png_get_image_height(pngStr, pngInfo);
-  int shifter,grayscale;
   std::vector<std::vector<double>> pngMatrix;
-  std::cout << width <<  "x" << height << std::endl;
-  if (png_get_color_type(pngStr, pngInfo) == PNG_COLOR_TYPE_RGB)
-    shifter=3;
-  else if(png_get_color_type(pngStr, pngInfo) == PNG_COLOR_TYPE_RGBA)
-    shifter=4;
-  else{
-    throw std::invalid_argument("Neplatny color type");
-  }
-  png_bytepp rows = png_get_rows(pngStr, pngInfo);
-  std::cout << "macka" << std::endl;
+  int grayscale;
   for (int row = 0; row < height; row++){
     std::vector<double> v1;
         // Pixels in RGBA -> x4 , RGB -> x3
@@ -56,6 +78,28 @@ std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_
   free(pngStr);
   free(pngInfo);
   free(rows);
-
   return pngMatrix;
 }
+
+std::vector<std::vector<double>> CTool::readGrayScale(png_structp &pngStr , png_infop &pngInfo , int shifter) const
+{
+  png_bytepp rows = png_get_rows(pngStr, pngInfo);
+  int width = png_get_image_width(pngStr, pngInfo);
+  int height = png_get_image_height(pngStr, pngInfo);
+  std::vector<std::vector<double>> pngMatrix;
+  int grayscale;
+  for (int row = 0; row < height; row++){
+    std::vector<double> v1;
+    for (int col = 0; col < width * shifter ; col+=shifter)
+    {       
+      grayscale = int(rows[row][col]);
+      v1.push_back ( grayscale);  
+    }    
+    pngMatrix.push_back( v1);
+  }
+  free(pngStr);
+  free(pngInfo);
+  free(rows);
+  return pngMatrix;
+}
+
