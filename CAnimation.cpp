@@ -21,7 +21,7 @@ std::string GetLineFromCin() {
 
 bool CAnimation::pauseAnimation() const
 {
-    std::cout << "zadaj resume" << std::endl;
+    std::cout << "Zadaj resume pre znovuspustenie, quit pre ukoncenie" << std::endl;
     std::string input;
     while (1){
     std::cin >>  input;
@@ -47,8 +47,8 @@ void CAnimation::startAnimation()
                 break;
         }
         animationLibrary[index++]->printImage();
-        std::cout << "Zadaj p pre pauznutie animacie a q pre ukoncenie" << std::endl; 
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "Zadaj p pre pauznutie animacie" << std::endl; 
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         if(index == max)
             index = 0;
     }

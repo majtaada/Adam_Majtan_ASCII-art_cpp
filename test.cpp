@@ -20,8 +20,7 @@ int main() {
 
             std::cout << "you wrote " << line << std::endl;
         }
-
-        std::cout << "waiting..." << std::endl;
+        
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
 }

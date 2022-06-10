@@ -13,8 +13,6 @@ void CManager::addImage(CFileReader & fr)
     library.addImage(image);
 }
 
-
-
 void CManager::print() 
 {
     std::cout << "Zadaj image name .png, ktory chces zobrazit" << std::endl;
@@ -34,15 +32,15 @@ std::string CManager::getNameInput()
 void CManager::showImage(std::string &imageName)
 {
     CImage * image = library.findImage(imageName);
-    image->clearScreen();
     image->printImage();
 }
 
 void CManager::useEffect(std::string &imageName)
 {
     CImage * image = library.findImage(imageName);
-    image->clearScreen();
-    std::cout << "Zadaj meno efektu, (darken,lighten,convolution,negative)" << std::endl;
+    system("clear");
+    std::cout << "Zadaj meno efektu: darken,lighten,convolution,negative" << std::endl;
+    std::cout << space <<  space << std::endl;
     std::string effectName;
     std::cin >> effectName;
     mapEffect.at(effectName)->applyEffect(image);
@@ -64,6 +62,7 @@ void CManager::animationPrints(CAnimation & animation) const
         system("clear");
         std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj s" << std::endl;
         library.printLibrary();
+        std::cout << space << space << std::endl;
         std::cin >> imageName;
         if(imageName == "s" ) break;
         animation.addImage(library.findImage(imageName));
@@ -106,7 +105,8 @@ void CManager::initializeProgram()
             }
         case 'a':
             {
-                initializeAnimation();
+            initializeAnimation();
+            break;
             }
         case 'z':
             {

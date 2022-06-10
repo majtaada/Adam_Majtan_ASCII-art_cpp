@@ -26,10 +26,8 @@ std::string CFileReader::readInput (  ) const
     std::cin  >> fileRead;
     fileName = path + fileRead;
     std::fstream file( fileName );
-    std::cout << fileName << std::endl;
     if(!checkIfFileValid(fileName))
       throw std::invalid_argument("Nefunkcny image, skus iny");
-    
     return fileName;
 }
 
@@ -60,7 +58,6 @@ void CFileReader::initializeAsciiTransition ( )
   while ( std::getline (txtFile, line)){
       asciiLevel+=line;
   }
-  std::cout << asciiLevel << std::endl;
   
 }
 
@@ -79,3 +76,7 @@ CImage* CFileReader::readPNG(const std::string &imageName)
     return image;
 }
 
+CFileReader::~CFileReader()
+{
+  delete converter;
+}

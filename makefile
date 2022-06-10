@@ -1,11 +1,11 @@
 CXX=g++
 LD=g++
 CXXFLAGS=-Wall -pedantic -std=c++17
-LIBS=-ljpeg -lz -lncurses
+LIBS=-lpng -lz -lncurses -pthread
 
 all: psfit
 
-psfit: CAnimation.o CConverter.o CEffect.o CEffectDarken.o	CEffectLighten.o CEffectNegative.o CImage.o CIMageDisplayer.o CImageLibrary.o CFileReader.o
+psfit: CAnimation.o CTool.o CEffect.o CEffectDarken.o CEffectLighten.o CEffectNegative.o CEffectConvolution.o CImage.o CImageLibrary.o CFileReader.o CManager.o main.o
 	   $(LD) -o $@ $^ $(LIBS) 
 
 %.o: %.cpp

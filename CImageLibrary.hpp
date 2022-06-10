@@ -10,6 +10,7 @@ public:
     void addImage( CImage * image );
     void deleteImageFromLibrary ( std::string &imageName);
     void printLibrary()const;
+    int getSize() const;
     CImage* findImage ( std::string &imageName)const;
     
 };

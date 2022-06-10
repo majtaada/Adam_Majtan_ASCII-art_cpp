@@ -20,6 +20,7 @@ public:
     CImage* readPNG (const std::string &imageName) ;
     void readAsciiTransition ( const std::string &txtName );
     void initializeAsciiTransition ( );
+    ~CFileReader();
 
 private:
     void print() const;
