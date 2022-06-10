@@ -11,7 +11,7 @@
 class CTool
 {
 public:
-    CTool ( std::string &asciiTransition );
+    explicit CTool ( std::string &asciiTransition );
     std::vector<std::vector<char>> convertToAscii ( std::vector<std::vector<double>> &grayMatrix) const ;
     std::vector<std::vector<double>> toGrayScale ( png_structp &pngStr , png_infop &pngInfo ) const ;
 private:    

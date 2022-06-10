@@ -11,14 +11,14 @@ std::vector<std::vector<char>> CTool::convertToAscii ( std::vector<std::vector<d
 {
     
     int grayscale;
-    int lenght = grayLevel.length() - 1;
+    int len= grayLevel.length() - 1;
     std::vector<std::vector<double>> imageMatrix=grayMatrix;
     std::vector<std::vector<char>> asciiMatrix;
     for ( auto it= imageMatrix.begin(); it != imageMatrix.end(); it++ ) {
         std::vector<char> v1;
         for ( auto it1 = it->begin(); it1 != it->end(); it1++ )
         {
-            grayscale = (lenght - 1) * *it1/255 ;
+            grayscale = (len - 1) * *it1/255 ;
             v1.push_back (grayLevel[grayscale]);  
         }
         asciiMatrix.push_back(v1);
@@ -51,8 +51,7 @@ std::vector<std::vector<double>> CTool::toGrayScale ( png_structp &pngStr , png_
   }
   if(shifter == 1 || shifter == 2) 
     return readGrayScale(pngStr,pngInfo,shifter);
-  else
-    return RGBToGrayScale(pngStr,pngInfo,shifter);
+  return RGBToGrayScale(pngStr,pngInfo,shifter);
 
 }
 

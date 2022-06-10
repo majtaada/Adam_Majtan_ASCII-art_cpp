@@ -3,7 +3,7 @@
 
 
 
-CImage::CImage ( std::vector<std::vector<double>>  &grayscaleMatrix , CTool  * converter ,const std::string &fileName)
+CImage::CImage ( std::vector<std::vector<double>>  &grayscaleMatrix , std::shared_ptr<CTool> converter ,const std::string &fileName)
 {
     asciiImage = converter->convertToAscii(grayscaleMatrix);
     grayscaleImage = grayscaleMatrix;  

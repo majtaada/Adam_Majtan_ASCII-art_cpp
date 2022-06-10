@@ -1,8 +1,8 @@
-#include "CEffectLighten.hpp"
+#include "CEffectDarken.hpp"
+#include <vector>
 
-
-CImage* CEffectLighten::applyEffect ( CImage * image )
-{   
+std::shared_ptr<CImage> CEffectDarken::applyEffect ( std::shared_ptr<CImage> image )
+{
     int value = CEffect::getValue();
     std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
     std::vector<std::vector<double>> effectMatrix;
@@ -11,10 +11,10 @@ CImage* CEffectLighten::applyEffect ( CImage * image )
         std::vector<double> v1;
         for (size_t j = 0; j < imageMatrix[i].size(); j++)
         {   
-            if( imageMatrix[i][j] - value >= 0 )
-                v1.push_back(imageMatrix[i][j] - value);
+            if( imageMatrix[i][j] + value <= 255 )
+                v1.push_back(imageMatrix[i][j] + value);
             else
-                v1.push_back(0);
+                v1.push_back(255);
         }
         effectMatrix.push_back(v1);
     }

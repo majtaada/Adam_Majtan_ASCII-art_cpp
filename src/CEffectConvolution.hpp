@@ -3,5 +3,5 @@
 class CEffectConvolution : public CEffect
 {
 public:
-    CImage* applyEffect(CImage * image);
+    std::shared_ptr<CImage> applyEffect(std::shared_ptr<CImage> image) override;
 };

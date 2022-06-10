@@ -1,6 +1,6 @@
 #include "CAnimation.hpp"
 
-void CAnimation::addImage(CImage * image)
+void CAnimation::addImage(std::shared_ptr<CImage> image)
 {   
     auto aLibraryIT = animationLibrary.begin();
     if( aLibraryIT == animationLibrary.end())
@@ -23,7 +23,7 @@ bool CAnimation::pauseAnimation() const
 {
     std::cout << "Zadaj resume pre znovuspustenie, quit pre ukoncenie" << std::endl;
     std::string input;
-    while (1){
+    while (true){
     std::cin >>  input;
     if ( input == "resume") return true;
     if (input == "quit") return false;
