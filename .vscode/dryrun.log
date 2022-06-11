@@ -1,17 +1,17 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/adam/PA2/semestralka/majtaada'
-g++ -Wall -pedantic -std=c++17 -o CAnimation.o -c CAnimation.cpp
-g++ -Wall -pedantic -std=c++17 -o CTool.o -c CTool.cpp
-g++ -Wall -pedantic -std=c++17 -o CEffect.o -c CEffect.cpp
-g++ -Wall -pedantic -std=c++17 -o CEffectDarken.o -c CEffectDarken.cpp
-g++ -Wall -pedantic -std=c++17 -o CEffectLighten.o -c CEffectLighten.cpp
-g++ -Wall -pedantic -std=c++17 -o CEffectNegative.o -c CEffectNegative.cpp
-g++ -Wall -pedantic -std=c++17 -o CEffectConvolution.o -c CEffectConvolution.cpp
-g++ -Wall -pedantic -std=c++17 -o CImage.o -c CImage.cpp
-g++ -Wall -pedantic -std=c++17 -o CImageLibrary.o -c CImageLibrary.cpp
-g++ -Wall -pedantic -std=c++17 -o CFileReader.o -c CFileReader.cpp
-g++ -Wall -pedantic -std=c++17 -o CManager.o -c CManager.cpp
-g++ -Wall -pedantic -std=c++17 -o main.o -c main.cpp
-g++ -o psfit CAnimation.o CTool.o CEffect.o CEffectDarken.o CEffectLighten.o CEffectNegative.o CEffectConvolution.o CImage.o CImageLibrary.o CFileReader.o CManager.o main.o -lpng -lz -lncurses -pthread 
 make: Leaving directory '/home/adam/PA2/semestralka/majtaada'
  
+make: *** No rule to make target 'CAnimation.o', needed by 'psfit'.
+make: *** No rule to make target 'CTool.o', needed by 'psfit'.
+make: *** No rule to make target 'CEffect.o', needed by 'psfit'.
+make: *** No rule to make target 'CEffectDarken.o', needed by 'psfit'.
+make: *** No rule to make target 'CEffectLighten.o', needed by 'psfit'.
+make: *** No rule to make target 'CEffectNegative.o', needed by 'psfit'.
+make: *** No rule to make target 'CEffectConvolution.o', needed by 'psfit'.
+make: *** No rule to make target 'CImage.o', needed by 'psfit'.
+make: *** No rule to make target 'CImageLibrary.o', needed by 'psfit'.
+make: *** No rule to make target 'CFileReader.o', needed by 'psfit'.
+make: *** No rule to make target 'CManager.o', needed by 'psfit'.
+make: *** No rule to make target 'main.o', needed by 'psfit'.
+

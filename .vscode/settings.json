@@ -52,6 +52,9 @@
         "condition_variable": "cpp",
         "future": "cpp",
         "mutex": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "any": "cpp",
+        "numeric": "cpp",
+        "variant": "cpp"
     }
 }

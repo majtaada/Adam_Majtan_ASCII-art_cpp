@@ -4,13 +4,12 @@ void CAnimation::addImage(std::shared_ptr<CImage> image)
 {   
     auto aLibraryIT = animationLibrary.begin();
     if( aLibraryIT == animationLibrary.end())
-        animationLibrary.push_back(image);
+        animationLibrary.push_back(std::make_pair(animationLibrary.size(),image));
     else{
-        if ( ((image->getWidth()) == (*aLibraryIT)->getWidth()) && ((image->getHeight()) == (*aLibraryIT)->getHeight()) )
-            animationLibrary.push_back(image);
-        else{
-            throw std::invalid_argument("Zadaj obrazok rovnakej velkosti");
-        }
+        if ( ((image->getWidth()) == ((*aLibraryIT).second)->getWidth()) && ((image->getHeight()) == ((*aLibraryIT).second)->getHeight()) )
+            animationLibrary.push_back(std::make_pair(animationLibrary.size(),image));
+        else
+            std::cout << "Zadaj obrazok rovnakej velkosti" << std::endl;
     }
 }
 std::string GetLineFromCin() {
@@ -30,10 +29,15 @@ bool CAnimation::pauseAnimation() const
     }
 }
 
+int CAnimation::getAnimationSize()const
+{
+    return this->animationLibrary.size();
+}
+
 // https://gist.github.com/vmrob/ff20420a20c59b5a98a1?fbclid=IwAR0gQ9c0vksmyX8YjePozDGOIW_ngdtnuy4iCiUwxYRJokJ4KQKOOGzFNeo
 void CAnimation::startAnimation()
 {
-    int max = animationLibrary.size() -1;
+    int max = animationLibrary.size() ;
     int index = 0;
     auto future = std::async(std::launch::async, GetLineFromCin);
     while (true) {
@@ -46,7 +50,7 @@ void CAnimation::startAnimation()
             if (line == "q")
                 break;
         }
-        animationLibrary[index++]->printImage();
+        animationLibrary[index++].second->printImage();
         std::cout << "Zadaj p pre pauznutie animacie" << std::endl; 
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         if(index == max)

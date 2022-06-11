@@ -15,7 +15,7 @@ void CManager::addImage(CFileReader & fr)
 
 void CManager::print() 
 {
-    std::cout << "Zadaj image name .png, ktory chces zobrazit" << std::endl;
+    std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku , ktory chces vybrat" << std::endl;
     library.printLibrary();
     std::cout << bigSpace << std::endl;
     std::cout << "! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT KONVOLUCE!" << std::endl;
@@ -25,33 +25,88 @@ void CManager::print()
 std::string CManager::getNameInput() 
 {
     print();
-    std::cin >> imageName;
-    return imageName;
+    std::string inputString;
+    std::cin >> inputString;
+    return inputString;
 }
 
 void CManager::showImage(std::string &name)
 {
-    std::shared_ptr<CImage> image = library.findImage(name);
-    image->printImage();
+    while (true){
+    std::shared_ptr<CImage> image = handleInput(name);
+        if(!image){
+            std::cout << "Taky obrazok nemame, skus iny" << std::endl;
+            break;}
+        else{
+            image->printImage();
+            break;}
+    }
 }
 
 void CManager::useEffect(std::string &string)
 {
-    std::shared_ptr<CImage> image = library.findImage(string);
-    system("clear");
-    std::cout << "Zadaj meno efektu: darken,lighten,convolution,negative" << std::endl;
-    std::cout << bigSpace << std::endl;
-    std::string effectName;
-    std::cin >> effectName;
-    mapEffect.at(effectName)->applyEffect(image);
-    
-    showImage(string);
-
+    while(true){
+        std::shared_ptr<CImage> image = handleInput(string);
+        if(!image){
+            std::cout << "Taky obrazok nemame, skus iny" << std::endl;
+            break;}
+        else{
+            std::cout << "Zadaj meno efektu: darken,lighten,convolution,negative" << std::endl;
+            std::cout << bigSpace << std::endl;
+            std::string effectName;
+            std::cin >> effectName;
+            if ( effectName == "darken" || effectName == "lighten" || effectName == "convolution" || effectName == "negative"){
+                mapEffect.at(effectName)->applyEffect(image);
+                showImage(string);
+                break;}
+            std::cout << "Takyto efekt nemame" << std::endl;
+        }
+    }
 }
 
-void CManager::deleteImage(std::string &name)
+
+bool CManager::checkIfInputNumber(const std::string& inputString) const
 {
-    library.deleteImageFromLibrary(name);
+    auto it = inputString.begin();
+    while (it != inputString.end() && std::isdigit(*it)) ++it;
+    return !inputString.empty() && it == inputString.end();
+}
+
+void CManager::deleteImage() 
+{
+    while(true){
+        std::cout << "Zadaj meno alebo cislo obrazku co chces vymazat" << std::endl;
+        library.printLibrary();
+        std::string inputString;
+        std::cin >>  inputString;
+        if(checkIfInputNumber (inputString)){
+            if(library.deleteImageFromLibrary(stoi(inputString)))
+                break;}
+        else{
+            if(library.deleteImageFromLibrary(inputString))
+                break;}
+    }
+}
+
+
+std::shared_ptr<CImage> CManager::handleInput(std::string &name) const
+{
+    if(checkIfInputNumber(name)){
+            std::shared_ptr<CImage> image = library.findImage(stoi(name));
+            if(!image){
+                return nullptr;
+            }
+            else{
+                return image;}
+        }
+    else{
+            std::shared_ptr<CImage> image = library.findImage(name);
+            if(!image){
+                return nullptr;
+            }
+            else{
+              return image; }
+        }
 }
 
 void CManager::animationPrints(CAnimation & animation) const
@@ -60,12 +115,23 @@ void CManager::animationPrints(CAnimation & animation) const
     while(true)
     {
         system("clear");
-        std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj s" << std::endl;
+        std::cout << "Pre navrat do menu zadaj menu" << std::endl;
+        std::cout << bigSpace << std::endl;
+        std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj start" << std::endl;
         library.printLibrary();
         std::cout << bigSpace << std::endl;
         std::cin >> name;
-        if(name == "s" ) break;
-        animation.addImage(library.findImage(name));
+        if(name == "start" ) {
+            if(animation.getAnimationSize() == 0 || animation.getAnimationSize() == 1 )
+                std::cout << "Na animaciu potrebujes viac obrazkov :/ " << std::endl;
+            else
+                break;
+        };
+        std::shared_ptr<CImage> image = handleInput(name);
+        if(!image)
+            std::cout << "Taky obrazok nemame, skus iny" << std::endl;
+        else
+            animation.addImage(image);
     }
 }
 
@@ -76,8 +142,8 @@ void CManager::initializeAnimation() const
     animation.startAnimation();   
 }
 
-void CManager::printAnimation() const
-{
+void CManager::printMenu() const
+{   
     std::cout << bigSpace << bigSpace << std::endl;
     std::cout << "Zadaj pismeno, o - na pridanie obrazka, i - na zobrazenie obrazku, e - na pouzitie efektu , a - pre animaciu , z - na zmazanie , q na ukoncenie " << std::endl;
     std::cout << bigSpace << bigSpace << std::endl;
@@ -90,7 +156,7 @@ void CManager::initializeProgram()
     system("clear");
     while(key != 'q')
     {   
-        printAnimation();
+        printMenu();
         std::cin >> key;
         switch (key)
         {
@@ -118,8 +184,7 @@ void CManager::initializeProgram()
             }
         case 'z':
             {
-            nameInput = getNameInput();
-            deleteImage(nameInput);
+            deleteImage();
             break;
             }
         default:

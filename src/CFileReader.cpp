@@ -17,7 +17,9 @@ void CFileReader::readDirectory( std::string fileType) const
 
 
 std::string CFileReader::readInput (  ) const
-{
+{ 
+  while(true){
+    system("clear");
     std::string fileName;
     std::string fileRead;
     std::cout << "Zadaj image name .png, ktory chces nacitat" << std::endl;
@@ -27,8 +29,12 @@ std::string CFileReader::readInput (  ) const
     fileName = path + fileRead;
     std::fstream file( fileName );
     if(!checkIfFileValid(fileName))
-      throw std::invalid_argument("Nefunkcny image, skus iny");
-    return fileName;
+        std::cout << "Neplatny file skus iny" << std::endl;
+    else{ 
+      return fileName;
+      break;
+      }
+  }
 }
 
 bool CFileReader::checkIfFileValid(const std::string &name) const
@@ -43,22 +49,27 @@ bool CFileReader::checkIfFileValid(const std::string &name) const
 
 void CFileReader::initializeAsciiTransition ( ) 
 { 
-  std::cout << "Zadaj ascii prechod (.txt)" << std::endl;
-  std::string fileName;
-  readDirectory(".txt");  
-  std::cout << space << std::endl;
-  getline( std::cin , fileName);
-  if ( fileName.substr(fileName.size()-FORMAT_LEN,4) != ".txt")
-    throw std::invalid_argument("Toto neni .txt");
-  if(!checkIfFileValid(path+fileName))
-      throw std::invalid_argument("Nefunkcny txt, skus iny");
-  std::ifstream txtFile;
-  std::string line;
-  txtFile.open(path+fileName);
-  while ( std::getline (txtFile, line)){
-      asciiLevel+=line;
+  while (true)
+  {
+    system("clear");
+    std::cout << "Zadaj ascii prechod (.txt)" << std::endl;
+    std::string fileName;
+    readDirectory(".txt");  
+    std::cout << space << std::endl;
+    getline( std::cin , fileName);
+    if( fileName.size() < 5  || fileName.substr(fileName.size()-FORMAT_LEN,4) != ".txt"){
+      std::cout << "Toto neni .txt " << std::endl;}
+    else if(!checkIfFileValid(path+fileName)){
+        std::cout << "Nefunkcny txt, skus iny" << std::endl;}  
+    else {
+      std::ifstream txtFile;
+      std::string line;
+      txtFile.open(path+fileName);
+      while ( std::getline (txtFile, line)){
+        asciiLevel+=line;}
+    break;
+    }
   }
-  
 }
 
 std::shared_ptr<CImage> CFileReader::readPNG(const std::string &imageName)  
