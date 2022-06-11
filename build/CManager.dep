@@ -1,0 +1,4 @@
+build/CManager.o: src/CManager.cpp src/CManager.hpp src/CImageLibrary.hpp \
+ src/CImage.hpp src/CTool.hpp src/CFileReader.hpp \
+ src/CEffectConvolution.hpp src/CEffectDarken.hpp src/CEffectLighten.hpp \
+ src/CEffectNegative.hpp src/CEffect.hpp src/CAnimation.hpp

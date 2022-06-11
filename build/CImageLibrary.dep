@@ -1,0 +1,2 @@
+build/CImageLibrary.o: src/CImageLibrary.cpp src/CImageLibrary.hpp \
+ src/CImage.hpp src/CTool.hpp

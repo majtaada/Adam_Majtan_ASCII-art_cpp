@@ -48,6 +48,7 @@ void CManager::useEffect(std::string &string)
     while(true){
         std::shared_ptr<CImage> image = handleInput(string);
         if(!image){
+            system("clear");
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;}
         else{
@@ -75,6 +76,7 @@ bool CManager::checkIfInputNumber(const std::string& inputString) const
 void CManager::deleteImage() 
 {
     while(true){
+        system("clear");
         std::cout << "Zadaj meno alebo cislo obrazku co chces vymazat" << std::endl;
         library.printLibrary();
         std::string inputString;
@@ -112,24 +114,22 @@ std::shared_ptr<CImage> CManager::handleInput(std::string &name) const
 void CManager::animationPrints(CAnimation & animation) const
 {
     std::string name;
+    int flag=0;
     while(true)
-    {
-        system("clear");
-        std::cout << "Pre navrat do menu zadaj menu" << std::endl;
-        std::cout << bigSpace << std::endl;
+    {   
+        if(!flag) system("clear");
+        flag = 0;
         std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj start" << std::endl;
         library.printLibrary();
         std::cout << bigSpace << std::endl;
         std::cin >> name;
-        if(name == "start" ) {
-            if(animation.getAnimationSize() == 0 || animation.getAnimationSize() == 1 )
-                std::cout << "Na animaciu potrebujes viac obrazkov :/ " << std::endl;
-            else
-                break;
-        };
+        if(name == "start" ) break;
         std::shared_ptr<CImage> image = handleInput(name);
-        if(!image)
+        if(!image){
+            system("clear");
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
+            flag++;
+        }
         else
             animation.addImage(image);
     }
@@ -147,6 +147,16 @@ void CManager::printMenu() const
     std::cout << bigSpace << bigSpace << std::endl;
     std::cout << "Zadaj pismeno, o - na pridanie obrazka, i - na zobrazenie obrazku, e - na pouzitie efektu , a - pre animaciu , z - na zmazanie , q na ukoncenie " << std::endl;
     std::cout << bigSpace << bigSpace << std::endl;
+}
+
+bool CManager::zeroImages() const
+{
+    if(!library.getLibrarySize()) {
+                system("clear");
+                std::cout << "Potrebujes aspon jeden obrazok" << std::endl;
+                return true;
+            }
+    return false;
 }
 
 void CManager::initializeProgram()
@@ -167,28 +177,36 @@ void CManager::initializeProgram()
             }
         case 'i':
             {
+            if(zeroImages()) break;
             nameInput = getNameInput();
             showImage(nameInput);
             break;
             }
         case 'e':
             {
+            if(zeroImages()) break;
             nameInput = getNameInput();
             useEffect(nameInput);
             break;
             }
         case 'a':
             {
+            if(zeroImages()) break;
             initializeAnimation();
             break;
             }
         case 'z':
             {
+            if(zeroImages()) break;
             deleteImage();
             break;
             }
+        case 'q':
+            break;
         default:
             {
+            system("clear");
+            std::cout << "Zadaj jedno z tychto pismen" << std::endl;
             break;
             }
         }

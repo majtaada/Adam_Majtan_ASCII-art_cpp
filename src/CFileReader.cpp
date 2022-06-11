@@ -18,8 +18,8 @@ void CFileReader::readDirectory( std::string fileType) const
 
 std::string CFileReader::readInput (  ) const
 { 
+  system("clear");
   while(true){
-    system("clear");
     std::string fileName;
     std::string fileRead;
     std::cout << "Zadaj image name .png, ktory chces nacitat" << std::endl;
@@ -51,16 +51,21 @@ void CFileReader::initializeAsciiTransition ( )
 { 
   while (true)
   {
-    system("clear");
     std::cout << "Zadaj ascii prechod (.txt)" << std::endl;
     std::string fileName;
     readDirectory(".txt");  
     std::cout << space << std::endl;
     getline( std::cin , fileName);
     if( fileName.size() < 5  || fileName.substr(fileName.size()-FORMAT_LEN,4) != ".txt"){
-      std::cout << "Toto neni .txt " << std::endl;}
+      system("clear");
+      std::cout << "To neni .txt " << std::endl;
+      std::cout << space << std::endl;
+      }
     else if(!checkIfFileValid(path+fileName)){
-        std::cout << "Nefunkcny txt, skus iny" << std::endl;}  
+        system("clear");
+        std::cout << "Nefunkcny txt, skus iny" << std::endl;
+        std::cout << space << std::endl;
+        }  
     else {
       std::ifstream txtFile;
       std::string line;

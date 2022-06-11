@@ -12,14 +12,19 @@ bool CImageLibrary::deleteImageFromLibrary ( std::string &imageName )
     for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
         if( (*(*libraryIT).second).getName() == imageName){
             library.erase(libraryIT);
-            deleted++;
-            break;
+            updateNumbers();
             return true;
         }
-    if (!deleted){
-        std::cout << "Takyto image nemame :)" << std::endl;
-        return false;}
-    return true;
+    std::cout << "Takyto image nemame :)" << std::endl;    
+    return false;
+}
+
+void CImageLibrary::updateNumbers() 
+{   
+    if(getLibrarySize())
+        for(size_t i = 0 ; i <= getLibrarySize() - 1 ; i++ )
+            library[i].first = i + 1;
+        
 }
 
 bool CImageLibrary::deleteImageFromLibrary ( int index ) 
@@ -28,14 +33,12 @@ bool CImageLibrary::deleteImageFromLibrary ( int index )
     for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++){
         if( (*libraryIT).first == index ){
             library.erase(libraryIT);
-            deleted++;
+            updateNumbers();
             return true;
         }
     }
-    if (!deleted){
-        std::cout << "Takyto image nemame :)" << std::endl;
-        return false;}
-    return true;
+    std::cout << "Takyto image nemame :)" << std::endl;    
+    return false;
 }
 
 std::shared_ptr<CImage> CImageLibrary::findImage ( std::string &imageName ) const
@@ -54,6 +57,10 @@ std::shared_ptr<CImage> CImageLibrary::findImage ( int imageNumber ) const
     return nullptr;
 }
 
+int CImageLibrary::getLibrarySize() const 
+{
+    return this->library.size();
+}
 
 void CImageLibrary::printLibrary() const
 {   

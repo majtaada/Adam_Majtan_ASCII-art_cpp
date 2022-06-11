@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <png.h>
-#include <stdexcept>
 #include <filesystem>
 #pragma once
 

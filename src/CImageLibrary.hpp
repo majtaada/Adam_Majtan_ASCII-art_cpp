@@ -11,6 +11,8 @@ public:
     bool deleteImageFromLibrary ( std::string &imageName);
     bool deleteImageFromLibrary ( int index );
     void printLibrary()const;
+    int getLibrarySize() const;
+    void updateNumbers();
     std::shared_ptr<CImage> findImage ( std::string &imageName)const;
     std::shared_ptr<CImage> findImage ( int index )const;
 

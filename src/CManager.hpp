@@ -24,6 +24,7 @@ class CManager
         void animationPrints(CAnimation & animation) const;
         void deleteImage() ;
         void printMenu() const;
+        bool zeroImages() const;
         std::shared_ptr<CImage> handleInput(std::string &name) const;
         std::string getNameInput() ;
         std::string nameInput;

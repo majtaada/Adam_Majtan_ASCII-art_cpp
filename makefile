@@ -1,17 +1,62 @@
-CXX=g++
-LD=g++
-CXXFLAGS=-Wall -pedantic -std=c++17
-LIBS=-lpng -lz -lncurses -pthread
 
-all: psfit
 
-psfit: CAnimation.o CTool.o CEffect.o CEffectDarken.o CEffectLighten.o CEffectNegative.o CEffectConvolution.o CImage.o CImageLibrary.o CFileReader.o CManager.o main.o 
-		$(LD) -o $@ $^ $(LIBS) 
+LOGIN = majtaada
+CXX = g++
+BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic
+FLAGS = -lpng -lz -pthread
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+ZIP = Makefile Doxyfile DOCUMENTATION.md zadani.txt prohlaseni.txt \
+  .gitignore $(wildcard examples/*) $(wildcard src/*)
 
-deps:
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+SOURCES = $(wildcard src/*.cpp)
+OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES})
+DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
--include Makefile.d
+.PHONY: all compile run valgrind doc clean count zip
+
+all: compile 
+
+compile: ${LOGIN}
+
+${LOGIN}: ${OBJECTS}
+	@mkdir -p build/
+	${CXX} ${BASIC_FLAGS}  $^ -o $@ ${FLAGS}
+
+build/%.o: src/%.cpp 
+	@mkdir -p build/
+	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
+
+run: compile
+	./${LOGIN}
+
+valgrind: compile
+	valgrind ./${LOGIN}
+
+doc: doc/index.html
+
+doc/index.html: Doxyfile DOCUMENTATION.md $(wildcard src/*)
+	doxygen Doxyfile
+
+count:
+	wc -l src/*
+
+clean:
+	rm -rf build doc
+	rm -f ${LOGIN} ${LOGIN}.zip
+
+zip: ${LOGIN}.zip
+
+${LOGIN}.zip: ${ZIP}
+	rm -rf tmp/
+	rm -f $@
+	mkdir -p tmp/${LOGIN}/
+	cp --parents -r $^ tmp/${LOGIN}/
+	cd tmp/ && zip -r ../$@ ${LOGIN}/
+	rm -rf tmp/
+
+build/%.dep: src/%.cpp src/*
+	@mkdir -p build/
+	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
+
+include ${DEPS}
+
