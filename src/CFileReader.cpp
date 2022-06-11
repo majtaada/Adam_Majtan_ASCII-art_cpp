@@ -88,7 +88,6 @@ std::shared_ptr<CImage> CFileReader::readPNG(const std::string &imageName)
     converter = std::make_shared<CTool> (asciiLevel);
     std::shared_ptr<CImage> image = std::make_shared<CImage>( imageMatrix, converter , imageName.substr(path.size(),imageName.size()));
     fclose(imageFile);
-  
     return image;
 }
 

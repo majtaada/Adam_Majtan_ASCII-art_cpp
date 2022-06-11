@@ -3,7 +3,7 @@
 
 std::shared_ptr<CImage> CEffectDarken::applyEffect ( std::shared_ptr<CImage> image )
 {
-    int value = CEffect::getValue();
+    unsigned int value = CEffect::getValue();
     std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
     std::vector<std::vector<double>> effectMatrix;
     for (size_t i = 0; i < imageMatrix.size(); i++)
