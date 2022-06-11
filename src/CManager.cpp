@@ -52,6 +52,7 @@ void CManager::useEffect(std::string &string)
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;}
         else{
+            system("clear");
             std::cout << "Zadaj meno efektu: darken,lighten,convolution,negative" << std::endl;
             std::cout << bigSpace << std::endl;
             std::string effectName;

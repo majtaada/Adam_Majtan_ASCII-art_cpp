@@ -8,7 +8,6 @@ void CImageLibrary::addImage ( std::shared_ptr<CImage> &image )
 
 bool CImageLibrary::deleteImageFromLibrary ( std::string &imageName ) 
 {
-    int deleted = 0;
     for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++)
         if( (*(*libraryIT).second).getName() == imageName){
             library.erase(libraryIT);
@@ -22,14 +21,13 @@ bool CImageLibrary::deleteImageFromLibrary ( std::string &imageName )
 void CImageLibrary::updateNumbers() 
 {   
     if(getLibrarySize())
-        for(size_t i = 0 ; i <= getLibrarySize() - 1 ; i++ )
+        for(int i = 0 ; i <= getLibrarySize() - 1 ; i++ )
             library[i].first = i + 1;
         
 }
 
 bool CImageLibrary::deleteImageFromLibrary ( int index ) 
 {
-    int deleted = 0;
     for( auto libraryIT = library.begin() ;  libraryIT != library.end() ; libraryIT++){
         if( (*libraryIT).first == index ){
             library.erase(libraryIT);

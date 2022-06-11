@@ -6,6 +6,11 @@
 #include <memory>
 #pragma once
 
+/**
+ * @brief calls all the other classes, directing the program
+ * 
+ */
+
 class CManager
 {
     public:

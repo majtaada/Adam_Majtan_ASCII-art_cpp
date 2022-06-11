@@ -22,28 +22,28 @@ class CFileReader
 
 public:
     /**
-     * @brief 
-     * get input from user, checks if valid
+     * @brief get input from user, checks if valid
+     * 
      * @return std::string 
      */
     std::string readInput() const;
     /**
-     * @brief 
-     * opens a png file, store it in vector matrix using CTool's converter
+     * @brief opens a png file, store it in vector matrix using CTool's converter
+     * 
      * @param imageName name of the .png file
      * @return std::shared_ptr<CImage> 
      */
     std::shared_ptr<CImage> readPNG (const std::string &imageName) ;
     /**
-     * @brief 
-     * read ascii transition from .txt file
+     * @brief read ascii transition from .txt file
+     * 
      */
     void initializeAsciiTransition ( );
 
 private:
     /**
-     * @brief 
-     * checks if file is valid 
+     * @brief checks if file is valid 
+     * 
      * @param name 
      * @return true = valid
      * @return false = invalid

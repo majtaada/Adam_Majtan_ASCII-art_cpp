@@ -1,4 +1,9 @@
 #include "CEffectDarken.hpp"
+/**
+ * @brief child class to CEffect
+ * convolutes the image
+ * 
+ */
 
 class CEffectConvolution : public CEffect
 {

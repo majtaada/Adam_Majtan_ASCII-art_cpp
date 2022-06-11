@@ -1,7 +1,9 @@
-LOGIN = norrichu
+#https://gitlab.fit.cvut.cz/husekrad/pa2-cvika-2022/blob/master/cv10/semestralka/Makefile
+
+LOGIN = majtaada
 CXX = g++
 BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic
-FLAGS =
+FLAGS = -lpng -lz -pthread
 
 ZIP = Makefile Doxyfile DOCUMENTATION.md zadani.txt prohlaseni.txt \
   .gitignore $(wildcard examples/*) $(wildcard src/*)
@@ -18,11 +20,11 @@ compile: ${LOGIN}
 
 ${LOGIN}: ${OBJECTS}
 	@mkdir -p build/
-	${CXX} ${BASIC_FLAGS} ${FLAGS} $^ -o $@
+	${CXX} ${BASIC_FLAGS}  $^ -o $@ ${FLAGS}
 
 build/%.o: src/%.cpp 
 	@mkdir -p build/
-	${CXX} ${BASIC_FLAGS} ${FLAGS} -c $< -o $@
+	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 
 run: compile
 	./${LOGIN}

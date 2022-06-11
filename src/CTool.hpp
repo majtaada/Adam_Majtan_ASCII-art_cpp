@@ -8,6 +8,11 @@
 #define B 0.0722
 #define G 0.7152
 
+/**
+ * @brief class to convert matrixes
+ * 
+ */
+
 class CTool
 {
 public:

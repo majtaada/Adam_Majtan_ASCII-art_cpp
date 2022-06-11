@@ -1,5 +1,11 @@
 #include "CEffect.hpp"
 
+/**
+ * @brief child class to CEffect
+ * turns image into negative
+ * 
+ */
+
 class CEffectNegative : public CEffect
 {
 public:

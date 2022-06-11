@@ -1,5 +1,11 @@
 #include "CEffectLighten.hpp"
 
+/**
+ * @brief childclass to CEffect
+ * lighten the image
+ * 
+ */
+
 class CEffectDarken : public CEffect
 {
 public:

@@ -5,6 +5,10 @@
 #include <cstdlib>
 #pragma once
 
+/**
+ * @brief image object
+ * 
+ */
 
 class CImage
 {
