@@ -15,7 +15,7 @@ void CManager::addImage(CFileReader &fr)
 
 void CManager::print()
 {
-    std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku , ktory chces vybrat" << std::endl;
+    std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku, ktory chces vybrat" << std::endl;
     library.printLibrary();
     std::cout << bigSpace << std::endl;
     std::cout << "! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT KONVOLUCE!" << std::endl;
@@ -62,11 +62,11 @@ void CManager::useEffect(std::string &string)
         else
         {
             system("clear");
-            std::cout << "Zadaj meno efektu: darken,lighten,convolution,negative" << std::endl;
+            std::cout << "Zadaj meno efektu: darken, lighten, convolution, negative" << std::endl;
             std::cout << bigSpace << std::endl;
             std::string effectName;
             std::cin >> effectName;
-            if (effectName == "darken" || effectName == "lighten" || effectName == "convolution" || effectName == "negative")
+            if (mapEffect.find(effectName) != mapEffect.end())
             {
                 mapEffect.at(effectName)->applyEffect(image);
                 showImage(string);
@@ -193,7 +193,10 @@ void CManager::initializeProgram()
     while (key != 'q')
     {
         printMenu();
-        std::cin >> key;
+        if(std::cin.eof())
+            key='q';
+        else
+            std::cin >> key;
         switch (key)
         {
         case 'o':

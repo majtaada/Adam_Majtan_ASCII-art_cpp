@@ -1,6 +1,7 @@
 #include "CImage.hpp"
 #include <vector>
 #include <future>
+#include <thread>
 #include <chrono>
 
 /**

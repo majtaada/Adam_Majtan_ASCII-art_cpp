@@ -21,16 +21,16 @@ Kde lze využít polymorfismus? (doporučené)
 - Uživatelské rozhraní: konzole, ncurses, SDL, OpenGL (různé varianty), ...
 
 #Spracovanie zadania
-Môj ASCII-ART program bude podporovať načítanie obrázku z formátu PNG. Po načítaní obrázku v
-metóde **ReadImage** v triede **CFileReader** bude obrázok prevedený na grayscale za pomoci
-metódy **toGrayscale** a vráti maticovú reprezentáciu v metóde **toMatrix**. Následne obrázok v
-**CConverter** prekonvertuje na ascii reprezantáciu, ktorú uloží do triedy **CImage**. Ktoré budú
-uložené v triede **CImageLibrary**. V triede **CEffect** bude mať uživateľ na výber z troch efektov, ktoré môže použiť: Zosvetlenie ,stmavenie a negatív. Budeme vlastne upravovať už ascii reprezentant obrázku (nie pôvodný obrázok). 
-Uživateľ bude mať na výber či chce zobraziť obrázok za pomoci triedy **CImageDisplayer**
-alebo spustiť animáciu za pomoci triedy **CAnimation**, ktorú bude potom mocť zastaviť, spustiť,
-odstrániť nejaký z obrázkov a spustiť ju len pre ostatné alebo spustiť len konkrétny jeden
-obrázok. Na zobrazovanie outputu budem používať ncurses. Celý program bude riadený z main.cpp
+Môj ASCII-ART program bude podporovať načítanie obrázku z formátu PNG. Program začne načítaním ascii prechodu v metóde **initializeAsciiTransition**. Po načítaní obrázku v
+metódach **ReadInput** a **readPNG** v triede **CFileReader** bude obrázok prevedený na grayscale za pomoci
+metódy **toGrayscale** z triedy **CTool**, a vráti maticovú reprezentáciu. Následne obrázok v
+prekonvertuje na ascii reprezantáciu metódou **convertToAscii** , ktorú uloží do triedy **CImage** dokopy s grayscale maticou a menom obrázku. 
+Ktoré budú uložené v triede **CImageLibrary**. V triede **CEffect** bude mať uživateľ na výber zo štyroch efektov, ktoré môže použiť: Zosvetlenie ,stmavenie, konvolúcia a negatív. 
+Budeme upravovať grayscale maticu obrázku. Kde potom metódou updateImage uložíme upravený obrázok a jeho adekvátnu ascii maticu. Uživateľ bude mať na výber v základnom menu 5 operácií: 
+pridanie obrázku, zobrazenie obrázku, použitie efektu, vymazanie obrázku a ukončenie programu.
+Animáciu môžeme spustiť za pomoci triedy **CAnimation**, ktorú bude potom mocť zastaviť, spustiť,
+odstrániť nejaký z obrázkov a spustiť ju len pre ostatné. Na zobrazovanie outputu budem používať obyčajný terminál. Celý program bude riadený z **CManager**
 
 #Kde používam polymorfizmus?
 A tiež polymorfizmus využívam pri triede **CEffect**,ktorá je parent class pre jednotlivé efekty:
-**CEffectDarken**, **CEffectLighten**, **CEffectNegative** . Tieto triedy budu dediť spoločnú metódu **ApplyEffect**, ktorá bude mať na vstupe **CImage**.
+**CEffectDarken**, **CEffectLighten**, **CEffectNegative** . Tieto triedy budu dediť spoločnú metódu **ApplyEffect**, ktorá bude mať na vstupe a výstupe **CImage**.

@@ -79,7 +79,14 @@ void CFileReader::initializeAsciiTransition()
       {
         asciiLevel += line;
       }
-      break;
+      if(asciiLevel.empty())
+      {
+        system("clear");
+        std::cout << "Prazdny txt, skus iny" << std::endl;
+        std::cout << space << std::endl;
+      }
+      else 
+        break;
     }
   }
 }
