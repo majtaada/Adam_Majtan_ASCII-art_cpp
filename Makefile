@@ -3,7 +3,7 @@
 LOGIN = majtaada
 CXX = g++
 BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic
-FLAGS = -lpng -lz -pthread
+FLAGS = -lpng -lz -lstdc++fs -pthread
 
 ZIP = Makefile Doxyfile DOCUMENTATION.md zadani.txt prohlaseni.txt \
   .gitignore $(wildcard examples/*) $(wildcard src/*)
@@ -22,7 +22,7 @@ ${LOGIN}: ${OBJECTS}
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  $^ -o $@ ${FLAGS}
 
-build/%.o: src/%.cpp 
+build/%.o: src/%.cpp
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 

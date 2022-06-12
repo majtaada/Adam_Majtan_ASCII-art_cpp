@@ -1,6 +1,6 @@
 #include "CEffectNegative.hpp"
 
-std::shared_ptr<CImage> CEffectNegative::applyEffect ( std::shared_ptr<CImage> image )
+std::shared_ptr<CImage> CEffectNegative::applyEffect(std::shared_ptr<CImage> image)
 {
     std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
     std::vector<std::vector<double>> effectMatrix;
@@ -8,8 +8,8 @@ std::shared_ptr<CImage> CEffectNegative::applyEffect ( std::shared_ptr<CImage> i
     {
         std::vector<double> v1;
         for (size_t j = 0; j < imageMatrix[i].size(); j++)
-        {   
-            v1.push_back(255-imageMatrix[i][j]);
+        {
+            v1.push_back(255 - imageMatrix[i][j]);
         }
         effectMatrix.push_back(v1);
     }

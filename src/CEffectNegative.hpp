@@ -3,17 +3,17 @@
 /**
  * @brief child class to CEffect
  * turns image into negative
- * 
+ *
  */
 
 class CEffectNegative : public CEffect
 {
 public:
     /**
-     * @brief turns image into negative 
-     * 
-     * @param image 
-     * @return std::shared_ptr<CImage> 
+     * @brief turns image into negative
+     *
+     * @param image
+     * @return std::shared_ptr<CImage>
      */
-    std::shared_ptr<CImage> applyEffect (std::shared_ptr<CImage> image) override;
+    std::shared_ptr<CImage> applyEffect(std::shared_ptr<CImage> image) override;
 };
