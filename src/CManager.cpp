@@ -10,7 +10,8 @@ void CManager::addImage(CFileReader &fr)
 {
     system("clear");
     std::shared_ptr<CImage> image = fr.readPNG(fr.readInput());
-    library.addImage(image);
+    if(image)
+        library.addImage(image);
 }
 
 void CManager::print()
@@ -36,7 +37,8 @@ void CManager::showImage(std::string &name)
     {
         std::shared_ptr<CImage> image = handleInput(name);
         if (!image)
-        {
+        {   
+            system("clear");
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;
         }
@@ -72,6 +74,7 @@ void CManager::useEffect(std::string &string)
                 showImage(string);
                 break;
             }
+            system("clear");
             std::cout << "Takyto efekt nemame" << std::endl;
         }
     }
@@ -190,6 +193,7 @@ void CManager::initializeProgram()
     system("clear");
     filereader.initializeAsciiTransition();
     system("clear");
+    char key= 'o';
     while (key != 'q')
     {
         printMenu();

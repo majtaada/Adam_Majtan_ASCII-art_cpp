@@ -12,7 +12,7 @@ SOURCES = $(wildcard src/*.cpp)
 OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES})
 DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
-.PHONY: all compile run valgrind doc clean count zip
+.PHONY: all compile run doc clean count zip
 
 all: compile doc
 
@@ -28,9 +28,6 @@ build/%.o: src/%.cpp
 
 run: compile
 	./${LOGIN}
-
-valgrind: compile
-	valgrind ./${LOGIN}
 
 doc: doc/index.html
 

@@ -5,8 +5,9 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Sun Jun 12 15:26:22 2022
+# Make data base, printed on Sun Jun 12 19:35:50 2022
 
 # Variables
 
@@ -284,8 +285,8 @@ LC_ADDRESS = sk_SK.UTF-8
 LANG = C
 # environment
 VSCODE_PID = 3820
-# variable set hash-table stats:
  
+# variable set hash-table stats:
 # Load=137/1024=13%, Rehash=0, Collisions=23/195=12%
 
 # Pattern-specific Variable Values
@@ -294,11 +295,11 @@ VSCODE_PID = 3820
 
 # Directories
 
-# . (device 66309, inode 5004133): 16 files, no impossibilities.
-# examples (device 66309, inode 5004417): 16 files, no impossibilities.
-# src (device 66309, inode 5004995): 26 files, no impossibilities.
+# . (device 66309, inode 5004133): 17 files, no impossibilities.
+# examples (device 66309, inode 5004417): 18 files, no impossibilities.
+# src (device 66309, inode 5004995): 25 files, no impossibilities.
 
-# 58 files, no impossibilities in 3 directories.
+# 60 files, no impossibilities in 3 directories.
 
 # Implicit Rules
 
@@ -307,8 +308,8 @@ build/%.o: src/%.cpp
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 
-build/%.dep: src/%.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
-#  recipe to execute (from 'Makefile', line 58):
+build/%.dep: src/%.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
@@ -316,20 +317,20 @@ build/%.dep: src/%.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp s
 
 # Files
 
-build/CEffectNegative.dep: src/CEffectNegative.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CEffectNegative.dep: src/CEffectNegative.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectNegative'
-#  Last modified 2022-06-12 15:25:49.25872405
+#  Last modified 2022-06-12 19:35:07.256125666
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
 build/CEffectConvolution.o: src/CEffectConvolution.cpp src/CEffectConvolution.cpp src/CEffectConvolution.hpp src/CEffectDarken.hpp src/CEffectLighten.hpp src/CEffectNegative.hpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectConvolution'
-#  Last modified 2022-06-12 15:25:52.362750555
+#  Last modified 2022-06-12 19:10:37.630489095
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -339,7 +340,7 @@ build/CEffectConvolution.o: src/CEffectConvolution.cpp src/CEffectConvolution.cp
 build/CEffect.o: src/CEffect.cpp src/CEffect.cpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffect'
-#  Last modified 2022-06-12 15:25:51.166740354
+#  Last modified 2022-06-12 19:10:36.326479437
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -349,7 +350,7 @@ build/CEffect.o: src/CEffect.cpp src/CEffect.cpp src/CEffect.hpp src/CImage.hpp 
 build/CEffectNegative.o: src/CEffectNegative.cpp src/CEffectNegative.cpp src/CEffectNegative.hpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectNegative'
-#  Last modified 2022-06-12 15:25:58.434802141
+#  Last modified 2022-06-12 19:10:44.18653765
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -359,7 +360,7 @@ build/CEffectNegative.o: src/CEffectNegative.cpp src/CEffectNegative.cpp src/CEf
 build/main.o: src/main.cpp src/main.cpp src/CManager.hpp src/CImageLibrary.hpp src/CImage.hpp src/CTool.hpp src/CFileReader.hpp src/CEffectConvolution.hpp src/CEffectDarken.hpp src/CEffectLighten.hpp src/CEffectNegative.hpp src/CEffect.hpp src/CAnimation.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-06-12 15:25:57.894797567
+#  Last modified 2022-06-12 19:27:51.437294846
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -368,22 +369,28 @@ build/main.o: src/main.cpp src/main.cpp src/CManager.hpp src/CImageLibrary.hpp s
 
 majtaada: build/CImage.o build/CEffect.o build/CTool.o build/CEffectConvolution.o build/CEffectLighten.o build/CFileReader.o build/CAnimation.o build/CManager.o build/CEffectDarken.o build/main.o build/CEffectNegative.o build/CImageLibrary.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-12 15:25:59.174808404
+#  Last modified 2022-06-12 19:35:37.020324881
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 22):
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  $^ -o $@ ${FLAGS}
 
-build/CEffectLighten.dep: src/CEffectLighten.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CEffectLighten.dep: src/CEffectLighten.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectLighten'
-#  Last modified 2022-06-12 15:25:49.514726239
+#  Last modified 2022-06-12 19:35:07.516127403
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
+
+# Not a target:
+examples/fit-logo.png:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 all: compile doc
 #  Phony target (prerequisite of .PHONY).
@@ -399,23 +406,17 @@ all: compile doc
 #  Modification time never checked.
 #  File has not been updated.
 
-build/CImageLibrary.dep: src/CImageLibrary.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CImageLibrary.dep: src/CImageLibrary.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CImageLibrary'
-#  Last modified 2022-06-12 15:25:49.222723742
+#  Last modified 2022-06-12 19:35:07.212125372
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
-# Not a target:
-examples/a2.png:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-.PHONY: all compile run valgrind doc clean count zip
+.PHONY: all compile run doc clean count zip
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -423,51 +424,57 @@ examples/a2.png:
 # Not a target:
 src/CFileReader.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 11:23:29.477206929
+#  Last modified 2022-06-12 17:10:29.97273036
 #  File has been updated.
 #  Successfully updated.
+
+# Not a target:
+examples/Am5.png:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 build/CEffectLighten.o: src/CEffectLighten.cpp src/CEffectLighten.cpp src/CEffectLighten.hpp src/CEffectNegative.hpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectLighten'
-#  Last modified 2022-06-12 15:25:52.866754851
+#  Last modified 2022-06-12 19:10:38.194493272
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 
-build/CTool.dep: src/CTool.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CTool.dep: src/CTool.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CTool'
-#  Last modified 2022-06-12 15:25:49.590726888
+#  Last modified 2022-06-12 19:35:07.596127938
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
+
+# Not a target:
+examples/Am2.png:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 build/CImageLibrary.o: src/CImageLibrary.cpp src/CImageLibrary.cpp src/CImageLibrary.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CImageLibrary'
-#  Last modified 2022-06-12 15:25:59.038807253
+#  Last modified 2022-06-12 19:10:44.794542152
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 
-# Not a target:
-examples/a3.png:
+majtaada.zip: Makefile Doxyfile DOCUMENTATION.md zadani.txt prohlaseni.txt .gitignore examples/Am3.png examples/graph.png examples/pikachu.png examples/Am1.png examples/Am4.png examples/Am6.png examples/veduci.png examples/Am2.png examples/empty.txt examples/Am5.png examples/fit-logo.png examples/asciiStandard.txt examples/sus.png examples/smile.png examples/Am7.png examples/asciiTen.txt src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-majtaada.zip: Makefile Doxyfile DOCUMENTATION.md zadani.txt prohlaseni.txt .gitignore examples/vagner.png examples/sus.png examples/maly.png examples/a7.png examples/a1.png examples/a6.png examples/a5.png examples/a4.png examples/asciiStandard.txt examples/a3.png examples/a2.png examples/smile.png examples/banana.png examples/asciiTen.txt src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 50):
+#  recipe to execute (from 'Makefile', line 47):
 	rm -rf tmp/
 	rm -f $@
 	mkdir -p tmp/${LOGIN}/
@@ -489,7 +496,7 @@ src/CAnimation.cpp:
 #  Successfully updated.
 
 # Not a target:
-examples/a4.png:
+examples/graph.png:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -497,14 +504,14 @@ examples/a4.png:
 # Not a target:
 src/CFileReader.hpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 11:23:44.697519017
+#  Last modified 2022-06-12 19:15:51.636813459
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 15:25:35.57860613
+#  Last modified 2022-06-12 19:34:39.243938693
 #  File has been updated.
 #  Successfully updated.
 
@@ -513,13 +520,13 @@ count:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 41):
+#  recipe to execute (from 'Makefile', line 38):
 	wc -l src/*
 
 # Not a target:
 DOCUMENTATION.md:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 01:29:06.846605761
+#  Last modified 2022-06-12 17:16:30.988287875
 #  File has been updated.
 #  Successfully updated.
 
@@ -531,26 +538,45 @@ src/CEffectDarken.cpp:
 #  Successfully updated.
 
 # Not a target:
+examples/Am7.png:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 src/CAnimation.hpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 12:48:49.963564874
+#  Last modified 2022-06-12 16:06:20.498237957
 #  File has been updated.
 #  Successfully updated.
 
-build/CFileReader.dep: src/CFileReader.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+# Not a target:
+examples/veduci.png:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+examples/Am3.png:
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
+
+build/CFileReader.dep: src/CFileReader.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CFileReader'
-#  Last modified 2022-06-12 15:25:49.474725897
+#  Last modified 2022-06-12 19:35:07.476127136
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
 # Not a target:
 src/CTool.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 11:25:13.451406887
+#  Last modified 2022-06-12 19:31:21.702636998
 #  File has been updated.
 #  Successfully updated.
 
@@ -562,7 +588,7 @@ src/CImage.cpp:
 #  Successfully updated.
 
 # Not a target:
-examples/banana.png:
+examples/Am4.png:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -582,7 +608,7 @@ examples/asciiTen.txt:
 build/CFileReader.o: src/CFileReader.cpp src/CFileReader.cpp src/CFileReader.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CFileReader'
-#  Last modified 2022-06-12 15:25:53.854763263
+#  Last modified 2022-06-12 19:27:49.177280735
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -592,24 +618,23 @@ build/CFileReader.o: src/CFileReader.cpp src/CFileReader.cpp src/CFileReader.hpp
 # Not a target:
 src/CManager.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 14:57:50.608445235
+#  Last modified 2022-06-12 19:14:02.780007915
 #  File has been updated.
 #  Successfully updated.
 
-build/main.dep: src/main.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/main.dep: src/main.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'main'
-#  Last modified 2022-06-12 15:25:49.302724426
+#  Last modified 2022-06-12 19:35:07.304125986
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
 # Not a target:
 src/CEffectDarken.hpp:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-06-12 11:22:18.007798765
 #  File has been updated.
 #  Successfully updated.
@@ -620,15 +645,21 @@ examples/sus.png:
 #  Modification time never checked.
 #  File has not been updated.
 
-build/CAnimation.dep: src/CAnimation.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CAnimation.dep: src/CAnimation.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CAnimation'
-#  Last modified 2022-06-12 15:25:49.430725521
+#  Last modified 2022-06-12 19:35:07.432126842
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
+
+# Not a target:
+examples/Am6.png:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/CTool.hpp:
@@ -654,7 +685,7 @@ src/CImage.hpp:
 build/CAnimation.o: src/CAnimation.cpp src/CAnimation.cpp src/CAnimation.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CAnimation'
-#  Last modified 2022-06-12 15:25:55.134774149
+#  Last modified 2022-06-12 19:10:40.630511313
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -676,22 +707,28 @@ examples/asciiStandard.txt:
 # Not a target:
 src/CManager.hpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 11:25:05.387231129
+#  Last modified 2022-06-12 19:01:47.890559432
 #  File has been updated.
 #  Successfully updated.
 
-build/CEffectDarken.dep: src/CEffectDarken.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CEffectDarken.dep: src/CEffectDarken.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectDarken'
-#  Last modified 2022-06-12 15:25:49.342724768
+#  Last modified 2022-06-12 19:35:07.340126227
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
 # Not a target:
 zadani.txt:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+examples/pikachu.png:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -716,7 +753,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 44):
+#  recipe to execute (from 'Makefile', line 41):
 	rm -rf build doc
 	rm -f ${LOGIN} ${LOGIN}.zip
 
@@ -727,28 +764,28 @@ src/CEffect.cpp:
 #  File has been updated.
 #  Successfully updated.
 
-doc/index.html: Doxyfile DOCUMENTATION.md src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+doc/index.html: Doxyfile DOCUMENTATION.md src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-12 15:25:59.342809824
+#  Last modified 2022-06-12 19:35:37.136325658
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 38):
+#  recipe to execute (from 'Makefile', line 35):
 	doxygen Doxyfile
 
-build/CManager.dep: src/CManager.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CManager.dep: src/CManager.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CManager'
-#  Last modified 2022-06-12 15:25:49.386725145
+#  Last modified 2022-06-12 19:35:07.384126522
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
 build/CEffectDarken.o: src/CEffectDarken.cpp src/CEffectDarken.cpp src/CEffectDarken.hpp src/CEffectLighten.hpp src/CEffectNegative.hpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectDarken'
-#  Last modified 2022-06-12 15:25:57.038790312
+#  Last modified 2022-06-12 19:10:42.670526422
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -762,64 +799,53 @@ src/CEffectNegative.cpp:
 #  File has been updated.
 #  Successfully updated.
 
-build/CImage.dep: src/CImage.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CImage.dep: src/CImage.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CImage'
-#  Last modified 2022-06-12 15:25:49.678727642
+#  Last modified 2022-06-12 19:35:07.680128499
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
 # Not a target:
 src/main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 11:25:27.25170937
+#  Last modified 2022-06-12 17:00:27.810099879
 #  File has been updated.
 #  Successfully updated.
 
 build/CTool.o: src/CTool.cpp src/CTool.cpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CTool'
-#  Last modified 2022-06-12 15:25:51.846746156
+#  Last modified 2022-06-12 19:35:36.836323648
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
 	@mkdir -p build/
 	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 
-# Not a target:
-examples/a5.png:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-examples/vagner.png:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 build/CImage.o: src/CImage.cpp src/CImage.cpp src/CImage.hpp src/CTool.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CImage'
-#  Last modified 2022-06-12 15:25:50.622735709
+#  Last modified 2022-06-12 19:10:35.946476622
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
 	@mkdir -p build/
+ 
 	${CXX} ${BASIC_FLAGS}  -c $< -o $@ ${FLAGS}
 
 # Not a target:
 Doxyfile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-12 01:28:51.802493784
+#  Last modified 2022-06-12 17:17:23.860769206
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-examples/a6.png:
+examples/empty.txt:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -841,7 +867,7 @@ src/CEffectConvolution.hpp:
 build/CManager.o: src/CManager.cpp src/CManager.cpp src/CManager.hpp src/CImageLibrary.hpp src/CImage.hpp src/CTool.hpp src/CFileReader.hpp src/CEffectConvolution.hpp src/CEffectDarken.hpp src/CEffectLighten.hpp src/CEffectNegative.hpp src/CEffect.hpp src/CAnimation.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CManager'
-#  Last modified 2022-06-12 15:25:56.53878607
+#  Last modified 2022-06-12 19:27:50.557289351
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 26):
@@ -863,30 +889,11 @@ src/CImageLibrary.cpp:
 #  Successfully updated.
 
 # Not a target:
-src/a.out:
-#  Implicit rule search has been done.
-#  Last modified 2022-06-10 16:07:36.778526209
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
 src/CEffectNegative.hpp:
 #  Implicit rule search has been done.
 #  Last modified 2022-06-12 11:23:05.376720974
 #  File has been updated.
 #  Successfully updated.
-
-# Not a target:
-examples/maly.png:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-examples/a7.png:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 examples/smile.png:
@@ -895,19 +902,10 @@ examples/smile.png:
 #  File has not been updated.
 
 # Not a target:
-examples/a1.png:
+examples/Am1.png:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-valgrind: compile
-#  Phony target (prerequisite of .PHONY).
-#  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 33):
-	valgrind ./${LOGIN}
- 
 
 # Not a target:
 src/CEffectLighten.hpp:
@@ -916,13 +914,13 @@ src/CEffectLighten.hpp:
 #  File has been updated.
 #  Successfully updated.
 
-build/CEffectConvolution.dep: src/CEffectConvolution.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CEffectConvolution.dep: src/CEffectConvolution.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffectConvolution'
-#  Last modified 2022-06-12 15:25:49.554726581
+#  Last modified 2022-06-12 19:35:07.560127698
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
@@ -933,13 +931,13 @@ doc: doc/index.html
 #  File has been updated.
 #  Successfully updated.
 
-build/CEffect.dep: src/CEffect.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/a.out src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
+build/CEffect.dep: src/CEffect.cpp src/CTool.hpp src/CEffectConvolution.hpp src/CImage.cpp src/CEffect.cpp src/CTool.cpp src/CEffectConvolution.cpp src/CEffectLighten.cpp src/CFileReader.hpp src/CAnimation.hpp src/CFileReader.cpp src/CManager.hpp src/CEffectLighten.hpp src/CEffectDarken.hpp src/CAnimation.cpp src/CEffectNegative.hpp src/CManager.cpp src/CEffectDarken.cpp src/CImageLibrary.hpp src/main.cpp src/CEffectNegative.cpp src/CImage.hpp src/CImageLibrary.cpp src/CEffect.hpp
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'CEffect'
-#  Last modified 2022-06-12 15:25:49.634727265
+#  Last modified 2022-06-12 19:35:07.640128232
 #  File has been updated.
 #  Successfully updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 55):
 	@mkdir -p build/
 	${CXX} -MM -MT $(patsubst src/%.cpp, build/%.o, $<) $< > $@
 
@@ -951,19 +949,19 @@ src/CImageLibrary.hpp:
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=82/1024=8%, Rehash=0, Collisions=8/931=1%
+# Load=82/1024=8%, Rehash=0, Collisions=8/904=1%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 145 / storage = 2121 B / avg = 14 B
-# current buf: size = 8162 B / used = 2121 B / count = 145 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 147 / storage = 2184 B / avg = 14 B
+# current buf: size = 8162 B / used = 2184 B / count = 147 / avg = 14 B
 
-# strcache performance: lookups = 985 / hit rate = 85%
+# strcache performance: lookups = 958 / hit rate = 84%
 # hash-table stats:
-# Load=145/8192=2%, Rehash=0, Collisions=3/985=0%
-# Finished Make data base on Sun Jun 12 15:26:22 2022
+# Load=147/8192=2%, Rehash=0, Collisions=3/958=0%
+# Finished Make data base on Sun Jun 12 19:35:50 2022
 
  

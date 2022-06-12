@@ -26,9 +26,8 @@ private:
      *
      */
     void print();
-    CFileReader filereader;
-    char key;
     std::string imageName;
+    CFileReader filereader;
     CImageLibrary library;
     /**
      * @brief checks if input is number

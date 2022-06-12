@@ -98,7 +98,9 @@ std::shared_ptr<CImage> CFileReader::readPNG(const std::string &imageName)
   png_infop pngInfo = png_create_info_struct(pngStr);
   png_init_io(pngStr, imageFile);
   png_read_png(pngStr, pngInfo, PNG_TRANSFORM_IDENTITY, NULL);
-  imageMatrix = converter->toGrayScale(pngStr, pngInfo);
+  try{
+  imageMatrix = converter->toGrayScale(pngStr, pngInfo);}
+  catch(std::invalid_argument&){ return nullptr;}
   converter = std::make_shared<CTool>(asciiLevel);
   std::shared_ptr<CImage> image = std::make_shared<CImage>(imageMatrix, converter, imageName.substr(path.size(), imageName.size()));
   fclose(imageFile);
