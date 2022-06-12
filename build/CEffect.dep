@@ -1,2 +1,0 @@
-build/CEffect.o: src/CEffect.cpp src/CEffect.hpp src/CImage.hpp \
- src/CTool.hpp

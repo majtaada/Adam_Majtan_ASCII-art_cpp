@@ -1,2 +1,0 @@
-build/CFileReader.o: src/CFileReader.cpp src/CFileReader.hpp \
- src/CImage.hpp src/CTool.hpp

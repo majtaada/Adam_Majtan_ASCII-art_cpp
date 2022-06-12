@@ -1,2 +1,0 @@
-build/CEffectNegative.o: src/CEffectNegative.cpp src/CEffectNegative.hpp \
- src/CEffect.hpp src/CImage.hpp src/CTool.hpp

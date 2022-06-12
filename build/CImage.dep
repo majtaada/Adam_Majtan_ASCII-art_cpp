@@ -1,1 +1,0 @@
-build/CImage.o: src/CImage.cpp src/CImage.hpp src/CTool.hpp

@@ -1,2 +1,0 @@
-build/CEffectLighten.o: src/CEffectLighten.cpp src/CEffectLighten.hpp \
- src/CEffectNegative.hpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp

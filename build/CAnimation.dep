@@ -1,2 +1,0 @@
-build/CAnimation.o: src/CAnimation.cpp src/CAnimation.hpp src/CImage.hpp \
- src/CTool.hpp

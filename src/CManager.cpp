@@ -138,12 +138,8 @@ std::shared_ptr<CImage> CManager::handleInput(std::string &name) const
 void CManager::animationPrints(CAnimation &animation) const
 {
     std::string name;
-    int flag = 0;
     while (true)
     {
-        if (!flag)
-            system("clear");
-        flag = 0;
         std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj start" << std::endl;
         library.printLibrary();
         std::cout << bigSpace << std::endl;
@@ -155,10 +151,12 @@ void CManager::animationPrints(CAnimation &animation) const
         {
             system("clear");
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
-            flag++;
         }
         else
+        {   
+            system("clear");
             animation.addImage(image);
+        }
     }
 }
 

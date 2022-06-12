@@ -37,6 +37,10 @@ private:
      * @return true = resume
      * @return false = quit
      */
-    bool pauseAnimation() const;
+    bool pauseAnimation();
+    void deleteImageFromAnimation();
+    int indexInput() const;
+    void updateNumbers();
+    void printAnimationLibrary() const;
     std::vector<std::pair<int, std::shared_ptr<CImage>>> animationLibrary;
 };

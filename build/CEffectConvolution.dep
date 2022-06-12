@@ -1,3 +1,0 @@
-build/CEffectConvolution.o: src/CEffectConvolution.cpp \
- src/CEffectConvolution.hpp src/CEffectDarken.hpp src/CEffectLighten.hpp \
- src/CEffectNegative.hpp src/CEffect.hpp src/CImage.hpp src/CTool.hpp
