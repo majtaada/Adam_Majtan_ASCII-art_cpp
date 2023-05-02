@@ -1,6 +1,6 @@
 #include "CImage.hpp"
 
-CImage::CImage(std::vector<std::vector<double>> &grayscaleMatrix, std::shared_ptr<CTool> converter, const std::string &fileName)
+CImage::CImage(std::vector<std::vector<double>> &grayscaleMatrix, const std::shared_ptr<CTool>& converter, const std::string &fileName)
 {
     asciiImage = converter->convertToAscii(grayscaleMatrix);
     grayscaleImage = grayscaleMatrix;
@@ -17,10 +17,7 @@ int CImage::getWidth() const
 {
     return this->asciiImage[0].size();
 }
-std::shared_ptr<CTool> CImage::getTool() const
-{
-    return this->imageConverter;
-}
+
 std::string CImage::getName() const
 {
     return this->imageName;

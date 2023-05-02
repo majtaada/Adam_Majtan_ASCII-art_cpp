@@ -117,25 +117,15 @@ std::shared_ptr<CImage> CManager::handleInput(std::string &name) const
     {
         std::shared_ptr<CImage> image = library.findImage(stoi(name));
         if (!image)
-        {
             return nullptr;
-        }
-        else
-        {
-            return image;
-        }
+        return image;
     }
     else
     {
         std::shared_ptr<CImage> image = library.findImage(name);
         if (!image)
-        {
             return nullptr;
-        }
-        else
-        {
-            return image;
-        }
+        return image;
     }
 }
 

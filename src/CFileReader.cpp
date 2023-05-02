@@ -48,65 +48,92 @@ bool CFileReader::checkIfFileValid(const std::string &name) const
     return false;
   }
 }
-bool CFileReader::readTxtFile(std::string fileName, bool ascii)
+bool CFileReader::readTxtFile(std::string & fileName, bool ascii)
 {
   std::ifstream txtFile;
   std::string line;
   txtFile.open(path + fileName);
-  if(ascii){
+  if (ascii)
+  {
     while (std::getline(txtFile, line))
     {
       asciiLevel += line;
     }
-    if(asciiLevel.empty())
+    if (asciiLevel.empty())
     {
       system("clear");
       std::cout << "Prazdny txt, skus iny" << std::endl;
       std::cout << space << std::endl;
-    }
-  }
-  else{
-    size_t lineSize = 0;
-    while (std::getline(txtFile, line))
-    {
-      std::vector<double> v1;
-      lineSize = line.size();
-      for(size_t i = 0 ; i < line.size(); i++){
-        if(!std::isdigit(line[i]))
-          return false;
-        if(lineSize != line.size() || (lineSize%2!=0) )
-          return false;
-        v1.push_back(double(line[i]));
-      }
-      kernel.push_back(v1);
-    }
-    if(kernel.size() != lineSize)
       return false;
+    }
+    converter = std::make_shared<CTool>(asciiLevel);
   }
+  else
+  {
+    if(!handleFile(txtFile,line))
+      return false;
+    return true;
+  }
+  return true;
 }
 
-void CFileReader::readKernel()
+bool CFileReader::handleFile(std::ifstream & txtFile, std::string & line)
 {
-  while(true)
+  size_t lineSize = 0;
+  while (std::getline(txtFile, line))
+  {
+    std::vector<double> v1;
+    std::stringstream ss(line);
+    std::string number;
+    lineSize = line.size();
+    while (std::getline(ss, number, ',')) {
+      try {
+          double val = stod(number);
+          } catch (...) {
+              std::cout << "Neplatny kernel , skus iny" << std::endl;
+              std::cout << space << std::endl;
+              return false;
+          }
+      v1.push_back(stod(number));
+      std::cout << number << std::endl;
+    }
+    kernel.push_back(v1);
+  }
+  if (kernel.size() != kernel[0].size())
+  {
+    std::cout << "Neplatny kernel, skus iny" << std::endl;
+    std::cout << space << std::endl;
+    return false;
+  }
+  return true;
+}
+
+std::vector<std::vector<double>> CFileReader::readKernel()
+{
+  while (true)
   {
     std::string fileName;
     readDirectory(".txt");
     getline(std::cin, fileName);
     if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
-      {
-      }
+    {
+    }
     else if (!checkIfFileValid(path + fileName))
     {
     }
     else
     {
-      if(!readTxtFile(fileName,false))
-        break;
-     
+      if (readTxtFile(fileName, false))
+      {
+        return this->kernel;
+      }
+      else{
+        //nejake printy, ze neplatny kernel
+      }
+      
     }
   }
 }
-
 
 void CFileReader::initializeAsciiTransition()
 {
@@ -131,7 +158,9 @@ void CFileReader::initializeAsciiTransition()
     }
     else
     {
-
+      if (readTxtFile(fileName, true))
+        break;
+      //nejaky print ze zly txt
     }
   }
 }
@@ -143,10 +172,14 @@ std::shared_ptr<CImage> CFileReader::readPNG(const std::string &imageName)
   png_infop pngInfo = png_create_info_struct(pngStr);
   png_init_io(pngStr, imageFile);
   png_read_png(pngStr, pngInfo, PNG_TRANSFORM_IDENTITY, NULL);
-  try{
-  imageMatrix = converter->toGrayScale(pngStr, pngInfo);}
-  catch(std::invalid_argument&){ return nullptr;}
-  converter = std::make_shared<CTool>(asciiLevel);
+  try
+  {
+    imageMatrix = converter->toGrayScale(pngStr, pngInfo);
+  }
+  catch (std::invalid_argument &)
+  {
+    return nullptr;
+  }
   std::shared_ptr<CImage> image = std::make_shared<CImage>(imageMatrix, converter, imageName.substr(path.size(), imageName.size()));
   fclose(imageFile);
   return image;

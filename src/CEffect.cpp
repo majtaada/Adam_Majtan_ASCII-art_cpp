@@ -12,3 +12,9 @@ unsigned int CEffect::getValue() const
     }
     return value;
 }
+
+std::vector<std::vector<double>> CEffect::getKernel() const
+{
+    CFileReader fileReader;
+    return fileReader.readKernel();   
+}

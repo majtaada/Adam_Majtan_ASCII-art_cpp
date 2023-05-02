@@ -3,6 +3,7 @@
 #include <limits>
 #include <vector>
 #include "CImage.hpp"
+#include "CFileReader.hpp"
 
 /**
  * @brief parent class to all effects

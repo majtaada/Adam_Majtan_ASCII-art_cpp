@@ -1,4 +1,5 @@
 #include "CEffectShrink.hpp"
+#include <vector>
 /**
  * @brief child class to CEffect
  * convolutes the image

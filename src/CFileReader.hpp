@@ -1,5 +1,4 @@
 #include "CImage.hpp"
-#include "CTool.hpp"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -43,7 +42,7 @@ public:
      * @brief read kernel from .txt file
      *
      */
-    void readKernel();
+    std::vector<std::vector<double>> readKernel();
 
 private:
     /**
@@ -60,7 +59,8 @@ private:
      * @param fileType
      */
     void readDirectory(std::string fileType) const;
-    bool readTxtFile(std::string fileName,bool ascii);
+    bool readTxtFile(std::string & fileName,bool ascii);
+    bool handleFile(std::ifstream & txtFile, std::string & line);
     std::vector<std::vector<double>> imageMatrix;
     std::string asciiLevel, path = "../majtaada23/examples/";
     std::shared_ptr<CTool> converter;

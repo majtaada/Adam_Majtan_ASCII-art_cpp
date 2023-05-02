@@ -5,7 +5,7 @@
  *
  */
 
-class CEffectConvolution : public CEffect
+class CEffectShrink : public CEffect
 {
 public:
     /**

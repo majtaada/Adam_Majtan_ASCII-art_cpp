@@ -1,8 +1,8 @@
 #include <memory>
-#include "CTool.hpp"
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include "CTool.hpp"
 #pragma once
 
 /**
@@ -20,7 +20,7 @@ public:
      * @param converter
      * @param fileName
      */
-    CImage(std::vector<std::vector<double>> &grayscaleMatrix, std::shared_ptr<CTool> converter, const std::string &fileName);
+    explicit CImage(std::vector<std::vector<double>> &grayscaleMatrix, const std::shared_ptr<CTool>& converter, const std::string &fileName);
     /**
      * @brief clears a screen and prints a image
      *
@@ -62,15 +62,10 @@ public:
      * @param grayscaleMatrix
      */
     void updateImage(std::vector<std::vector<double>> &grayscaleMatrix);
-    /**
-     * @brief Get the CTool
-     *
-     * @return std::shared_ptr<CTool>
-     */
-    std::shared_ptr<CTool> getTool() const;
 private:
     std::vector<std::vector<char>> asciiImage;
     std::vector<std::vector<double>> grayscaleImage;
+    std::vector<std::vector<double>> kernel;
     std::string imageName;
     std::shared_ptr<CTool> imageConverter;
 };

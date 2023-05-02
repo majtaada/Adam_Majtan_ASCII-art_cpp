@@ -2,7 +2,7 @@
 
 void CImageLibrary::addImage(std::shared_ptr<CImage> &image)
 {
-    library.push_back(std::make_pair(library.size() + 1, image));
+    library.emplace_back(library.size() + 1, image);
 }
 
 bool CImageLibrary::deleteImageFromLibrary(std::string &imageName)
