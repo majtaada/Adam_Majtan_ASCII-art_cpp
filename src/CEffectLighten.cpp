@@ -10,7 +10,7 @@ std::shared_ptr<CImage> CEffectLighten::applyEffect(std::shared_ptr<CImage> imag
         std::vector<double> v1;
         for (size_t j = 0; j < imageMatrix[i].size(); j++)
         {
-            if (imageMatrix[i][j] - value >= 0)
+            if ((imageMatrix[i][j] - value) >= 0)
                 v1.push_back(imageMatrix[i][j] - value);
             else
                 v1.push_back(0);

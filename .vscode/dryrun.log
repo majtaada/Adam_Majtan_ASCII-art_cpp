@@ -1,5 +1,56 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/adam/PA2/semestralka/majtaada'
-make: Nothing to be done for 'all'.
+g++ -MM -MT  build/CImageLibrary.o src/CImageLibrary.cpp > build/CImageLibrary.dep
+ 
+g++ -MM -MT  build/CEffectNegative.o src/CEffectNegative.cpp > build/CEffectNegative.dep
+ 
+g++ -MM -MT  build/main.o src/main.cpp > build/main.dep
+ 
+g++ -MM -MT  build/CEffectDarken.o src/CEffectDarken.cpp > build/CEffectDarken.dep
+ 
+g++ -MM -MT  build/CManager.o src/CManager.cpp > build/CManager.dep
+ 
+g++ -MM -MT  build/CAnimation.o src/CAnimation.cpp > build/CAnimation.dep
+ 
+g++ -MM -MT  build/CFileReader.o src/CFileReader.cpp > build/CFileReader.dep
+ 
+g++ -MM -MT  build/CEffectLighten.o src/CEffectLighten.cpp > build/CEffectLighten.dep
+ 
+g++ -MM -MT  build/CEffectConvolution.o src/CEffectConvolution.cpp > build/CEffectConvolution.dep
+ 
+g++ -MM -MT  build/CTool.o src/CTool.cpp > build/CTool.dep
+ 
+g++ -MM -MT  build/CEffect.o src/CEffect.cpp > build/CEffect.dep
+ 
+g++ -MM -MT  build/CImage.o src/CImage.cpp > build/CImage.dep
+ 
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CImage.cpp -o build/CImage.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CEffect.cpp -o build/CEffect.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CTool.cpp -o build/CTool.o -lpng -lz -lstdc++fs -pthread
+ 
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CEffectConvolution.cpp -o build/CEffectConvolution.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CEffectLighten.cpp -o build/CEffectLighten.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CFileReader.cpp -o build/CFileReader.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CAnimation.cpp -o build/CAnimation.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CManager.cpp -o build/CManager.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CEffectDarken.cpp -o build/CEffectDarken.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/main.cpp -o build/main.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CEffectNegative.cpp -o build/CEffectNegative.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  -c src/CImageLibrary.cpp -o build/CImageLibrary.o -lpng -lz -lstdc++fs -pthread
+mkdir -p build/
+g++ -std=c++17 -O2 -g -Wall -pedantic  build/CImage.o build/CEffect.o build/CTool.o build/CEffectConvolution.o build/CEffectLighten.o build/CFileReader.o build/CAnimation.o build/CManager.o build/CEffectDarken.o build/main.o build/CEffectNegative.o build/CImageLibrary.o -o majtaada -lpng -lz -lstdc++fs -pthread
+doxygen Doxyfile
 make: Leaving directory '/home/adam/PA2/semestralka/majtaada'
  

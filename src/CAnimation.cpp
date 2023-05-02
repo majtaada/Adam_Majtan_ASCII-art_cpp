@@ -55,6 +55,7 @@ void CAnimation::deleteImageFromAnimation()
         {
             animationLibrary.erase(animationIT);
             updateNumbers();
+            break;
         }
     }
     std::cout << "Takyto image nemame :)" << std::endl;

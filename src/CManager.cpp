@@ -4,13 +4,14 @@ const std::map<std::string, std::shared_ptr<CEffect>> CManager::mapEffect =
     {{"darken", std::make_shared<CEffectDarken>()},
      {"lighten", std::make_shared<CEffectLighten>()},
      {"negative", std::make_shared<CEffectNegative>()},
-     {"convolution", std::make_shared<CEffectConvolution>()}};
+     {"convolution", std::make_shared<CEffectConvolution>()},
+     {"shrink", std::make_shared<CEffectShrink>()}};
 
 void CManager::addImage(CFileReader &fr)
 {
     system("clear");
     std::shared_ptr<CImage> image = fr.readPNG(fr.readInput());
-    if(image)
+    if (image)
         library.addImage(image);
 }
 
@@ -37,7 +38,7 @@ void CManager::showImage(std::string &name)
     {
         std::shared_ptr<CImage> image = handleInput(name);
         if (!image)
-        {   
+        {
             system("clear");
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;
@@ -64,7 +65,7 @@ void CManager::useEffect(std::string &string)
         else
         {
             system("clear");
-            std::cout << "Zadaj meno efektu: darken, lighten, convolution, negative" << std::endl;
+            std::cout << "Zadaj meno efektu: darken, lighten, negative, shrink, convolution" << std::endl;
             std::cout << bigSpace << std::endl;
             std::string effectName;
             std::cin >> effectName;
@@ -156,7 +157,7 @@ void CManager::animationPrints(CAnimation &animation) const
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
         }
         else
-        {   
+        {
             system("clear");
             animation.addImage(image);
         }
@@ -193,12 +194,12 @@ void CManager::initializeProgram()
     system("clear");
     filereader.initializeAsciiTransition();
     system("clear");
-    char key= 'o';
+    char key = 'o';
     while (key != 'q')
     {
         printMenu();
-        if(std::cin.eof())
-            key='q';
+        if (std::cin.eof())
+            key = 'q';
         else
             std::cin >> key;
         switch (key)

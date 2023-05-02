@@ -48,6 +48,65 @@ bool CFileReader::checkIfFileValid(const std::string &name) const
     return false;
   }
 }
+bool CFileReader::readTxtFile(std::string fileName, bool ascii)
+{
+  std::ifstream txtFile;
+  std::string line;
+  txtFile.open(path + fileName);
+  if(ascii){
+    while (std::getline(txtFile, line))
+    {
+      asciiLevel += line;
+    }
+    if(asciiLevel.empty())
+    {
+      system("clear");
+      std::cout << "Prazdny txt, skus iny" << std::endl;
+      std::cout << space << std::endl;
+    }
+  }
+  else{
+    size_t lineSize = 0;
+    while (std::getline(txtFile, line))
+    {
+      std::vector<double> v1;
+      lineSize = line.size();
+      for(size_t i = 0 ; i < line.size(); i++){
+        if(!std::isdigit(line[i]))
+          return false;
+        if(lineSize != line.size() || (lineSize%2!=0) )
+          return false;
+        v1.push_back(double(line[i]));
+      }
+      kernel.push_back(v1);
+    }
+    if(kernel.size() != lineSize)
+      return false;
+  }
+}
+
+void CFileReader::readKernel()
+{
+  while(true)
+  {
+    std::string fileName;
+    readDirectory(".txt");
+    getline(std::cin, fileName);
+    if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
+      {
+      }
+    else if (!checkIfFileValid(path + fileName))
+    {
+    }
+    else
+    {
+      if(!readTxtFile(fileName,false))
+        break;
+     
+    }
+  }
+}
+
 
 void CFileReader::initializeAsciiTransition()
 {
@@ -72,21 +131,7 @@ void CFileReader::initializeAsciiTransition()
     }
     else
     {
-      std::ifstream txtFile;
-      std::string line;
-      txtFile.open(path + fileName);
-      while (std::getline(txtFile, line))
-      {
-        asciiLevel += line;
-      }
-      if(asciiLevel.empty())
-      {
-        system("clear");
-        std::cout << "Prazdny txt, skus iny" << std::endl;
-        std::cout << space << std::endl;
-      }
-      else 
-        break;
+
     }
   }
 }

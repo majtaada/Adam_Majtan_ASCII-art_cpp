@@ -1,6 +1,7 @@
 #include <string>
 #include <memory>
 #include <limits>
+#include <vector>
 #include "CImage.hpp"
 
 /**
@@ -24,4 +25,6 @@ public:
      * @return unsigned int
      */
     unsigned int getValue() const;
+    std::vector<std::vector<double>> getKernel() const;
+
 };

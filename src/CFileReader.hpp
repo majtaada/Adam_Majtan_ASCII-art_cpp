@@ -39,6 +39,11 @@ public:
      *
      */
     void initializeAsciiTransition();
+    /**
+     * @brief read kernel from .txt file
+     *
+     */
+    void readKernel();
 
 private:
     /**
@@ -55,7 +60,9 @@ private:
      * @param fileType
      */
     void readDirectory(std::string fileType) const;
+    bool readTxtFile(std::string fileName,bool ascii);
     std::vector<std::vector<double>> imageMatrix;
-    std::string asciiLevel, path = "../majtaada/examples/";
+    std::string asciiLevel, path = "../majtaada23/examples/";
     std::shared_ptr<CTool> converter;
+    std::vector<std::vector<double>> kernel;
 };

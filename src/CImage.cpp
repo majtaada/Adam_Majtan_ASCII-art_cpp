@@ -17,7 +17,10 @@ int CImage::getWidth() const
 {
     return this->asciiImage[0].size();
 }
-
+std::shared_ptr<CTool> CImage::getTool() const
+{
+    return this->imageConverter;
+}
 std::string CImage::getName() const
 {
     return this->imageName;

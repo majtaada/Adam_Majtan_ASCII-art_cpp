@@ -62,7 +62,12 @@ public:
      * @param grayscaleMatrix
      */
     void updateImage(std::vector<std::vector<double>> &grayscaleMatrix);
-
+    /**
+     * @brief Get the CTool
+     *
+     * @return std::shared_ptr<CTool>
+     */
+    std::shared_ptr<CTool> getTool() const;
 private:
     std::vector<std::vector<char>> asciiImage;
     std::vector<std::vector<double>> grayscaleImage;

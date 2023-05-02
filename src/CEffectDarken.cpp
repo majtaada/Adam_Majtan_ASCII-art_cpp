@@ -11,7 +11,7 @@ std::shared_ptr<CImage> CEffectDarken::applyEffect(std::shared_ptr<CImage> image
         std::vector<double> v1;
         for (size_t j = 0; j < imageMatrix[i].size(); j++)
         {
-            if (imageMatrix[i][j] + value <= 255)
+            if ((imageMatrix[i][j] + value) <= 255)
                 v1.push_back(imageMatrix[i][j] + value);
             else
                 v1.push_back(255);
