@@ -95,7 +95,6 @@ bool CFileReader::handleFile(std::ifstream & txtFile, std::string & line)
               return false;
           }
       v1.push_back(stod(number));
-      std::cout << number << std::endl;
     }
     kernel.push_back(v1);
   }
