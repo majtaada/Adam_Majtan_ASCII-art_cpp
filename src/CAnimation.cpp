@@ -1,15 +1,15 @@
 #include "CAnimation.hpp"
 
-void CAnimation::addImage(std::shared_ptr<CImage> image)
+void CAnimation::addImage(const std::shared_ptr<CImage>& image)
 {
     auto aLibraryIT = animationLibrary.begin();
     if (aLibraryIT == animationLibrary.end())
-        animationLibrary.push_back(std::make_pair(animationLibrary.size()+1, image));
+        animationLibrary.emplace_back(animationLibrary.size()+1, image);
     else
     {
         if (((image->getWidth()) == ((*aLibraryIT).second)->getWidth()) && ((image->getHeight()) == ((*aLibraryIT).second)->getHeight()))
         {
-            animationLibrary.push_back(std::make_pair(animationLibrary.size()+1, image));
+            animationLibrary.emplace_back(animationLibrary.size()+1, image);
             system("clear");
         }
         else
@@ -21,8 +21,8 @@ void CAnimation::addImage(std::shared_ptr<CImage> image)
 }
 void CAnimation::printAnimationLibrary() const
 {
-    for (auto animationIT = animationLibrary.begin(); animationIT != animationLibrary.end(); animationIT++)
-        std::cout << "[" << (*animationIT).first << "] " << ((*animationIT).second)->getName() << std::endl;
+    for (const auto & animationIT : animationLibrary)
+        std::cout << "[" << animationIT.first << "] " << (animationIT.second)->getName() << std::endl;
 }
 int CAnimation::indexInput() const
 {

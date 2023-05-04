@@ -3,7 +3,7 @@
 #include <limits>
 #include <vector>
 #include "CImage.hpp"
-#include "CFileReader.hpp"
+#include "CFileHandler.hpp"
 
 /**
  * @brief parent class to all effects
@@ -25,7 +25,7 @@ public:
      *
      * @return unsigned int
      */
-    unsigned int getValue() const;
-    std::vector<std::vector<double>> getKernel() const;
+    static unsigned int getValue() ;
+    static std::vector<std::vector<double>> getKernel() ;
 
 };

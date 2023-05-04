@@ -1,5 +1,5 @@
 #include "CImageLibrary.hpp"
-#include "CFileReader.hpp"
+#include "CFileHandler.hpp"
 #include "CEffectConvolution.hpp"
 #include "CAnimation.hpp"
 #include <map>
@@ -27,7 +27,7 @@ private:
      */
     void print();
     std::string imageName;
-    CFileReader filereader;
+    CFileHandler fileHandler;
     CImageLibrary library;
     /**
      * @brief checks if input is number
@@ -36,13 +36,13 @@ private:
      * @return true = number
      * @return false = not number
      */
-    bool checkIfInputNumber(const std::string &inputString) const;
+    static bool checkIfInputNumber(const std::string &inputString) ;
     /**
-     * @brief CFileReader is called
+     * @brief CFileHandler is called
      *
      * @param fr
      */
-    void addImage(CFileReader &fr);
+    void addImage(CFileHandler &fr);
     /**
      * @brief finds and shows image
      *
@@ -75,7 +75,7 @@ private:
      * @brief prints basic menu
      *
      */
-    void printMenu() const;
+    static void printMenu() ;
     /**
      * @brief checks if there are images in library
      *
@@ -99,4 +99,6 @@ private:
     std::string getNameInput();
     std::string nameInput;
     static const std::map<std::string, std::shared_ptr<CEffect>> mapEffect;
+
+    void saveImage(std::string &name);
 };

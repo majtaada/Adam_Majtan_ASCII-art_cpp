@@ -18,7 +18,7 @@ public:
      *
      * @param image
      */
-    void addImage(std::shared_ptr<CImage> image);
+    void addImage(const std::shared_ptr<CImage>& image);
     /**
      * @brief start while loop until pause or resume is given from input
      *

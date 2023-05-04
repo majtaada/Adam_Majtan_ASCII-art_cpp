@@ -25,6 +25,7 @@ std::vector<std::vector<char>> CTool::convertToAscii(std::vector<std::vector<dou
   return asciiMatrix;
 }
 
+
 std::vector<std::vector<double>> CTool::toGrayScale(png_structp &pngStr, png_infop &pngInfo) const
 {
 
@@ -46,20 +47,19 @@ std::vector<std::vector<double>> CTool::toGrayScale(png_structp &pngStr, png_inf
     break;
   default:
     throw std::invalid_argument("Neplatny color type");
-    break;
   }
   if (shifter == 1 || shifter == 2)
     return readGrayScale(pngStr, pngInfo, shifter);
   return RGBToGrayScale(pngStr, pngInfo, shifter);
 }
 
-std::vector<std::vector<double>> CTool::RGBToGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) const
+std::vector<std::vector<double>> CTool::RGBToGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter)
 {
   png_bytepp rows = png_get_rows(pngStr, pngInfo);
   int width = png_get_image_width(pngStr, pngInfo);
   int height = png_get_image_height(pngStr, pngInfo);
   std::vector<std::vector<double>> pngMatrix;
-  int grayscale;
+  double grayscale;
   for (int row = 0; row < height; row++)
   {
     std::vector<double> v1;
@@ -77,7 +77,7 @@ std::vector<std::vector<double>> CTool::RGBToGrayScale(png_structp &pngStr, png_
   return pngMatrix;
 }
 
-std::vector<std::vector<double>> CTool::readGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) const
+std::vector<std::vector<double>> CTool::readGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter)
 {
   png_bytepp rows = png_get_rows(pngStr, pngInfo);
   int width = png_get_image_width(pngStr, pngInfo);

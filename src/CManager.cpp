@@ -7,7 +7,7 @@ const std::map<std::string, std::shared_ptr<CEffect>> CManager::mapEffect =
      {"convolution", std::make_shared<CEffectConvolution>()},
      {"shrink", std::make_shared<CEffectShrink>()}};
 
-void CManager::addImage(CFileReader &fr)
+void CManager::addImage(CFileHandler &fr)
 {
     system("clear");
     std::shared_ptr<CImage> image = fr.readPNG(fr.readInput());
@@ -81,7 +81,7 @@ void CManager::useEffect(std::string &string)
     }
 }
 
-bool CManager::checkIfInputNumber(const std::string &inputString) const
+bool CManager::checkIfInputNumber(const std::string &inputString)
 {
     auto it = inputString.begin();
     while (it != inputString.end() && std::isdigit(*it))
@@ -161,10 +161,10 @@ void CManager::initializeAnimation() const
     animation.startAnimation();
 }
 
-void CManager::printMenu() const
+void CManager::printMenu()
 {
     std::cout << bigSpace << bigSpace << std::endl;
-    std::cout << "Zadaj pismeno, o - na pridanie obrazka, i - na zobrazenie obrazku, e - na pouzitie efektu , a - pre animaciu , z - na zmazanie , q na ukoncenie " << std::endl;
+    std::cout << "Zadaj pismeno, o - na pridanie obrazka, i - na zobrazenie obrazku, s - na ulozenie obrazku, e - na pouzitie efektu , a - pre animaciu , z - na zmazanie , q na ukoncenie " << std::endl;
     std::cout << bigSpace << bigSpace << std::endl;
 }
 
@@ -179,10 +179,26 @@ bool CManager::zeroImages() const
     return false;
 }
 
+void CManager::saveImage (std::string & name) {
+    while (true) {
+        std::shared_ptr<CImage> image = handleInput(name);
+        if (!image) {
+            system("clear");
+            std::cout << "Taky obrazok nemame, skus iny" << std::endl;
+            break;
+        } else {
+            fileHandler.saveImage(image);
+            system("clear");
+            std::cout << "Obrazok bol uloženy ako " << image->getName() << std::endl;
+            break;
+        }
+    }
+}
+
 void CManager::initializeProgram()
 {
     system("clear");
-    filereader.initializeAsciiTransition();
+    fileHandler.initializeAsciiTransition();
     system("clear");
     char key = 'o';
     while (key != 'q')
@@ -196,7 +212,7 @@ void CManager::initializeProgram()
         {
         case 'o':
         {
-            addImage(filereader);
+            addImage(fileHandler);
             break;
         }
         case 'i':
@@ -213,6 +229,14 @@ void CManager::initializeProgram()
                 break;
             nameInput = getNameInput();
             useEffect(nameInput);
+            break;
+        }
+        case 's':
+        {
+            if(zeroImages())
+                break;
+            nameInput = getNameInput();
+            saveImage(nameInput);
             break;
         }
         case 'a':

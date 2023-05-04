@@ -1,6 +1,6 @@
 #include "CEffect.hpp"
 
-unsigned int CEffect::getValue() const
+unsigned int CEffect::getValue()
 {
     unsigned int value;
     std::cout << "Zadaj o kolko chces obrazok stmavit/zosvetlit" << std::endl;
@@ -13,8 +13,8 @@ unsigned int CEffect::getValue() const
     return value;
 }
 
-std::vector<std::vector<double>> CEffect::getKernel() const
+std::vector<std::vector<double>> CEffect::getKernel()
 {
-    CFileReader fileReader;
+    CFileHandler fileReader;
     return fileReader.readKernel();   
 }

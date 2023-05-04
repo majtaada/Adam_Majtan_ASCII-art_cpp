@@ -37,6 +37,7 @@ public:
      * @return std::vector<std::vector<double>>
      */
     std::vector<std::vector<double>> toGrayScale(png_structp &pngStr, png_infop &pngInfo) const;
+    void saveTheImage(std::vector<std::vector<double>>);
 
 private:
     std::string grayLevel;
@@ -48,7 +49,7 @@ private:
      * @param shifter
      * @return std::vector<std::vector<double>>
      */
-    std::vector<std::vector<double>> readGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) const;
+    static std::vector<std::vector<double>> readGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) ;
     /**
      * @brief read rgb values, then store it as grayscale value into vector matrix
      *
@@ -57,5 +58,5 @@ private:
      * @param shifter
      * @return std::vector<std::vector<double>>
      */
-    std::vector<std::vector<double>> RGBToGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) const;
+    static std::vector<std::vector<double>> RGBToGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) ;
 };

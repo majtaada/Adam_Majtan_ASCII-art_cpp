@@ -1,7 +1,7 @@
 #include "CManager.hpp"
 #include <cassert>
 
-int main(void)
+int main()
 {
     CManager manager;
     manager.initializeProgram();
