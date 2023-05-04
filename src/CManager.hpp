@@ -50,11 +50,11 @@ private:
      */
     void showImage(std::string &name);
     /**
-     * @brief finds image and use effect
+     * @brief use effect on set of images
      *
      * @param string
      */
-    void useEffect(std::string &string);
+    void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
     /**
      * @brief CAnimation is called
      *
@@ -101,4 +101,8 @@ private:
     static const std::map<std::string, std::shared_ptr<CEffect>> mapEffect;
 
     void saveImage(std::string &name);
+
+    int getNumberOfImages();
+
+    void setOfImages(int numberOfImages);
 };
