@@ -13,7 +13,6 @@ std::shared_ptr<CImage> CEffectConvolution::applyEffect(std::shared_ptr<CImage> 
     std::vector<std::vector<double>> paddedImage(2*padding + rows, std::vector<double>(2*padding + cols, 0.0));
     for (int i = padding; i < rows + padding; i++) {
         for (int j = padding; j < cols + padding; j++) {
-            std::cout << i <<","<<j << std::endl;
             paddedImage[i][j] = effectMatrix[i - padding][j - padding];
         }
     }

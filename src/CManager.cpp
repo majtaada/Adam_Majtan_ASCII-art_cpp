@@ -46,6 +46,7 @@ void CManager::showImage(std::string &name) {
 void CManager::setOfImages(int numOfImages) {
     std::vector<std::shared_ptr<CImage>> images;
     for (int i = 0; i < numOfImages; i++) {
+        system("clear");
         nameInput = getNameInput();
         while (true) {
             std::shared_ptr<CImage> image = handleInput(nameInput);
@@ -58,6 +59,7 @@ void CManager::setOfImages(int numOfImages) {
             }
         }
     }
+    useEffect(images);
 }
 
 void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &images) {
@@ -69,9 +71,13 @@ void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &images) {
     if (mapEffect.find(effectName) != mapEffect.end()) {
         for (const auto &image: images)
             mapEffect.at(effectName)->applyEffect(image);
+        system("clear");
+        std::cout << "Efekt bol pouzity" << std::endl;
     }
-    system("clear");
-    std::cout << "Takyto efekt nemame" << std::endl;
+    else {
+        system("clear");
+        std::cout << "Takyto efekt nemame" << std::endl;
+    }
 }
 
 
