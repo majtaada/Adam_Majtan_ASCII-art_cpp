@@ -1,24 +1,25 @@
 #include "CEffectConvolution.hpp"
 
-std::shared_ptr<CImage> CEffectConvolution::applyEffect(std::shared_ptr<CImage> image)
+void CEffectConvolution::applyEffect(const std::vector<std::shared_ptr<CImage>> &images)
 {
     std::vector<std::vector<double>> kernel = getKernel();
-    std::vector<std::vector<double>> effectMatrix = image->getGrayscaleImage();
-    if(kernel.size()%2 == 0 )
-        kernel = expandKernel(kernel);
-    int kernelSize = kernel.size();
-    int padding = kernelSize / 2;
-    int rows = image->getHeight();
-    int cols = image->getWidth();
-    std::vector<std::vector<double>> paddedImage(2*padding + rows, std::vector<double>(2*padding + cols, 0.0));
-    for (int i = padding; i < rows + padding; i++) {
-        for (int j = padding; j < cols + padding; j++) {
-            paddedImage[i][j] = effectMatrix[i - padding][j - padding];
+    for(const auto & image : images) {
+        std::vector<std::vector<double>> effectMatrix = image->getGrayscaleImage();
+        if (kernel.size() % 2 == 0)
+            kernel = expandKernel(kernel);
+        int kernelSize = kernel.size();
+        int padding = kernelSize / 2;
+        int rows = image->getHeight();
+        int cols = image->getWidth();
+        std::vector<std::vector<double>> paddedImage(2 * padding + rows, std::vector<double>(2 * padding + cols, 0.0));
+        for (int i = padding; i < rows + padding; i++) {
+            for (int j = padding; j < cols + padding; j++) {
+                paddedImage[i][j] = effectMatrix[i - padding][j - padding];
+            }
         }
+        std::vector<std::vector<double>> outputImage = convolve(padding, rows, cols, kernel, paddedImage);
+        image->updateImage(outputImage);
     }
-    std::vector<std::vector<double>> outputImage = convolve(padding,rows,cols,kernel,paddedImage);
-    image->updateImage(outputImage);
-    return image;
 }
 
 std::vector<std::vector<double>> CEffectConvolution::convolve(int padding,int rows,int cols,std::vector<std::vector<double>> & kernel,std::vector<std::vector<double>>  & padded_image)

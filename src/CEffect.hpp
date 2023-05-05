@@ -19,7 +19,7 @@ public:
      * @param image
      * @return std::shared_ptr<CImage>
      */
-    virtual std::shared_ptr<CImage> applyEffect(std::shared_ptr<CImage> image) = 0;
+    virtual void applyEffect(const std::vector<std::shared_ptr<CImage>> &images) = 0;
     /**
      * @brief get the value for the effects (darken,lighten)
      *

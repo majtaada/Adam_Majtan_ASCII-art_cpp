@@ -15,5 +15,6 @@ public:
      * @param image
      * @return std::shared_ptr<CImage>
      */
-    std::shared_ptr<CImage> applyEffect(std::shared_ptr<CImage> image) override;
+    void applyEffect(const std::vector<std::shared_ptr<CImage>> &images) override;
+
 };

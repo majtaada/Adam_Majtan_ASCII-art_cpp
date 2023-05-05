@@ -69,8 +69,7 @@ void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &images) {
     std::string effectName;
     std::cin >> effectName;
     if (mapEffect.find(effectName) != mapEffect.end()) {
-        for (const auto &image: images)
-            mapEffect.at(effectName)->applyEffect(image);
+        mapEffect.at(effectName)->applyEffect(images);
         system("clear");
         std::cout << "Efekt bol pouzity" << std::endl;
     }

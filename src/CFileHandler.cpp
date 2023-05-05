@@ -61,7 +61,6 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
     } else {
         if (!handleFile(txtFile, line))
             return false;
-        return true;
     }
     return true;
 }
@@ -77,24 +76,21 @@ bool CFileHandler::handleFile(std::ifstream &txtFile, std::string &line) {
             try {
                 double val = stod(number);
             } catch (...) {
-                printInvalid("Neplatny kernel, skus iny");
                 return false;
             }
             v1.push_back(stod(number));
         }
         kernel.push_back(v1);
     }
-    if (kernel.size() != kernel[0].size()) {
-        printInvalid("Neplatny kernel, skus iny");
+    if (kernel.size() != kernel[0].size())
         return false;
-    }
     return true;
 }
 
 std::vector<std::vector<double>> CFileHandler::readKernel() {
     system("clear");
     while (true) {
-        std::string fileName;
+        std::string fileName = "";
         std::cout << "Vyber si kernel" << std::endl;
         std::cout << space << std::endl;
         readDirectory(".txt");
@@ -108,7 +104,7 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
             if (readTxtFile(fileName, false))
                 return this->kernel;
             else
-                printInvalid("Neplatny kernel, skus iny");
+                printInvalid("Neplatnyy kernel, skus iny");
         }
     }
 }
