@@ -94,8 +94,8 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
         std::cout << "Vyber si kernel" << std::endl;
         std::cout << space << std::endl;
         readDirectory(".txt");
-        std::cout << space << std::endl;
-        getline(std::cin, fileName);
+        std::cin >> fileName;
+//        getline(std::cin, fileName);
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");
         else if (!checkIfFileValid(path + fileName))
@@ -104,7 +104,7 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
             if (readTxtFile(fileName, false))
                 return this->kernel;
             else
-                printInvalid("Neplatnyy kernel, skus iny");
+                printInvalid("Neplatny kernel, skus iny");
         }
     }
 }

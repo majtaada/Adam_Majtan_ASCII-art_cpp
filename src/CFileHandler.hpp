@@ -8,9 +8,8 @@
 #include <filesystem>
 #pragma once
 
-#define space "=========================="
 #define bigSpace "=============================================================================================="
-
+#define space "=========================="
 /**
  * @brief class to manipulate with files, CTool and CImage is called from this
  *

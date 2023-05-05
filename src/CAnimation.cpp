@@ -27,8 +27,10 @@ void CAnimation::printAnimationLibrary() const
 int CAnimation::indexInput() const
 {
     int index;
+    std::cout << space << std::endl;
     std::cout << "Zadaj cislo obrazku co chces, vymazat" << std::endl;
     printAnimationLibrary();
+    std::cout << space << std::endl;
     while (!(std::cin >> index))
     {
         std::cin.clear();
@@ -55,7 +57,7 @@ void CAnimation::deleteImageFromAnimation()
         {
             animationLibrary.erase(animationIT);
             updateNumbers();
-            break;
+            return;
         }
     }
     std::cout << "Takyto image nemame :)" << std::endl;
@@ -70,10 +72,10 @@ std::string GetLineFromCin()
 
 bool CAnimation::pauseAnimation()
 {
-    std::cout << "Zadaj resume pre znovuspustenie, delete pre zmazanie obrazku, quit pre ukoncenie" << std::endl;
     std::string input;
     while (true)
     {
+        std::cout << "Zadaj resume pre znovuspustenie, delete pre zmazanie obrazku, quit pre ukoncenie" << std::endl;
         std::cin >> input;
         if (input == "resume")
             return true;
@@ -84,10 +86,7 @@ bool CAnimation::pauseAnimation()
             if (getAnimationSize() == 1 )
                 std::cout << "Nemozes zmazat jediny obrazok" << std::endl;
             else
-            {
                 deleteImageFromAnimation();
-                startAnimation();
-            }
         }
     }
 }
@@ -121,4 +120,13 @@ void CAnimation::startAnimation()
         if (index == max)
             index = 0;
     }
+}
+
+std::vector<std::shared_ptr<CImage>> CAnimation::getAnimationSet() {
+    std::vector<std::shared_ptr<CImage>> images(animationLibrary.size());
+    std::transform(animationLibrary.begin(), animationLibrary.end(), images.begin(),
+                   [](const std::pair<int, std::shared_ptr<CImage>>& pair) {
+                       return pair.second;
+                   });
+    return images;
 }

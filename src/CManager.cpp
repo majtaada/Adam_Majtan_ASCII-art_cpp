@@ -42,11 +42,28 @@ void CManager::showImage(std::string &name) {
         }
     }
 }
+void CManager::printImagesSet(const std::vector<std::shared_ptr<CImage>>& images)
+{
+    std::cout << space << std::endl;
+    if(images.empty())
+        std::cout << "Zatial nemas ziadne zvolene obrazky" << std::endl;
+    else {
+        std::cout << "Zatial mas zvolene: ";
+        for (int i = 0; i < images.size(); ++i) {
+            std::cout << images[i]->getName();
+            if (i != images.size() - 1)
+                std::cout << ",";
+        }
+        std::cout << "\n";
+    }
+    std::cout << bigSpace << std::endl;
+}
 
 void CManager::setOfImages(int numOfImages) {
     std::vector<std::shared_ptr<CImage>> images;
     for (int i = 0; i < numOfImages; i++) {
         system("clear");
+        printImagesSet(images);
         nameInput = getNameInput();
         while (true) {
             std::shared_ptr<CImage> image = handleInput(nameInput);
@@ -120,9 +137,11 @@ std::shared_ptr<CImage> CManager::handleInput(std::string &name) const {
 
 void CManager::animationPrints(CAnimation &animation) const {
     std::string name;
+    system("clear");
     while (true) {
         std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj start"
                   << std::endl;
+        printImagesSet(animation.getAnimationSet());
         library.printLibrary();
         std::cout << bigSpace << std::endl;
         std::cin >> name;
@@ -165,7 +184,9 @@ bool CManager::zeroImages() const {
 int CManager::getNumberOfImages() {
     unsigned int inputInt;
     int libSize = library.getLibrarySize();
+    system("clear");
     std::cout << "Zadaj cislo na kolko obrazkov chces pouzit efekt" << std::endl;
+    std::cout << space << std::endl;
     while (true) {
         std::cin >> inputInt;
         if (std::cin.fail() || inputInt > libSize) {

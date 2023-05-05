@@ -3,6 +3,9 @@
 #include <future>
 #include <thread>
 #include <chrono>
+#include <algorithm>
+
+#define space "=========================="
 
 /**
  * @brief controls run of animation
@@ -30,6 +33,8 @@ public:
      * @return int
      */
     int getAnimationSize() const;
+    std::vector<std::shared_ptr<CImage>> getAnimationSet();
+
 
 private:
     /**

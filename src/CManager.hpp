@@ -6,6 +6,9 @@
 #include <memory>
 #pragma once
 
+
+
+
 /**
  * @brief calls all the other classes, directing the program
  *
@@ -54,7 +57,7 @@ private:
      *
      * @param string
      */
-    void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
+    static void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
     /**
      * @brief CAnimation is called
      *
@@ -105,4 +108,8 @@ private:
     int getNumberOfImages();
 
     void setOfImages(int numberOfImages);
+
+    static void printImagesSet(const std::vector<std::shared_ptr<CImage>> &image);
+
+    void printAnimationSet();
 };
