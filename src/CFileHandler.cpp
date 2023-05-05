@@ -68,6 +68,9 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
 
 bool CFileHandler::handleFile(std::ifstream &txtFile, std::string &line) {
     kernel = {};
+    if (txtFile.peek() == std::ifstream::traits_type::eof()) {
+        return false;
+    }
     while (std::getline(txtFile, line)) {
         std::vector<double> v1;
         std::stringstream ss(line);
