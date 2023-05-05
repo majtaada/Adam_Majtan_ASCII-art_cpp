@@ -16,6 +16,7 @@ void CFileHandler::readDirectory(const std::string &fileType) const {
         if (fileDir.substr(fileDir.size() - FORMAT_LEN, 4) == fileType)
             std::cout << fileDir << std::endl;
     }
+    std::cout << space << std::endl;
 }
 
 std::string CFileHandler::readInput() const {
@@ -23,9 +24,9 @@ std::string CFileHandler::readInput() const {
     while (true) {
         std::string fileName;
         std::string fileRead;
-        std::cout << "Zadaj image name .png, ktory chces nacitat" << std::endl;
-        readDirectory(".png");
+        std::cout << "Zadaj image name (.png), ktory chces nacitat" << std::endl;
         std::cout << space << std::endl;
+        readDirectory(".png");
         std::cin >> fileRead;
         fileName = path + fileRead;
         std::fstream file(fileName);
@@ -54,7 +55,7 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
             asciiLevel += line;
         }
         if (asciiLevel.empty()) {
-            printInvalid("Prazdny txt, skus iny");
+            txtFile.close();
             return false;
         }
         converter = std::make_shared<CTool>(asciiLevel);
@@ -66,12 +67,11 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
 }
 
 bool CFileHandler::handleFile(std::ifstream &txtFile, std::string &line) {
-    size_t lineSize = 0;
+    kernel = {};
     while (std::getline(txtFile, line)) {
         std::vector<double> v1;
         std::stringstream ss(line);
         std::string number;
-        lineSize = line.size();
         while (std::getline(ss, number, ',')) {
             try {
                 double val = stod(number);
@@ -95,7 +95,6 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
         std::cout << space << std::endl;
         readDirectory(".txt");
         std::cin >> fileName;
-//        getline(std::cin, fileName);
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");
         else if (!checkIfFileValid(path + fileName))
@@ -112,9 +111,9 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
 void CFileHandler::initializeAsciiTransition() {
     while (true) {
         std::cout << "Zadaj ascii prechod (.txt)" << std::endl;
+        std::cout << space << std::endl;
         std::string fileName;
         readDirectory(".txt");
-        std::cout << space << std::endl;
         getline(std::cin, fileName);
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");

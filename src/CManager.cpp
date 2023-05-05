@@ -15,10 +15,11 @@ void CManager::addImage(CFileHandler &fr) {
 }
 
 void CManager::print() {
+    system("clear");
     std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku, ktory chces vybrat" << std::endl;
     library.printLibrary();
     std::cout << bigSpace << std::endl;
-    std::cout << "! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT KONVOLUCE!" << std::endl;
+    std::cout << "! AK SA TI OBRAZOK ZOBRAZI ZLE , SKUS ODZOOMOVAT ALEBO POUZIT EFEKT SHRINK!" << std::endl;
     std::cout << bigSpace << std::endl;
 }
 
@@ -44,7 +45,6 @@ void CManager::showImage(std::string &name) {
 }
 void CManager::printImagesSet(const std::vector<std::shared_ptr<CImage>>& images)
 {
-    std::cout << space << std::endl;
     if(images.empty())
         std::cout << "Zatial nemas ziadne zvolene obrazky" << std::endl;
     else {
@@ -109,6 +109,7 @@ void CManager::deleteImage() {
         system("clear");
         std::cout << "Zadaj meno alebo cislo obrazku co chces vymazat" << std::endl;
         library.printLibrary();
+        std::cout << bigSpace << std::endl;
         std::string inputString;
         std::cin >> inputString;
         if (checkIfInputNumber(inputString)) {
@@ -186,7 +187,7 @@ int CManager::getNumberOfImages() {
     int libSize = library.getLibrarySize();
     system("clear");
     std::cout << "Zadaj cislo na kolko obrazkov chces pouzit efekt" << std::endl;
-    std::cout << space << std::endl;
+    std::cout << bigSpace << std::endl;
     while (true) {
         std::cin >> inputInt;
         if (std::cin.fail() || inputInt > libSize) {
