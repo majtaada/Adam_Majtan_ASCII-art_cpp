@@ -16,6 +16,7 @@ void CManager::addImage(CFileHandler &fr) {
 
 void CManager::print() {
     system("clear");
+    printImagesSet();
     std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku, ktory chces vybrat" << std::endl;
     library.printLibrary();
     std::cout << bigSpace << std::endl;
@@ -43,9 +44,9 @@ void CManager::showImage(std::string &name) {
         }
     }
 }
-void CManager::printImagesSet(const std::vector<std::shared_ptr<CImage>>& images)
-{
-    if(images.empty())
+
+void CManager::printImagesSet() const {
+    if (images.empty())
         std::cout << "Zatial nemas ziadne zvolene obrazky" << std::endl;
     else {
         std::cout << "Zatial mas zvolene: ";
@@ -60,10 +61,10 @@ void CManager::printImagesSet(const std::vector<std::shared_ptr<CImage>>& images
 }
 
 void CManager::setOfImages(int numOfImages) {
-    std::vector<std::shared_ptr<CImage>> images;
+    images = {};
     for (int i = 0; i < numOfImages; i++) {
         system("clear");
-        printImagesSet(images);
+        printImagesSet();
         nameInput = getNameInput();
         while (true) {
             std::shared_ptr<CImage> image = handleInput(nameInput);
@@ -89,8 +90,7 @@ void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &images) {
         mapEffect.at(effectName)->applyEffect(images);
         system("clear");
         std::cout << "Efekt bol pouzity" << std::endl;
-    }
-    else {
+    } else {
         system("clear");
         std::cout << "Takyto efekt nemame" << std::endl;
     }
@@ -136,13 +136,14 @@ std::shared_ptr<CImage> CManager::handleInput(std::string &name) const {
     }
 }
 
-void CManager::animationPrints(CAnimation &animation) const {
+void CManager::animationPrints(CAnimation &animation) {
     std::string name;
     system("clear");
     while (true) {
         std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj start"
                   << std::endl;
-        printImagesSet(animation.getAnimationSet());
+        images = animation.getAnimationSet();
+        printImagesSet();
         library.printLibrary();
         std::cout << bigSpace << std::endl;
         std::cin >> name;
@@ -159,7 +160,7 @@ void CManager::animationPrints(CAnimation &animation) const {
     }
 }
 
-void CManager::initializeAnimation() const {
+void CManager::initializeAnimation() {
     CAnimation animation;
     animationPrints(animation);
     animation.startAnimation();

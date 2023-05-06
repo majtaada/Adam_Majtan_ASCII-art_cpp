@@ -1,9 +1,8 @@
 #include "CEffectLighten.hpp"
 
-void CEffectLighten::applyEffect(const std::vector<std::shared_ptr<CImage>> &images)
-{
+void CEffectLighten::applyEffect(const std::vector<std::shared_ptr<CImage>> &images) {
     unsigned int value = CEffect::getValue();
-    for(const auto & image : images ) {
+    for (const auto &image: images) {
         std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
         std::vector<std::vector<double>> effectMatrix;
         for (size_t i = 0; i < imageMatrix.size(); i++) {

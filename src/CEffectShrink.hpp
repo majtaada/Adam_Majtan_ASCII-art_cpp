@@ -1,15 +1,15 @@
 #include "CEffectDarken.hpp"
+
 /**
  * @brief child class to CEffect
- * convolutes the image
+ * shrinks the image
  *
  */
 
-class CEffectShrink : public CEffect
-{
+class CEffectShrink : public CEffect {
 public:
     /**
-     * @brief convolute the image
+     * @brief shrinks the image
      *
      * @param image
      * @return std::shared_ptr<CImage>

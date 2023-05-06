@@ -2,6 +2,7 @@
 #include <string>
 #include <png.h>
 #include <iostream>
+
 #pragma once
 
 #define R 0.2126
@@ -13,8 +14,7 @@
  *
  */
 
-class CTool
-{
+class CTool {
 public:
     /**
      * @brief Construct a new CTool , given ascii transition is stored
@@ -22,6 +22,7 @@ public:
      * @param asciiTransition
      */
     CTool(std::string &asciiTransition);
+
     /**
      * @brief get matrix in grayscale and converts it to adequate ascii symbol
      *
@@ -29,6 +30,7 @@ public:
      * @return std::vector<std::vector<char>>
      */
     std::vector<std::vector<char>> convertToAscii(std::vector<std::vector<double>> &grayMatrix) const;
+
     /**
      * @brief decide what the colortype of png is and then calls adequate method
      *
@@ -37,10 +39,10 @@ public:
      * @return std::vector<std::vector<double>>
      */
     std::vector<std::vector<double>> toGrayScale(png_structp &pngStr, png_infop &pngInfo) const;
-    void saveTheImage(std::vector<std::vector<double>>);
 
 private:
     std::string grayLevel;
+
     /**
      * @brief read and store grayscale values into vector matrix
      *
@@ -49,7 +51,8 @@ private:
      * @param shifter
      * @return std::vector<std::vector<double>>
      */
-    static std::vector<std::vector<double>> readGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) ;
+    static std::vector<std::vector<double>> readGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter);
+
     /**
      * @brief read rgb values, then store it as grayscale value into vector matrix
      *
@@ -58,5 +61,5 @@ private:
      * @param shifter
      * @return std::vector<std::vector<double>>
      */
-    static std::vector<std::vector<double>> RGBToGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter) ;
+    static std::vector<std::vector<double>> RGBToGrayScale(png_structp &pngStr, png_infop &pngInfo, int shifter);
 };

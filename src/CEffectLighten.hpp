@@ -1,12 +1,12 @@
 #include "CEffectNegative.hpp"
+
 /**
  * @brief child class to CEffect
  * lighten the image
  *
  */
 
-class CEffectLighten : public CEffect
-{
+class CEffectLighten : public CEffect {
 public:
     /**
      * @brief lighten the image by given value

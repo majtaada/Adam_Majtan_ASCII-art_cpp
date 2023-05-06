@@ -6,8 +6,7 @@
  *
  */
 
-class CEffectDarken : public CEffect
-{
+class CEffectDarken : public CEffect {
 public:
     /**
      * @brief darken the image by given value

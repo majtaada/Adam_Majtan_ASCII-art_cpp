@@ -6,8 +6,7 @@
  *
  */
 
-class CEffectNegative : public CEffect
-{
+class CEffectNegative : public CEffect {
 public:
     /**
      * @brief turns image into negative

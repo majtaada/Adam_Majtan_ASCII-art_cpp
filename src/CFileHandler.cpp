@@ -9,25 +9,29 @@ void CFileHandler::printInvalid(const std::string &mess) {
 }
 
 
-void CFileHandler::readDirectory(const std::string &fileType) const {
+void CFileHandler::readDirectory(const std::string &fileType) {
+    int cnt = 0;
+    directoryMap = {};
     for (const auto &entry: std::filesystem::directory_iterator(path)) {
         std::string fileDir = entry.path();
         fileDir.erase(0, path.size());
-        if (fileDir.substr(fileDir.size() - FORMAT_LEN, 4) == fileType)
-            std::cout << fileDir << std::endl;
+        if (fileDir.substr(fileDir.size() - FORMAT_LEN, 4) == fileType) {
+            std::cout << "[" << ++cnt << "] " << fileDir << std::endl;
+            directoryMap[cnt] = fileDir;
+        }
     }
     std::cout << space << std::endl;
 }
 
-std::string CFileHandler::readInput() const {
+std::string CFileHandler::readInput() {
     system("clear");
     while (true) {
         std::string fileName;
         std::string fileRead;
-        std::cout << "Zadaj image name (.png), ktory chces nacitat" << std::endl;
+        std::cout << "Zadaj cislo obrazku, ktory chces nacitat" << std::endl;
         std::cout << space << std::endl;
         readDirectory(".png");
-        std::cin >> fileRead;
+        fileRead = getInputNumber();
         fileName = path + fileRead;
         std::fstream file(fileName);
         if (!checkIfFileValid(fileName))
@@ -60,13 +64,13 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
         }
         converter = std::make_shared<CTool>(asciiLevel);
     } else {
-        if (!handleFile(txtFile, line))
+        if (!handleKernelFile(txtFile, line))
             return false;
     }
     return true;
 }
 
-bool CFileHandler::handleFile(std::ifstream &txtFile, std::string &line) {
+bool CFileHandler::handleKernelFile(std::ifstream &txtFile, std::string &line) {
     kernel = {};
     if (txtFile.peek() == std::ifstream::traits_type::eof()) {
         return false;
@@ -97,7 +101,7 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
         std::cout << "Vyber si kernel" << std::endl;
         std::cout << space << std::endl;
         readDirectory(".txt");
-        std::cin >> fileName;
+        fileName = getInputNumber();
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");
         else if (!checkIfFileValid(path + fileName))
@@ -111,13 +115,27 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
     }
 }
 
+std::string CFileHandler::getInputNumber() {
+    std::string fileNum;
+    int num;
+    std::cin >> fileNum;
+    try {
+        num = stoi(fileNum);
+    } catch (...) {
+        return "";
+    }
+    if (directoryMap.find(num) != directoryMap.end())
+        return directoryMap.at(num);
+}
+
 void CFileHandler::initializeAsciiTransition() {
     while (true) {
-        std::cout << "Zadaj ascii prechod (.txt)" << std::endl;
+        std::cout << "Zadaj cislo ascii prechodu" << std::endl;
         std::cout << space << std::endl;
         std::string fileName;
         readDirectory(".txt");
-        getline(std::cin, fileName);
+        fileName = getInputNumber();
+        std::cout << fileName << std::endl;
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");
         else if (!checkIfFileValid(path + fileName))

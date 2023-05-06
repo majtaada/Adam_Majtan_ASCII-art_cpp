@@ -6,6 +6,8 @@
 #include <iostream>
 #include <png.h>
 #include <filesystem>
+#include <map>
+
 #pragma once
 
 #define bigSpace "=============================================================================================="
@@ -24,7 +26,7 @@ public:
      *
      * @return std::string
      */
-    std::string readInput() const;
+    std::string readInput() ;
     /**
      * @brief opens a png file, store it in vector matrix using CTool's converter
      *
@@ -58,12 +60,40 @@ private:
      *
      * @param fileType
      */
-    void readDirectory(const std::string& fileType) const;
+    void readDirectory(const std::string& fileType);
+    /**
+     * @brief try to read from txt file, determine if file is correct
+     *
+     *
+     * @param fileName
+     * @param ascii if it is ascii file then true, if kernel file false
+     * @return true if file is ok, false otherwise
+     */
     bool readTxtFile(std::string & fileName,bool ascii);
-    bool handleFile(std::ifstream & txtFile, std::string & line);
+    /**
+     * @brief try to read from txt file, determine if file is correct, store it in kernel
+     *
+     * @param txtFile
+     * @param line
+     * @return true if file is ok, false otherwise
+     */
+    bool handleKernelFile(std::ifstream & txtFile, std::string & line);
+    /**
+     * @brief helper method to print if file is invalid
+     *
+     * @param mess
+     */
     static void printInvalid(const std::string & mess);
+
+    /**
+     * @brief finds corresponding name of file to number
+     *
+     * @return std::string
+     */
+    std::string getInputNumber();
     std::vector<std::vector<double>> imageMatrix;
     std::string asciiLevel, path = "../majtaada23/examples/";
     std::shared_ptr<CTool> converter;
     std::vector<std::vector<double>> kernel;
+    std::map<int,std::string> directoryMap;
 };

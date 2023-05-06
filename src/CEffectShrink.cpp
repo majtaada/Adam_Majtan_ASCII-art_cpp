@@ -1,9 +1,8 @@
 #include "CEffectShrink.hpp"
 #include <vector>
 
-void CEffectShrink::applyEffect(const std::vector<std::shared_ptr<CImage>> &images)
-{
-    for(const auto & image : images) {
+void CEffectShrink::applyEffect(const std::vector<std::shared_ptr<CImage>> &images) {
+    for (const auto &image: images) {
         std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
         std::vector<std::vector<double>> effectMatrix;
         double average;

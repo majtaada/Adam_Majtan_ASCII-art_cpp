@@ -26,6 +26,11 @@ public:
      * @return unsigned int
      */
     static unsigned int getValue() ;
+    /**
+     * @brief get the kernel for convolution
+     *
+     * @return the kernel
+     */
     static std::vector<std::vector<double>> getKernel() ;
 
 };

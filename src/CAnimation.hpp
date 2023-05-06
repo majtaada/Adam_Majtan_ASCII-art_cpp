@@ -33,6 +33,12 @@ public:
      * @return int
      */
     int getAnimationSize() const;
+
+    /**
+     * @brief get the vector of CImages
+     *
+     * @return
+     */
     std::vector<std::shared_ptr<CImage>> getAnimationSet();
 
 
