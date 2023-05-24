@@ -1,6 +1,6 @@
 #https://gitlab.fit.cvut.cz/husekrad/pa2-cvika-2022/blob/master/cv10/semestralka/Makefile
 
-LOGIN = majtaada23
+LOGIN = majtaada
 CXX = g++
 BASIC_FLAGS = -std=c++17 -O2 -g -Wall -pedantic 
 FLAGS = -lpng -lz -lstdc++fs -pthread

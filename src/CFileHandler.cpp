@@ -1,6 +1,5 @@
 #include "CFileHandler.hpp"
 
-#define FORMAT_LEN 4
 
 void CFileHandler::printInvalid(const std::string &mess) {
     system("clear");
@@ -118,14 +117,18 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
 std::string CFileHandler::getInputNumber() {
     std::string fileNum;
     int num;
-    std::cin >> fileNum;
-    try {
-        num = stoi(fileNum);
-    } catch (...) {
-        return "";
+    while (std::getline(std::cin, fileNum)) {
+        try {
+            num = stoi(fileNum);
+        } catch (...) {
+            return "";
+        }
     }
+    if (std::cin.eof())
+        return "";
     if (directoryMap.find(num) != directoryMap.end())
         return directoryMap.at(num);
+    return fileNum;
 }
 
 void CFileHandler::initializeAsciiTransition() {
@@ -135,7 +138,6 @@ void CFileHandler::initializeAsciiTransition() {
         std::string fileName;
         readDirectory(".txt");
         fileName = getInputNumber();
-        std::cout << fileName << std::endl;
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");
         else if (!checkIfFileValid(path + fileName))

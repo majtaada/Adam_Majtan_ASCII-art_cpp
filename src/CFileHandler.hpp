@@ -9,9 +9,10 @@
 #include <map>
 
 #pragma once
-
 #define bigSpace "=============================================================================================="
 #define space "=========================="
+#define FORMAT_LEN 4
+
 /**
  * @brief class to manipulate with files, CTool and CImage is called from this
  *
@@ -92,7 +93,7 @@ private:
      */
     std::string getInputNumber();
     std::vector<std::vector<double>> imageMatrix;
-    std::string asciiLevel, path = "../majtaada23/examples/";
+    std::string asciiLevel, path = "../majtaada/examples/";
     std::shared_ptr<CTool> converter;
     std::vector<std::vector<double>> kernel;
     std::map<int,std::string> directoryMap;

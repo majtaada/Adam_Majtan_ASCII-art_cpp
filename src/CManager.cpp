@@ -16,7 +16,6 @@ void CManager::addImage(CFileHandler &fr) {
 
 void CManager::print() {
     system("clear");
-    printImagesSet();
     std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku, ktory chces vybrat" << std::endl;
     library.printLibrary();
     std::cout << bigSpace << std::endl;
@@ -26,6 +25,7 @@ void CManager::print() {
 
 std::string CManager::getNameInput() {
     print();
+    printImagesSet();
     std::string inputString;
     std::cin >> inputString;
     return inputString;
@@ -64,7 +64,6 @@ void CManager::setOfImages(int numOfImages) {
     images = {};
     for (int i = 0; i < numOfImages; i++) {
         system("clear");
-        printImagesSet();
         nameInput = getNameInput();
         while (true) {
             std::shared_ptr<CImage> image = handleInput(nameInput);

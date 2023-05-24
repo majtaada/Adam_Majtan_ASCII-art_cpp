@@ -60,7 +60,7 @@ private:
      *
      * @param string
      */
-    static void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
+    void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
 
     /**
      * @brief CAnimation is called

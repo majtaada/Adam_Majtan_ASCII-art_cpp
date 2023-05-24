@@ -46,7 +46,7 @@ Ktoré budú uložené v triede **CImageLibrary**. V triede **CEffect** bude ma�
 Budeme upravovať grayscale maticu obrázku. Kde potom metódou updateImage uložíme upravený obrázok a jeho adekvátnu ascii maticu. Uživateľ bude mať na výber v základnom menu 6 operácií: 
 pridanie obrázku, zobrazenie obrázku, použitie efektu, vymazanie obrázku, uloženie obrázku a ukončenie programu.
 Animáciu môžeme spustiť za pomoci triedy **CAnimation**, ktorú bude potom mocť zastaviť, spustiť,
-odstrániť nejaký z obrázkov a spustiť ju len pre ostatné. Na zobrazovanie outputu budem používať ncurses. Celý program bude riadený z **CManager**
+odstrániť nejaký z obrázkov a spustiť ju len pre ostatné. Na zobrazovanie outputu budem používať linuxový terminál. Celý program bude riadený z **CManager**
 
 #Kde používam polymorfizmus?
 Polymorfizmus využívam pri triede **CEffect**,ktorá je parent class pre jednotlivé efekty:
