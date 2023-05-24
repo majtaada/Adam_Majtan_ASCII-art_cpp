@@ -1,19 +1,11 @@
 #include "CEffectLighten.hpp"
 
 /**
- * @brief childclass to CEffect
- * lighten the image
+ * @brief child class to CEffectExposure
+ * darken the image
  *
  */
-
-class CEffectDarken : public CEffect {
+class CEffectDarken : public CEffectExposure {
 public:
-    /**
-     * @brief darken the image by given value
-     *
-     * @param image
-     * @return std::shared_ptr<CImage>
-     */
-    void applyEffect(const std::vector<std::shared_ptr<CImage>> &images) override;
-
+    double applyEffectToPixels(double pixelValue, int value) override;
 };

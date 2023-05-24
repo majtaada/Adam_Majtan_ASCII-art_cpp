@@ -77,6 +77,8 @@ bool CAnimation::pauseAnimation()
     {
         std::cout << "Zadaj resume pre znovuspustenie, delete pre zmazanie obrazku, quit pre ukoncenie" << std::endl;
         std::cin >> input;
+        if(std::cin.fail())
+            return false;
         if (input == "resume")
             return true;
         if (input == "quit")
@@ -111,11 +113,9 @@ void CAnimation::startAnimation()
             if (line == "p")
                 if (!pauseAnimation())
                     break;
-            if (line == "q")
-                break;
         }
         animationLibrary[index++].second->printImage();
-        std::cout << "Zadaj p pre pauznutie animacie a q pre ukoncenie" << std::endl;
+        std::cout << "Zadaj p pre pauznutie animacie" << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         if (index == max)
             index = 0;

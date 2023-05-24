@@ -1,4 +1,5 @@
 #include "CImage.hpp"
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <string>
@@ -39,12 +40,15 @@ public:
      * @brief read ascii transition from .txt file
      *
      */
-    void initializeAsciiTransition();
+    bool initializeAsciiTransition();
     /**
      * @brief read kernel from .txt file
      *
      */
     std::vector<std::vector<double>> readKernel();
+    /**
+     * @brief function to save the image
+     */
     void saveImage( const std::shared_ptr<CImage>&);
 
 private:
@@ -92,6 +96,14 @@ private:
      * @return std::string
      */
     std::string getInputNumber();
+    /**
+     * @brief utility function for sort
+     *
+     * @param a
+     * @param b
+     * @return
+     */
+    static bool compareMapValues(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b);
     std::vector<std::vector<double>> imageMatrix;
     std::string asciiLevel, path = "../majtaada/examples/";
     std::shared_ptr<CTool> converter;

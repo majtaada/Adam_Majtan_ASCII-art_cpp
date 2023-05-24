@@ -7,17 +7,25 @@ void CFileHandler::printInvalid(const std::string &mess) {
     std::cout << space << std::endl;
 }
 
+bool CFileHandler::compareMapValues(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b) {
+    return a.second < b.second;
+}
 
 void CFileHandler::readDirectory(const std::string &fileType) {
     int cnt = 0;
     directoryMap = {};
+    std::vector<std::string> files;
     for (const auto &entry: std::filesystem::directory_iterator(path)) {
         std::string fileDir = entry.path();
         fileDir.erase(0, path.size());
         if (fileDir.substr(fileDir.size() - FORMAT_LEN, 4) == fileType) {
-            std::cout << "[" << ++cnt << "] " << fileDir << std::endl;
-            directoryMap[cnt] = fileDir;
+            files.push_back(fileDir);
         }
+    }
+    std::sort(files.begin(),files.end());
+    for (const auto& file : files ) {
+        directoryMap[++cnt] = file;
+        std::cout << "[" << cnt << "] " << file << std::endl;
     }
     std::cout << space << std::endl;
 }
@@ -31,6 +39,8 @@ std::string CFileHandler::readInput() {
         std::cout << space << std::endl;
         readDirectory(".png");
         fileRead = getInputNumber();
+        if(fileRead.empty())
+            return "";
         fileName = path + fileRead;
         std::fstream file(fileName);
         if (!checkIfFileValid(fileName))
@@ -117,27 +127,30 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
 std::string CFileHandler::getInputNumber() {
     std::string fileNum;
     int num;
-    while (std::getline(std::cin, fileNum)) {
-        try {
-            num = stoi(fileNum);
-        } catch (...) {
-            return "";
-        }
-    }
-    if (std::cin.eof())
+    std::cin >> fileNum;
+    if(std::cin.fail())
         return "";
+    try {
+        num = stoi(fileNum);
+    } catch (...) {
+        return fileNum;
+    }
     if (directoryMap.find(num) != directoryMap.end())
         return directoryMap.at(num);
     return fileNum;
 }
 
-void CFileHandler::initializeAsciiTransition() {
+bool CFileHandler::initializeAsciiTransition() {
     while (true) {
         std::cout << "Zadaj cislo ascii prechodu" << std::endl;
         std::cout << space << std::endl;
         std::string fileName;
         readDirectory(".txt");
         fileName = getInputNumber();
+        if(fileName == "") {
+            std::cout << "Koniec inputu" << std::endl;
+            return false;
+        }
         if (fileName.size() < 5 || fileName.substr(fileName.size() - FORMAT_LEN, 4) != ".txt")
             printInvalid("To neni .txt");
         else if (!checkIfFileValid(path + fileName))
@@ -148,6 +161,8 @@ void CFileHandler::initializeAsciiTransition() {
             printInvalid("Neplatny ascii prechod, skus iny");
         }
     }
+    system("clear");
+    return true;
 }
 
 void CFileHandler::saveImage(const std::shared_ptr<CImage> &image) {
@@ -173,6 +188,7 @@ std::shared_ptr<CImage> CFileHandler::readPNG(const std::string &imageName) {
         imageMatrix = converter->toGrayScale(pngStr, pngInfo);
     }
     catch (std::invalid_argument &) {
+        fclose(imageFile);
         return nullptr;
     }
     std::shared_ptr<CImage> image = std::make_shared<CImage>(imageMatrix, converter,

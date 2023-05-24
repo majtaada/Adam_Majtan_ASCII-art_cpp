@@ -46,7 +46,7 @@ private:
      *
      * @param fr
      */
-    void addImage(CFileHandler &fr);
+    bool addImage(CFileHandler &fr);
 
     /**
      * @brief finds and shows image
@@ -60,7 +60,7 @@ private:
      *
      * @param string
      */
-    void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
+    static void useEffect(const std::vector<std::shared_ptr<CImage>> &images);
 
     /**
      * @brief CAnimation is called

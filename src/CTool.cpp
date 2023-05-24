@@ -63,7 +63,7 @@ std::vector<std::vector<double>> CTool::RGBToGrayScale(png_structp &pngStr, png_
         }
         pngMatrix.push_back(v1);
     }
-    png_destroy_read_struct(&pngStr, (png_infopp) 0, (png_infopp) 0);
+    png_destroy_read_struct(&pngStr, (png_infopp) nullptr, (png_infopp) 0);
     free(rows);
     return pngMatrix;
 }
@@ -82,7 +82,7 @@ std::vector<std::vector<double>> CTool::readGrayScale(png_structp &pngStr, png_i
         }
         pngMatrix.push_back(v1);
     }
-    png_destroy_read_struct(&pngStr, (png_infopp) 0, (png_infopp) 0);
+    png_destroy_read_struct(&pngStr, (png_infopp) nullptr, (png_infopp) nullptr);
     free(rows);
     return pngMatrix;
 }

@@ -7,11 +7,17 @@ const std::map<std::string, std::shared_ptr<CEffect>> CManager::mapEffect =
          {"convolution", std::make_shared<CEffectConvolution>()},
          {"shrink",      std::make_shared<CEffectShrink>()}};
 
-void CManager::addImage(CFileHandler &fr) {
+bool CManager::addImage(CFileHandler &fr) {
     system("clear");
-    std::shared_ptr<CImage> image = fr.readPNG(fr.readInput());
-    if (image)
+    imageName = fr.readInput();
+    if(imageName.empty())
+        return false;
+    std::shared_ptr<CImage> image = fr.readPNG(imageName);
+    if (image){
         library.addImage(image);
+        return true;
+    }
+    return false;
 }
 
 void CManager::print() {
@@ -79,14 +85,14 @@ void CManager::setOfImages(int numOfImages) {
     useEffect(images);
 }
 
-void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &images) {
+void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> & cimages) {
     system("clear");
     std::cout << "Zadaj meno efektu: darken, lighten, negative, shrink, convolution" << std::endl;
     std::cout << bigSpace << std::endl;
     std::string effectName;
     std::cin >> effectName;
     if (mapEffect.find(effectName) != mapEffect.end()) {
-        mapEffect.at(effectName)->applyEffect(images);
+        mapEffect.at(effectName)->applyEffect(cimages);
         system("clear");
         std::cout << "Efekt bol pouzity" << std::endl;
     } else {
@@ -220,18 +226,21 @@ void CManager::saveImage(std::string &name) {
 
 void CManager::initializeProgram() {
     system("clear");
-    fileHandler.initializeAsciiTransition();
-    system("clear");
+    if (!fileHandler.initializeAsciiTransition())
+        return;
     char key = 'o';
     while (key != 'q') {
         printMenu();
-        if (std::cin.eof())
+        if (std::cin.fail())
             key = 'q';
         else
             std::cin >> key;
         switch (key) {
             case 'o': {
-                addImage(fileHandler);
+                if(!addImage(fileHandler)) {
+                    std::cout << "Koniec inputu" << std::endl;
+                    return;
+                }
                 break;
             }
             case 'i': {
@@ -268,6 +277,7 @@ void CManager::initializeProgram() {
                 break;
             }
             case 'q':
+                std::cout << "Koniec aplikacie!" << std::endl;
                 break;
             default: {
                 system("clear");

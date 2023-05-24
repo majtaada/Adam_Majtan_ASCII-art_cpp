@@ -1,4 +1,4 @@
-#include "CEffectNegative.hpp"
+#include "CEffectExposure.hpp"
 
 /**
  * @brief child class to CEffect
@@ -6,14 +6,7 @@
  *
  */
 
-class CEffectLighten : public CEffect {
+class CEffectLighten : public CEffectExposure {
 public:
-    /**
-     * @brief lighten the image by given value
-     *
-     * @param image
-     * @return std::shared_ptr<CImage>
-     */
-    void applyEffect(const std::vector<std::shared_ptr<CImage>> &images) override;
-
+    double applyEffectToPixels(double pixelValue, int value) override;
 };
