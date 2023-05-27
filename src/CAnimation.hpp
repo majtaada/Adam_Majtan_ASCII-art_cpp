@@ -50,7 +50,7 @@ private:
      * @return false = quit
      */
     bool pauseAnimation();
-    void deleteImageFromAnimation();
+    bool deleteImageFromAnimation();
     int indexInput() const;
     void updateNumbers();
     void printAnimationLibrary() const;
