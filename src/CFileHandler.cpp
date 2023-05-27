@@ -2,7 +2,7 @@
 
 
 void CFileHandler::printInvalid(const std::string &mess) {
-    system("clear");
+    clearScreen();
     std::cout << mess << std::endl;
     std::cout << space << std::endl;
 }
@@ -27,7 +27,7 @@ void CFileHandler::readDirectory(const std::string &fileType) {
 }
 
 std::string CFileHandler::readInput() {
-    system("clear");
+    clearScreen();
     while (true) {
         std::string fileName;
         std::string fileRead;
@@ -99,9 +99,12 @@ bool CFileHandler::handleKernelFile(std::ifstream &txtFile) {
         return false;
     return true;
 }
+void CFileHandler::clearScreen() {
+    system("clear");
+}
 
 std::vector<std::vector<double>> CFileHandler::readKernel() {
-    system("clear");
+    clearScreen();
     while (true) {
         std::string fileName = "";
         std::cout << "Vyber si kernel" << std::endl;
@@ -163,7 +166,7 @@ bool CFileHandler::initializeAsciiTransition() {
             printInvalid("Neplatny ascii prechod, skus iny");
         }
     }
-    system("clear");
+   clearScreen();
     return true;
 }
 

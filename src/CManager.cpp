@@ -8,12 +8,12 @@ const std::map<std::string, std::shared_ptr<CEffect>> CManager::mapEffect =
          {"shrink",      std::make_shared<CEffectShrink>()}};
 
 bool CManager::addImage(CFileHandler &fr) {
-    system("clear");
+    CFileHandler::clearScreen();
     imageName = fr.readInput();
-    if(imageName.empty())
+    if (imageName.empty())
         return false;
     std::shared_ptr<CImage> image = fr.readPNG(imageName);
-    if (image){
+    if (image) {
         library.addImage(image);
         return true;
     }
@@ -21,7 +21,7 @@ bool CManager::addImage(CFileHandler &fr) {
 }
 
 void CManager::print() {
-    system("clear");
+    CFileHandler::clearScreen();
     std::cout << "Zadaj meno obrazku (.png) alebo cislo obrazku, ktory chces vybrat" << std::endl;
     library.printLibrary();
     std::cout << bigSpace << std::endl;
@@ -41,7 +41,7 @@ void CManager::showImage(std::string &name) {
     while (true) {
         std::shared_ptr<CImage> image = handleInput(name);
         if (!image) {
-            system("clear");
+            CFileHandler::clearScreen();
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;
         } else {
@@ -66,15 +66,15 @@ void CManager::printImagesSet() const {
     std::cout << bigSpace << std::endl;
 }
 
-void CManager::setOfImages(int numOfImages) {
+void CManager::setOfImages(unsigned int numOfImages) {
     images = {};
     for (int i = 0; i < numOfImages; i++) {
-        system("clear");
+        CFileHandler::clearScreen();
         nameInput = getNameInput();
         while (true) {
             std::shared_ptr<CImage> image = handleInput(nameInput);
             if (!image) {
-                system("clear");
+                CFileHandler::clearScreen();
                 std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             } else {
                 images.push_back(image);
@@ -85,18 +85,18 @@ void CManager::setOfImages(int numOfImages) {
     useEffect(images);
 }
 
-void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> & cimages) {
-    system("clear");
+void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &cimages) {
+    CFileHandler::clearScreen();
     std::cout << "Zadaj meno efektu: darken, lighten, negative, shrink, convolution" << std::endl;
     std::cout << bigSpace << std::endl;
     std::string effectName;
     std::cin >> effectName;
     if (mapEffect.find(effectName) != mapEffect.end()) {
         mapEffect.at(effectName)->applyEffect(cimages);
-        system("clear");
+        CFileHandler::clearScreen();
         std::cout << "Efekt bol pouzity" << std::endl;
     } else {
-        system("clear");
+        CFileHandler::clearScreen();
         std::cout << "Takyto efekt nemame" << std::endl;
     }
 }
@@ -111,7 +111,7 @@ bool CManager::checkIfInputNumber(const std::string &inputString) {
 
 void CManager::deleteImage() {
     while (true) {
-        system("clear");
+        CFileHandler::clearScreen();
         std::cout << "Zadaj meno alebo cislo obrazku co chces vymazat" << std::endl;
         library.printLibrary();
         std::cout << bigSpace << std::endl;
@@ -143,7 +143,7 @@ std::shared_ptr<CImage> CManager::handleInput(std::string &name) const {
 
 void CManager::animationPrints(CAnimation &animation) {
     std::string name;
-    system("clear");
+    CFileHandler::clearScreen();
     while (true) {
         std::cout << "Zadaj nazov obrazku, ktory chces pridat do animacie , ak chces spustit animaciu zadaj start"
                   << std::endl;
@@ -156,10 +156,10 @@ void CManager::animationPrints(CAnimation &animation) {
             break;
         std::shared_ptr<CImage> image = handleInput(name);
         if (!image) {
-            system("clear");
+            CFileHandler::clearScreen();
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
         } else {
-            system("clear");
+            CFileHandler::clearScreen();
             animation.addImage(image);
         }
     }
@@ -181,26 +181,36 @@ void CManager::printMenu() {
 
 bool CManager::zeroImages() const {
     if (!library.getLibrarySize()) {
-        system("clear");
+        CFileHandler::clearScreen();
         std::cout << "Potrebujes aspon jeden obrazok" << std::endl;
         return true;
     }
     return false;
 }
 
-int CManager::getNumberOfImages() {
+void CManager::clearInput() {
+    std::cout << bigSpace << std::endl;
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+unsigned int CManager::getNumberOfImages() {
     unsigned int inputInt;
     int libSize = library.getLibrarySize();
-    system("clear");
-    std::cout << "Zadaj cislo na kolko obrazkov chces pouzit efekt" << std::endl;
-    std::cout << bigSpace << std::endl;
+    CFileHandler::clearScreen();
     while (true) {
+        std::cout << "Zadaj cislo na kolko obrazkov chces pouzit efekt" << std::endl;
+        std::cout << bigSpace << std::endl;
         std::cin >> inputInt;
-        if (std::cin.fail() || inputInt > libSize) {
-            system("clear");
+        if (std::cin.eof())
+            return -1;
+        if (inputInt == 0) {
+            std::cout << "Zadaj ine cislo ako 0 " << std::endl;
+            clearInput();
+        } else if (std::cin.fail() || inputInt > libSize) {
+            CFileHandler::clearScreen();
             std::cout << "Zadaj cislo mensie ako pocet nasich obrazkov(" << libSize << ")" << std::endl;
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            clearInput();
         } else {
             break;
         }
@@ -212,12 +222,12 @@ void CManager::saveImage(std::string &name) {
     while (true) {
         std::shared_ptr<CImage> image = handleInput(name);
         if (!image) {
-            system("clear");
+            CFileHandler::clearScreen();
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;
         } else {
             fileHandler.saveImage(image);
-            system("clear");
+            CFileHandler::clearScreen();
             std::cout << "Obrazok bol uloženy ako " << image->getName() << std::endl;
             break;
         }
@@ -225,7 +235,7 @@ void CManager::saveImage(std::string &name) {
 }
 
 void CManager::initializeProgram() {
-    system("clear");
+    CFileHandler::clearScreen();
     if (!fileHandler.initializeAsciiTransition())
         return;
     char key = 'o';
@@ -237,7 +247,7 @@ void CManager::initializeProgram() {
             std::cin >> key;
         switch (key) {
             case 'o': {
-                if(!addImage(fileHandler)) {
+                if (!addImage(fileHandler)) {
                     std::cout << "Koniec inputu" << std::endl;
                     return;
                 }
@@ -253,7 +263,7 @@ void CManager::initializeProgram() {
             case 'e': {
                 if (zeroImages())
                     break;
-                int numberOfImages = getNumberOfImages();
+                unsigned int numberOfImages = getNumberOfImages();
                 setOfImages(numberOfImages);
                 break;
             }
@@ -277,10 +287,11 @@ void CManager::initializeProgram() {
                 break;
             }
             case 'q':
+                CFileHandler::clearScreen();
                 std::cout << "Koniec aplikacie!" << std::endl;
                 break;
             default: {
-                system("clear");
+                CFileHandler::clearScreen();
                 std::cout << "Zadaj jedno z tychto pismen" << std::endl;
                 break;
             }

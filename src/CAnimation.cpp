@@ -51,16 +51,8 @@ void CAnimation::updateNumbers()
 void CAnimation::deleteImageFromAnimation()
 {
     int index = indexInput();
-    for (auto animationIT = animationLibrary.begin(); animationIT != animationLibrary.end(); animationIT++)
-    {
-        if ((*animationIT).first == index)
-        {
-            animationLibrary.erase(animationIT);
-            updateNumbers();
-            return;
-        }
-    }
-    std::cout << "Takyto image nemame :)" << std::endl;
+    animationLibrary.erase(animationLibrary.begin() + index-1);
+    updateNumbers();
 }
 
 std::string GetLineFromCin()
@@ -76,6 +68,7 @@ bool CAnimation::pauseAnimation()
     while (true)
     {
         std::cout << "Zadaj resume pre znovuspustenie, delete pre zmazanie obrazku, quit pre ukoncenie" << std::endl;
+        std::cin.clear();
         std::cin >> input;
         if(std::cin.fail())
             return false;
@@ -106,17 +99,21 @@ void CAnimation::startAnimation()
     auto future = std::async(std::launch::async, GetLineFromCin);
     while (true)
     {
+        max = getAnimationSize();
         if (future.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
         {
             std::string line = future.get();
             future = std::async(std::launch::async, GetLineFromCin);
-            if (line == "p")
+            if (line == "p") {
                 if (!pauseAnimation())
                     break;
+                else
+                    startAnimation();
+            }
         }
         animationLibrary[index++].second->printImage();
         std::cout << "Zadaj p pre pauznutie animacie" << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(350));
         if (index == max)
             index = 0;
     }

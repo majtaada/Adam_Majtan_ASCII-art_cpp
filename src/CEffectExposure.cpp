@@ -3,6 +3,8 @@
 
 void CEffectExposure::applyEffect(const std::vector<std::shared_ptr<CImage>> &images) {
     unsigned int value = CEffect::getValue();
+    if(value == -1)
+        return;
     for (const auto &image: images) {
         std::vector<std::vector<double>> imageMatrix = image->getGrayscaleImage();
         std::vector<std::vector<double>> effectMatrix;

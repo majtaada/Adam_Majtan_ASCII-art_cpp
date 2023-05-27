@@ -1,5 +1,8 @@
 #include "CEffectNegative.hpp"
-
+/**
+ * @brief child class to CEffect
+ *  parent class to CEffectLighten and CEffectDarken
+ */
 class CEffectExposure : public CEffect {
 public:
     /**

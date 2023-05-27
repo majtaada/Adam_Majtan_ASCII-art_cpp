@@ -18,6 +18,7 @@ public:
      *
      */
     void initializeProgram();
+
     friend class CTests;
 
 private:
@@ -27,9 +28,6 @@ private:
      */
     void print();
 
-    std::string imageName;
-    CFileHandler fileHandler;
-    CImageLibrary library;
 
     /**
      * @brief checks if input is number
@@ -53,6 +51,11 @@ private:
      * @param name
      */
     void showImage(std::string &name);
+
+    /**
+     * @brief helper function to clean input
+     */
+    static void clearInput();
 
     /**
      * @brief use effect on set of images
@@ -120,18 +123,21 @@ private:
     /**
      * @brief get number of images to use effect on
      */
-    int getNumberOfImages();
+    unsigned int getNumberOfImages();
 
     /**
      * @brief create vector of CImages for effect
      */
-    void setOfImages(int numberOfImages);
+    void setOfImages(unsigned int numberOfImages);
 
     /**
      * @brief prints the vector of CImages
      */
     void printImagesSet() const;
 
+    std::string imageName;
+    CFileHandler fileHandler;
+    CImageLibrary library;
     std::string nameInput;
     std::vector<std::shared_ptr<CImage>> images;
     static const std::map<std::string, std::shared_ptr<CEffect>> mapEffect;

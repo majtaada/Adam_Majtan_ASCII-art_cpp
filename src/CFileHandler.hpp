@@ -50,7 +50,10 @@ public:
      * @brief function to save the image
      */
     void saveImage( const std::shared_ptr<CImage>&);
-
+    /**
+     * @brief helper function to clear screen
+     */
+    static void clearScreen();
 private:
     /**
      * @brief checks if file is valid

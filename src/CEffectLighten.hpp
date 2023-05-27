@@ -1,7 +1,7 @@
 #include "CEffectExposure.hpp"
 
 /**
- * @brief child class to CEffect
+ * @brief child class to CEffectExposure
  * lighten the image
  *
  */

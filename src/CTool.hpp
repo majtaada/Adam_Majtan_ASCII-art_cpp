@@ -21,7 +21,7 @@ public:
      *
      * @param asciiTransition
      */
-    CTool(std::string &asciiTransition);
+    explicit CTool(std::string &asciiTransition);
 
     /**
      * @brief get matrix in grayscale and converts it to adequate ascii symbol
