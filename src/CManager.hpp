@@ -5,8 +5,6 @@
 #include <map>
 #include <memory>
 
-#pragma once
-
 
 /**
  * @brief calls all the other classes, directing the program
@@ -20,6 +18,7 @@ public:
      *
      */
     void initializeProgram();
+    friend class CTests;
 
 private:
     /**
@@ -93,7 +92,7 @@ private:
      * @return true = zero
      * @return false = !zero
      */
-    bool zeroImages() const;
+    [[nodiscard]] bool zeroImages() const;
 
     /**
      * @brief decide if input it string or number

@@ -8,8 +8,10 @@ FLAGS = -lpng -lz -lstdc++fs -pthread
 ZIP = Makefile Doxyfile DOCUMENTATION.md zadani.txt prohlaseni.txt \
   .gitignore $(wildcard examples/*) $(wildcard src/*)
 
-SOURCES = $(wildcard src/*.cpp)
+SOURCES = $(filter-out src/testmain.cpp, $(wildcard src/*.cpp))
+TEST_SOURCES = $(filter-out src/main.cpp, $(SOURCES))
 OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES})
+TEST_OBJECTS = $(patsubst src/%.cpp, build/%.o, ${TEST_SOURCES})
 DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
 .PHONY: all compile run doc clean count zip
@@ -31,6 +33,11 @@ run: compile
 
 valgrind: compile
 	valgrind ./${LOGIN} --leak-check=full -s
+
+test: $(TEST_OBJECTS) src/testmain.cpp
+	@mkdir -p build/
+	${CXX} ${BASIC_FLAGS} $^ -o test ${FLAGS}
+	./test
 
 doc: doc/index.html
 

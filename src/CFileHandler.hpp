@@ -59,7 +59,7 @@ private:
      * @return true = valid
      * @return false = invalid
      */
-    bool checkIfFileValid(const std::string &name) const;
+    [[nodiscard]] static bool checkIfFileValid(const std::string &name);
     /**
      * @brief prints directory where examples are stored
      *
@@ -82,7 +82,8 @@ private:
      * @param line
      * @return true if file is ok, false otherwise
      */
-    bool handleKernelFile(std::ifstream & txtFile, std::string & line);
+    bool handleKernelFile(std::ifstream & txtFile);
+    static int tryNumber(std::string fileNum);
     /**
      * @brief helper method to print if file is invalid
      *
@@ -103,10 +104,10 @@ private:
      * @param b
      * @return
      */
-    static bool compareMapValues(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b);
     std::vector<std::vector<double>> imageMatrix;
     std::string asciiLevel, path = "../majtaada/examples/";
     std::shared_ptr<CTool> converter;
     std::vector<std::vector<double>> kernel;
     std::map<int,std::string> directoryMap;
+    friend class CTests;
 };

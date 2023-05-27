@@ -7,10 +7,6 @@ void CFileHandler::printInvalid(const std::string &mess) {
     std::cout << space << std::endl;
 }
 
-bool CFileHandler::compareMapValues(const std::pair<int, std::string>& a, const std::pair<int, std::string>& b) {
-    return a.second < b.second;
-}
-
 void CFileHandler::readDirectory(const std::string &fileType) {
     int cnt = 0;
     directoryMap = {};
@@ -50,7 +46,7 @@ std::string CFileHandler::readInput() {
     }
 }
 
-bool CFileHandler::checkIfFileValid(const std::string &name) const {
+bool CFileHandler::checkIfFileValid(const std::string &name)  {
     if (FILE *file = fopen(name.c_str(), "r")) {
         fclose(file);
         return true;
@@ -73,14 +69,15 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
         }
         converter = std::make_shared<CTool>(asciiLevel);
     } else {
-        if (!handleKernelFile(txtFile, line))
+        if (!handleKernelFile(txtFile))
             return false;
     }
     return true;
 }
 
-bool CFileHandler::handleKernelFile(std::ifstream &txtFile, std::string &line) {
+bool CFileHandler::handleKernelFile(std::ifstream &txtFile) {
     kernel = {};
+    std::string line;
     if (txtFile.peek() == std::ifstream::traits_type::eof()) {
         return false;
     }
@@ -123,6 +120,15 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
         }
     }
 }
+int CFileHandler::tryNumber(std::string fileNum) {
+    int num = 0;
+    try {
+        num = stoi(fileNum);
+    } catch (...) {
+        return num;
+    }
+    return num;
+}
 
 std::string CFileHandler::getInputNumber() {
     std::string fileNum;
@@ -130,11 +136,7 @@ std::string CFileHandler::getInputNumber() {
     std::cin >> fileNum;
     if(std::cin.fail())
         return "";
-    try {
-        num = stoi(fileNum);
-    } catch (...) {
-        return fileNum;
-    }
+    num = tryNumber(fileNum);
     if (directoryMap.find(num) != directoryMap.end())
         return directoryMap.at(num);
     return fileNum;
@@ -196,3 +198,5 @@ std::shared_ptr<CImage> CFileHandler::readPNG(const std::string &imageName) {
     fclose(imageFile);
     return image;
 }
+
+
