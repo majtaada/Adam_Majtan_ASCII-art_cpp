@@ -3,7 +3,7 @@
 void CTests::callTests() {
     checkingInputTests();
     checkingFileTests();
-    std::cout << "All tests completed" << std::endl;
+    std::cout << "All tests completed!" << std::endl;
 }
 
 void CTests::checkingInputTests() {

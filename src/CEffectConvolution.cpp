@@ -4,7 +4,7 @@ void CEffectConvolution::applyEffect(const std::vector<std::shared_ptr<CImage>> 
     std::vector<std::vector<double>> kernel = getKernel();
     for (const auto &image: images) {
         std::vector<std::vector<double>> effectMatrix = image->getGrayscaleImage();
-        if (kernel.size() % 2 == 0)
+        if ((kernel.size() % 2 )== 0)
             kernel = expandKernel(kernel);
         int kernelSize = kernel.size();
         int padding = kernelSize / 2;
@@ -40,7 +40,7 @@ CEffectConvolution::convolve(int padding, int rows, int cols, std::vector<std::v
 }
 
 std::vector<std::vector<double>> CEffectConvolution::expandKernel(const std::vector<std::vector<double>> &kernel) {
-    std::vector<std::vector<double>> newKernel(kernel.size() + 1, std::vector<double>(kernel.size() + 1, 0));
+    std::vector<std::vector<double>> newKernel(kernel.size() + 1, std::vector<double>(kernel.size() + 1, 1));
     for (size_t i = 0; i < kernel.size(); i++) {
         for (size_t j = 0; j < kernel.size(); j++) {
             newKernel[i][j] = kernel[i][j];

@@ -54,6 +54,13 @@ public:
      * @brief helper function to clear screen
      */
     static void clearScreen();
+    /**
+     * @brief converts number to int
+     * @param fileNum
+     * @return number converted from string
+     */
+    static int tryNumber(const std::string& fileNum);
+
 private:
     /**
      * @brief checks if file is valid
@@ -86,7 +93,6 @@ private:
      * @return true if file is ok, false otherwise
      */
     bool handleKernelFile(std::ifstream & txtFile);
-    static int tryNumber(std::string fileNum);
     /**
      * @brief helper method to print if file is invalid
      *

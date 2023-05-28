@@ -1,7 +1,7 @@
 #include "CEffect.hpp"
 
 int CEffect::getValue() {
-    int num;
+    int num = 0;
     std::string numBuffer;
     std::cout << "Zadaj o kolko chces obrazok stmavit/zosvetlit (0 - 255)" << std::endl;
     while (true) {

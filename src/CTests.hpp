@@ -2,9 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
+
 /**
- * class for tests
+ * @brief class for tests
  */
+
 class CTests {
 public:
     /**
@@ -17,6 +19,7 @@ private:
      * function for input tests
      */
     void checkingInputTests();
+
     /**
      * function for file tests
      */

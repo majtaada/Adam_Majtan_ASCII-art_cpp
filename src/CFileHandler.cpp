@@ -59,9 +59,13 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
     std::ifstream txtFile;
     std::string line;
     txtFile.open(path + fileName);
+    int cnt = 0;
     if (ascii) {
         while (std::getline(txtFile, line)) {
-            asciiLevel += line;
+            if(++cnt == 2)
+                return false;
+            asciiLevel = line;
+
         }
         if (asciiLevel.empty()) {
             txtFile.close();
@@ -78,6 +82,7 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
 bool CFileHandler::handleKernelFile(std::ifstream &txtFile) {
     kernel = {};
     std::string line;
+    double val;
     if (txtFile.peek() == std::ifstream::traits_type::eof()) {
         return false;
     }
@@ -87,11 +92,11 @@ bool CFileHandler::handleKernelFile(std::ifstream &txtFile) {
         std::string number;
         while (std::getline(ss, number, ',')) {
             try {
-                double val = stod(number);
+                val = stod(number);
             } catch (...) {
                 return false;
             }
-            v1.push_back(stod(number));
+            v1.push_back(val);
         }
         kernel.push_back(v1);
     }
@@ -123,7 +128,7 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
         }
     }
 }
-int CFileHandler::tryNumber(std::string fileNum) {
+int CFileHandler::tryNumber(const std::string& fileNum) {
     int num = 0;
     try {
         num = stoi(fileNum);

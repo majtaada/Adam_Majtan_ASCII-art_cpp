@@ -56,7 +56,7 @@ void CManager::printImagesSet() const {
         std::cout << "Zatial nemas ziadne zvolene obrazky" << std::endl;
     else {
         std::cout << "Zatial mas zvolene: ";
-        for (int i = 0; i < images.size(); ++i) {
+        for (size_t i = 0; i < images.size(); ++i) {
             std::cout << images[i]->getName();
             if (i != images.size() - 1)
                 std::cout << ",";
@@ -68,11 +68,13 @@ void CManager::printImagesSet() const {
 
 void CManager::setOfImages(unsigned int numOfImages) {
     images = {};
-    for (int i = 0; i < numOfImages; i++) {
+    for (size_t i = 0; i < numOfImages; i++) {
         CFileHandler::clearScreen();
-        nameInput = getNameInput();
         while (true) {
+            nameInput = getNameInput();
             std::shared_ptr<CImage> image = handleInput(nameInput);
+            if(std::cin.eof())
+                return;
             if (!image) {
                 CFileHandler::clearScreen();
                 std::cout << "Taky obrazok nemame, skus iny" << std::endl;
@@ -91,6 +93,8 @@ void CManager::useEffect(const std::vector<std::shared_ptr<CImage>> &cimages) {
     std::cout << bigSpace << std::endl;
     std::string effectName;
     std::cin >> effectName;
+    if (std::cin.eof())
+        return;
     if (mapEffect.find(effectName) != mapEffect.end()) {
         mapEffect.at(effectName)->applyEffect(cimages);
         CFileHandler::clearScreen();
@@ -195,17 +199,19 @@ void CManager::clearInput() {
 }
 
 unsigned int CManager::getNumberOfImages() {
-    unsigned int inputInt;
+    std::string inputBuffer;
+    int inputInt;
     int libSize = library.getLibrarySize();
     CFileHandler::clearScreen();
     while (true) {
         std::cout << "Zadaj cislo na kolko obrazkov chces pouzit efekt" << std::endl;
         std::cout << bigSpace << std::endl;
-        std::cin >> inputInt;
+        std::cin >> inputBuffer;
+        inputInt = CFileHandler::tryNumber(inputBuffer);
         if (std::cin.eof())
             return -1;
-        if (inputInt == 0) {
-            std::cout << "Zadaj ine cislo ako 0 " << std::endl;
+        if (inputInt <= 0) {
+            std::cout << "Zadaj nezaporne cislo " << std::endl;
             clearInput();
         } else if (std::cin.fail() || inputInt > libSize) {
             CFileHandler::clearScreen();
@@ -226,7 +232,7 @@ void CManager::saveImage(std::string &name) {
             std::cout << "Taky obrazok nemame, skus iny" << std::endl;
             break;
         } else {
-            fileHandler.saveImage(image);
+            CFileHandler::saveImage(image);
             CFileHandler::clearScreen();
             std::cout << "Obrazok bol uloženy ako " << image->getName() << std::endl;
             break;
