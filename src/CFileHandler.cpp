@@ -18,8 +18,8 @@ void CFileHandler::readDirectory(const std::string &fileType) {
             files.push_back(fileDir);
         }
     }
-    std::sort(files.begin(),files.end());
-    for (const auto& file : files ) {
+    std::sort(files.begin(), files.end());
+    for (const auto &file: files) {
         directoryMap[++cnt] = file;
         std::cout << "[" << cnt << "] " << file << std::endl;
     }
@@ -35,7 +35,7 @@ std::string CFileHandler::readInput() {
         std::cout << space << std::endl;
         readDirectory(".png");
         fileRead = getInputNumber();
-        if(fileRead.empty())
+        if (fileRead.empty())
             return "";
         fileName = path + fileRead;
         std::fstream file(fileName);
@@ -46,7 +46,7 @@ std::string CFileHandler::readInput() {
     }
 }
 
-bool CFileHandler::checkIfFileValid(const std::string &name)  {
+bool CFileHandler::checkIfFileValid(const std::string &name) {
     if (FILE *file = fopen(name.c_str(), "r")) {
         fclose(file);
         return true;
@@ -62,7 +62,7 @@ bool CFileHandler::readTxtFile(std::string &fileName, bool ascii) {
     int cnt = 0;
     if (ascii) {
         while (std::getline(txtFile, line)) {
-            if(++cnt == 2)
+            if (++cnt == 2)
                 return false;
             asciiLevel = line;
 
@@ -104,6 +104,7 @@ bool CFileHandler::handleKernelFile(std::ifstream &txtFile) {
         return false;
     return true;
 }
+
 void CFileHandler::clearScreen() {
     system("clear");
 }
@@ -128,7 +129,8 @@ std::vector<std::vector<double>> CFileHandler::readKernel() {
         }
     }
 }
-int CFileHandler::tryNumber(const std::string& fileNum) {
+
+int CFileHandler::tryNumber(const std::string &fileNum) {
     int num = 0;
     try {
         num = stoi(fileNum);
@@ -142,7 +144,7 @@ std::string CFileHandler::getInputNumber() {
     std::string fileNum;
     int num;
     std::cin >> fileNum;
-    if(std::cin.fail())
+    if (std::cin.fail())
         return "";
     num = tryNumber(fileNum);
     if (directoryMap.find(num) != directoryMap.end())
@@ -157,7 +159,7 @@ bool CFileHandler::initializeAsciiTransition() {
         std::string fileName;
         readDirectory(".txt");
         fileName = getInputNumber();
-        if(fileName.empty()) {
+        if (fileName.empty()) {
             std::cout << "Koniec inputu" << std::endl;
             return false;
         }
@@ -171,7 +173,7 @@ bool CFileHandler::initializeAsciiTransition() {
             printInvalid("Neplatny ascii prechod, skus iny");
         }
     }
-   clearScreen();
+    clearScreen();
     return true;
 }
 

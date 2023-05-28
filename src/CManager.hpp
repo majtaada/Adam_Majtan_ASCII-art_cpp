@@ -111,7 +111,7 @@ private:
      *
      * @return std::string
      */
-    std::string getNameInput();
+    std::string getNameInput(bool effect);
 
     /**
      * @brief save the image

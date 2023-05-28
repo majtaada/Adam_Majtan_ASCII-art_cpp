@@ -40,7 +40,7 @@ CEffectConvolution::convolve(int padding, int rows, int cols, std::vector<std::v
 }
 
 std::vector<std::vector<double>> CEffectConvolution::expandKernel(const std::vector<std::vector<double>> &kernel) {
-    std::vector<std::vector<double>> newKernel(kernel.size() + 1, std::vector<double>(kernel.size() + 1, 1));
+    std::vector<std::vector<double>> newKernel(kernel.size() + 1, std::vector<double>(kernel.size() + 1, 0.0));
     for (size_t i = 0; i < kernel.size(); i++) {
         for (size_t j = 0; j < kernel.size(); j++) {
             newKernel[i][j] = kernel[i][j];

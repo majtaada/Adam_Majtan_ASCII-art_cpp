@@ -29,9 +29,10 @@ void CManager::print() {
     std::cout << bigSpace << std::endl;
 }
 
-std::string CManager::getNameInput() {
+std::string CManager::getNameInput(bool effect) {
     print();
-    printImagesSet();
+    if (effect)
+        printImagesSet();
     std::string inputString;
     std::cin >> inputString;
     return inputString;
@@ -71,9 +72,9 @@ void CManager::setOfImages(unsigned int numOfImages) {
     for (size_t i = 0; i < numOfImages; i++) {
         CFileHandler::clearScreen();
         while (true) {
-            nameInput = getNameInput();
+            nameInput = getNameInput(true);
             std::shared_ptr<CImage> image = handleInput(nameInput);
-            if(std::cin.eof())
+            if (std::cin.eof())
                 return;
             if (!image) {
                 CFileHandler::clearScreen();
@@ -262,7 +263,7 @@ void CManager::initializeProgram() {
             case 'i': {
                 if (zeroImages())
                     break;
-                nameInput = getNameInput();
+                nameInput = getNameInput(false);
                 showImage(nameInput);
                 break;
             }
@@ -276,7 +277,7 @@ void CManager::initializeProgram() {
             case 's': {
                 if (zeroImages())
                     break;
-                nameInput = getNameInput();
+                nameInput = getNameInput(false);
                 saveImage(nameInput);
                 break;
             }

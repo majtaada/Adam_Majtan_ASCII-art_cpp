@@ -37,7 +37,7 @@ druh výstupu: zobrazení, soubor, prezentace, …
 
 uživatelské rozhraní: konzole, ncurses, SDL, OpenGL (různé varianty)
 
-#Spracovanie zadania
+# Spracovanie zadania
 Môj ASCII-ART program bude podporovať načítanie obrázku z formátu PNG. Program začne načítaním ascii prechodu v metóde **initializeAsciiTransition**. Po načítaní obrázku v
 metódach **ReadInput** a **readPNG** v triede **CFileReader** bude obrázok prevedený na grayscale za pomoci
 metódy **toGrayscale** z triedy **CTool**, a vráti maticovú reprezentáciu. Následne obrázok v
