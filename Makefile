@@ -51,6 +51,7 @@ clean:
 	rm -rf build doc
 	rm -f ${LOGIN} ${LOGIN}.zip
 	rm -rf *.png*
+	rm -rf test
 
 zip: ${LOGIN}.zip
 

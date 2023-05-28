@@ -50,9 +50,25 @@ private:
      * @return false = quit
      */
     bool pauseAnimation();
+    /**
+     * @brief deletes image from animationlibrary
+     *
+     * @return true if deleted
+     * @return false if failed to delete
+     */
     bool deleteImageFromAnimation();
+    /**
+     * @brief function to get input from user
+     * @return the index
+     */
     int indexInput() const;
+    /**
+     * @brief update numbers after deletion
+     */
     void updateNumbers();
+    /**
+     * @brief print function
+     */
     void printAnimationLibrary() const;
     std::vector<std::pair<int, std::shared_ptr<CImage>>> animationLibrary;
 };
