@@ -2,7 +2,7 @@
 
 
 void CEffectExposure::applyEffect(const std::vector<std::shared_ptr<CImage>> &images) {
-    unsigned int value = CEffect::getValue();
+    int value = CEffect::getValue();
     if(value == -1)
         return;
     for (const auto &image: images) {

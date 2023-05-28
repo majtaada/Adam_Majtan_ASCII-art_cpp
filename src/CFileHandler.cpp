@@ -152,7 +152,7 @@ bool CFileHandler::initializeAsciiTransition() {
         std::string fileName;
         readDirectory(".txt");
         fileName = getInputNumber();
-        if(fileName == "") {
+        if(fileName.empty()) {
             std::cout << "Koniec inputu" << std::endl;
             return false;
         }

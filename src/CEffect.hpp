@@ -25,7 +25,7 @@ public:
      *
      * @return unsigned int
      */
-    static unsigned int getValue() ;
+    static int getValue() ;
     /**
      * @brief get the kernel for convolution
      *

@@ -1,16 +1,25 @@
 #include "CEffect.hpp"
 
-unsigned int CEffect::getValue() {
-    unsigned int value;
+int CEffect::getValue() {
+    int num;
+    std::string numBuffer;
     std::cout << "Zadaj o kolko chces obrazok stmavit/zosvetlit (0 - 255)" << std::endl;
-    while (!(std::cin >> value)) {
+    while (true) {
+        std::cin >> numBuffer;
         if(std::cin.eof())
             return -1;
-        std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "Zadaj nezaporne cislo " << std::endl;
+        try {
+            num = std::stoi(numBuffer);
+        } catch (...) {}
+        if( num < 0 || std::cin.fail()){
+            std::cout << "Zadaj nezaporne cislo " << std::endl;
+            std::cin.clear();
+        }
+        else{
+            break;
+        }
     }
-    return value;
+    return num;
 }
 
 std::vector<std::vector<double>> CEffect::getKernel() {

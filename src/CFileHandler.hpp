@@ -49,7 +49,7 @@ public:
     /**
      * @brief function to save the image
      */
-    void saveImage( const std::shared_ptr<CImage>&);
+    static void saveImage( const std::shared_ptr<CImage>&);
     /**
      * @brief helper function to clear screen
      */
