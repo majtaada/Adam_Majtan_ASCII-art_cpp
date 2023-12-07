@@ -14,7 +14,7 @@ OBJECTS = $(patsubst src/%.cpp, build/%.o, ${SOURCES})
 TEST_OBJECTS = $(patsubst src/%.cpp, build/%.o, ${TEST_SOURCES})
 DEPS = $(patsubst src/%.cpp, build/%.dep, ${SOURCES})
 
-.PHONY: all compile run doc clean count zip
+.PHONY: all compile run doc test clean count zip
 
 all: compile doc
 
